@@ -1,0 +1,19 @@
+[{
+    "type": "major",
+    "name": "Bachelor of Science in Computer Science",
+    "requiredCredits": 125,
+    "requirements": [
+        {"category": "Foundational Courses", "credits": -1, "courses": ["MATH241", "MATH344+MATH344L", "ENGL462/ENGL463"]},
+        {"category": "Major Courses", "credits": -1, "courses": ["CSCE311", "CSCE330", "CSCE350"]}, 
+        {"category": "CSCE Electives", "credits": 9, "courses": ["..."]}
+    ]
+}, 
+{
+    "type": "minor",
+    "name": "Mathematics",
+    "requiredCredits": 18,
+    "requirements": [
+        {"category": "Required Course", "credits": -1, "courses": ["MATH241"]},
+        {"category": "Additional Courses", "credits": 15, "courses": ["MATH242", "MATH300", "MATH344", "MATH374", "..."]}
+    ]
+}]
