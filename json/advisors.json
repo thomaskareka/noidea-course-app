@@ -1,0 +1,12 @@
+[
+    {
+        "uuid": "2c622e0d-975f-436f-96e0-ffebf89269d0",
+        "type": "advisor",
+        "firstName": "Place",
+        "lastName": "Holder",
+        "email": "placeholder@test.com",
+        "password:": "f46fab9f9f91073a4262a6bce61dc3d05ad0a078",
+        "admin": false,
+        "students": ["3679308a-dda8-4a27-8260-8fd115426bd5"]
+    }
+]
