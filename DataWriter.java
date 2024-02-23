@@ -7,5 +7,19 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 
 public class DataWriter {
+    public static void saveStudents() {
+
+    }
     
+    public static void saveAdvisors() {
+        
+    }
+
+    public static void saveCourses() {
+        
+    }
+
+    public static void saveMajors() {
+        
+    }
 }

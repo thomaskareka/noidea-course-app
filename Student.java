@@ -13,13 +13,12 @@ public class Student extends User{
     private boolean hasScholorship;
     private DegreeTracker degreeProgress;
 
-    public Student(String fisrtName, String lastName, String email, String major){
-        super(fisrtName, lastName, email);
+    public Student(String firstName, String lastName, String email, String major){
+        super(firstName, lastName, email);
         this.major = major;
     }
 
-    public Student(String firstName, String lastName, String email, UUID id, String major, String minor, double majorGPA, double overallGPA, String classLevel, Advisor advisor, boolean failureRisk, ArrayList<String> notes, boolean hasScholorship, DegreeTracker degreeProgess){
-       
+    public Student(String firstName, String lastName, String email, UUID id, String major, String minor, double majorGPA, double overallGPA, String classLevel, Advisor advisor, boolean failureRisk, ArrayList<String> notes, boolean hasScholarship, DegreeTracker degreeProgess){
         super(firstName, lastName, email, id);
         this.major = major; 
         this.minor = minor;
@@ -29,7 +28,12 @@ public class Student extends User{
         this.advisor = advisor;
         this.failureRisk = failureRisk;
         this.notes = notes;
-        this.hasScholorship = hasScholorship;
+        
+        if(hasScholarship)
+            this.hasScholorship = true;
+        else
+            this.hasScholorship = false;
+        
         this.degreeProgress = degreeProgress;
         
     }
