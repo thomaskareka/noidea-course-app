@@ -5,12 +5,14 @@ public class Advisor extends User {
     private ArrayList<Student> students;
     private boolean isAdmin;
     
+    //new Advisor constructor
     public Advisor(String firstName, String lastName, String email, boolean isAdmin) {
         super(firstName, lastName, email);
         students = new ArrayList<Student>();
         this.isAdmin = isAdmin;
     }
 
+    //loading from JSON files constructor
     public Advisor(String firstName, String lastName, String email, UUID id, ArrayList<Student> students, boolean isAdmin) {
         super(firstName, lastName, email, id);
         this.students = students;
