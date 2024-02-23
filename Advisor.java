@@ -59,5 +59,4 @@ public class Advisor extends User {
     public void removeFailureRisk(Student student, boolean failureRisk) {
 
     }
->>>>>>> 3bbaaade988a44d4f02ae50e360c3dcfd2feb479
 }
