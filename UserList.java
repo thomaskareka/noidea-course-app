@@ -7,13 +7,16 @@ public class UserList {
     private ArrayList<User> users;
 
     private UserList(){
-
+        users = new ArrayList<>();
     }
     public UserList getInstance(){
-        return null;
+        if (userlist == null) {
+            userlist = new UserList();
+        }
+        return userlist;
     }
-    public User getUser(String id){
-        return null;
+    public User getUser(String id) {
+
     }
     
 }
