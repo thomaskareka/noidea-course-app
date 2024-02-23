@@ -1,0 +1,27 @@
+[{
+    "name": "Software Engineering",
+    "identifier": "CSCE247",
+    "credits": 3,
+    "description": "Fundamentals of software design and development;",
+    "attributes": [],
+    "requisites": [{"type": "pre", "courses": "CSCE146", "grade": "C"}]
+}, 
+{
+    "name": "Algorithmic Design I",
+    "identifier": "CSCE145",
+    "credits": 3,
+    "description": "Problem-solving, algorithmic design, and programming",
+    "attributes": ["CC-ARP"],
+    "requisites": [{"type": "pre_or_co", "courses": "MATH111/MATH115", "grade": "D"}]
+}, 
+{
+    "name": "Capstone Computing Project I",
+    "identifier": "CSCE490",
+    "credits": 3, 
+    "description": "Major team-based software design project...",
+    "attributes": ["GLD: Research"],
+    "requisites": [
+        {"type": "pre", "courses": "CSCE240", "grade": "D"},
+        {"type": "pre_or_co", "courses": "CSCE350", "grade": "D"}
+    ]
+}]

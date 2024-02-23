@@ -1,0 +1,20 @@
+[
+    {
+        "uuid": "3679308a-dda8-4a27-8260-8fd115426bd5",
+        "major": "Computer Science",
+        "minor": "none",
+        "majorGPA": 3.67,
+        "overallGPA": 3.45,
+        "studentID": "B001122",
+        "classLevel": "Sophomore",
+        "advisor": "2c622e0d-975f-436f-96e0-ffebf89269d0",
+        "failureRisk": false,
+        "notes": ["Advised for FA24", "test"],
+        "hasScholarship": true,
+        "courses": [
+            {"id": "ENGL101","grade": "B"},
+            {"id": "CSCE520","grade": "A"},
+            {"id": "CSCE247","grade": "in_progress"}
+        ]
+    }
+]
