@@ -7,12 +7,12 @@ public class Degree {
     private ArrayList<DegreeRequirement> requirements;
     private int requiredCredits;
 
-    public Degree(String major, String minor, String title, ArrayList<DegreeRequirements> requirements,
+    public Degree(String major, String minor, String title, ArrayList<DegreeRequirement> requirements,
             int requiredCredits) {
 
     }
 
-    public Degree(String major, String title, ArrayList<DegreeRequirements> requirements) {
+    public Degree(String major, String title, ArrayList<DegreeRequirement> requirements) {
 
     }
 }
