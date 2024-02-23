@@ -11,6 +11,7 @@ public abstract class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        id = new UUID(18, 18);
     }
     
     public User(String firstName, String lastName, String email, UUID id){
