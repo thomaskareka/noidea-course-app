@@ -1,5 +1,4 @@
 //#21
-
 import java.util.ArrayList;
 
 public class UserList {
@@ -15,8 +14,24 @@ public class UserList {
         }
         return userlist;
     }
-    public User getUser(String id) {
-        return users.get(0);
+    public User getUser(String email) {
+        for (User user : users) {
+            if(user.getEmail().equals(email))
+                return user;
+        }
+        return null;
+    }
+
+    public boolean containsUser(String email){
+        for (User user : users) {
+            if(user.getEmail().equals(email))
+                return true;
+        }
+        return false;
+    }
+
+    public void addUser(User user){       
+        users.add(user);
     }
     
 }
