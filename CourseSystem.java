@@ -46,10 +46,10 @@ public class CourseSystem{
         return true;
     } 
     public Student searchByStudentId(Advisor advisor, String id){
-        
+        return new Student(null, null, null, null);
     }
     public Student searchByStudentEmail(Advisor advisor, String email){
-
+        return new Student(null, null, null, null);
     }
     public void addNotes(Advisor advisor, Student student, String notes){
         
@@ -70,10 +70,10 @@ public class CourseSystem{
 
     }
     public ArrayList<Student> getListOfAdvisses(Advisor advisor){
-
+        return new ArrayList<Student>();
     }
-    public Student getAdvisee(Advisor advisor, ArrayList<Students> students, String name){
-
+    public Student getAdvisee(Advisor advisor, ArrayList<Student> students, String name){
+        return new Student(null, null, null, null);
     }
     public String getEightSemesterPlan(Student student){
         return "";
@@ -84,7 +84,7 @@ public class CourseSystem{
     public String getAllUncompletedCourses(Student student){
         return "";
     }
-    public boolean checkIfStudentAtRisk(Advisor advisor, Student student):{
+    public boolean checkIfStudentAtRisk(Advisor advisor, Student student){
         return true;
     }
     public String getDegreeRequirements(String category){
@@ -103,10 +103,10 @@ public class CourseSystem{
         return 0;
     }
     public Grade getCourseGrade(Student student, Course course){
-
+        return null;
     }
     public Grade getCourseGrade(Student student, String name, int identifier){
-        
+        return null;
     }
 
 }
