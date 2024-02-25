@@ -10,14 +10,39 @@ public class CourseSystem{
     }
 
     public User login (String email, String password){
-        return user;
+        if(userList.containsUser(email)){
+            if(userList.getStudentUser(email) == null){
+                user = userList.getAdvisorUser(email);
+            }
+            else{
+                user = userList.getStudentUser(email);
+            }
+            return user;
+        }
+        return null;
     }
     public boolean logout(){
         return true;
     }
-    public boolean signUp(String firstName, String lastName, String email, String id, String password){
-        return true;
+    public boolean studentSignUp(String firstName, String lastName, String email, String major, String password){
+        if(userList.containsUser(email)){
+            return false;
+        }
+        else{
+            userList.addStudentUser(lastName, lastName, email, major);
+            return true;
+        }
     }
+    public boolean advisorSignUp(String firstName, String lastName, String email, boolean isAdmin, String password){
+        if(userList.containsUser(email)){
+            return false;
+        }
+        else{
+            userList.addAdvisorUser(firstName, lastName, email, isAdmin);
+            return true;
+        }
+    }
+
     public String courseDescriptionSearch(String name){
         return "";
     }
