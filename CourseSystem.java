@@ -1,6 +1,3 @@
-
-//commit #7
-
 import java.util.ArrayList;
 
 public class CourseSystem{
@@ -11,7 +8,8 @@ public class CourseSystem{
     public CourseSystem(){
         
     }
-    public User login (String username, String password){
+
+    public User login (String email, String password){
         return user;
     }
     public boolean logout(){
@@ -110,11 +108,5 @@ public class CourseSystem{
     public Grade getCourseGrade(Student student, String name, int identifier){
         
     }
-
-
-
-
-
-
 
 }

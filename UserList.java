@@ -16,7 +16,7 @@ public class UserList {
         return userlist;
     }
     public User getUser(String id) {
-
+        return users.get(0);
     }
     
 }
