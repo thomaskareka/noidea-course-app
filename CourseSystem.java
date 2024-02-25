@@ -1,6 +1,3 @@
-
-//commit #7
-
 import java.util.ArrayList;
 
 public class CourseSystem{
@@ -11,15 +8,41 @@ public class CourseSystem{
     public CourseSystem(){
         
     }
-    public User login (String username, String password){
-        return user;
+
+    public User login (String email, String password){
+        if(userList.containsUser(email)){
+            if(userList.getStudentUser(email) == null){
+                user = userList.getAdvisorUser(email);
+            }
+            else{
+                user = userList.getStudentUser(email);
+            }
+            return user;
+        }
+        return null;
     }
     public boolean logout(){
         return true;
     }
-    public boolean signUp(String firstName, String lastName, String email, String id, String password){
-        return true;
+    public boolean studentSignUp(String firstName, String lastName, String email, String major, String password){
+        if(userList.containsUser(email)){
+            return false;
+        }
+        else{
+            userList.addStudentUser(lastName, lastName, email, major);
+            return true;
+        }
     }
+    public boolean advisorSignUp(String firstName, String lastName, String email, boolean isAdmin, String password){
+        if(userList.containsUser(email)){
+            return false;
+        }
+        else{
+            userList.addAdvisorUser(firstName, lastName, email, isAdmin);
+            return true;
+        }
+    }
+
     public String courseDescriptionSearch(String name){
         return "";
     }
@@ -48,10 +71,10 @@ public class CourseSystem{
         return true;
     } 
     public Student searchByStudentId(Advisor advisor, String id){
-        
+        return new Student(null, null, null, null);
     }
     public Student searchByStudentEmail(Advisor advisor, String email){
-
+        return new Student(null, null, null, null);
     }
     public void addNotes(Advisor advisor, Student student, String notes){
         
@@ -72,10 +95,10 @@ public class CourseSystem{
 
     }
     public ArrayList<Student> getListOfAdvisses(Advisor advisor){
-
+        return new ArrayList<Student>();
     }
-    public Student getAdvisee(Advisor advisor, ArrayList<Students> students, String name){
-
+    public Student getAdvisee(Advisor advisor, ArrayList<Student> students, String name){
+        return new Student(null, null, null, null);
     }
     public String getEightSemesterPlan(Student student){
         return "";
@@ -86,7 +109,7 @@ public class CourseSystem{
     public String getAllUncompletedCourses(Student student){
         return "";
     }
-    public boolean checkIfStudentAtRisk(Advisor advisor, Student student):{
+    public boolean checkIfStudentAtRisk(Advisor advisor, Student student){
         return true;
     }
     public String getDegreeRequirements(String category){
@@ -105,16 +128,10 @@ public class CourseSystem{
         return 0;
     }
     public Grade getCourseGrade(Student student, Course course){
-
+        return null;
     }
     public Grade getCourseGrade(Student student, String name, int identifier){
-        
+        return null;
     }
-
-
-
-
-
-
 
 }

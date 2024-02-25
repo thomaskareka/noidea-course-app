@@ -1,31 +1,22 @@
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Advisor extends User {
     private ArrayList<Student> students;
     private boolean isAdmin;
-    // Full Constructor
-    public Advisor(String firstName, String lastName, String email, ArrayList<Student> students, boolean isAdmin) {
+    
+    //new Advisor constructor
+    public Advisor(String firstName, String lastName, String email, boolean isAdmin) {
         super(firstName, lastName, email);
+        students = new ArrayList<Student>();
+        this.isAdmin = isAdmin;
+    }
+
+    //loading from JSON files constructor
+    public Advisor(String firstName, String lastName, String email, UUID id, ArrayList<Student> students, boolean isAdmin) {
+        super(firstName, lastName, email, id);
         this.students = students;
         this.isAdmin = isAdmin;
-    }
-    //Constructor without Students
-    public Advisor(String firstName, String lastName, String email, UUID id, boolean isAdmin) {
-        super(firstName, lastName, email, id);
-        this.students = new ArrayList<Student>();
-        this.isAdmin = isAdmin;
-    }
-    //Basic Constructor
-    public Advisor(String firstName, String lastName, String email) {
-        super(firstName, lastName, email);
-        this.students = new ArrayList<Student>();
-        this.isAdmin = false;
-    }
-    //Basic Constructor with ID
-    public Advisor(String firstName, String lastName, String email, UUID id) {
-        super(firstName, lastName, email, id);
-        this.students = new ArrayList<Student>();
-        this.isAdmin = false;
     }
 
     public Student searchByStudentID(String id) {
