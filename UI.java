@@ -4,7 +4,7 @@ public class UI {
     }
 
     public void run(){
-
+        CourseSystem s = new CourseSystem();
     }
 
     public static void main(String[] args){

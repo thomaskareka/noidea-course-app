@@ -7,11 +7,11 @@ public class UserList {
     private ArrayList<Student> students;
     private ArrayList<Advisor> advisors;
 
-    private UserList(){
-        students = new ArrayList<Student>();
-        advisors = new ArrayList<Advisor>();
+    private UserList() {
+        students = DataLoader.getStudents();
+        advisors = DataLoader.getAdvisors();
     }
-    public UserList getInstance(){
+    public static UserList getInstance(){
         if (userlist == null) {
             userlist = new UserList();
         }

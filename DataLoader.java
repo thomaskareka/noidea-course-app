@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 
 public class DataLoader extends DataConstants {
-    public ArrayList<Student> getStudents() {
+    public static ArrayList<Student> getStudents() {
         ArrayList<Student> students = new ArrayList<Student>();
 
         try {
@@ -35,7 +35,7 @@ public class DataLoader extends DataConstants {
                 ArrayList<String> notes = new ArrayList<String>((JSONArray) studentJSON.get(STUDENT_NOTES));
                 boolean hasScholarship = (boolean)studentJSON.get(STUDENT_SCHOLARSHIP);
 
-                JSONObject degreeJSON = (JSONObject) studentJSON.get(STUDENT_COURSE_LIST);
+                JSONArray degreeJSON = (JSONArray) studentJSON.get(STUDENT_COURSE_LIST);
                 //TODO: add degree tracker inilization from student info
                 DegreeTracker degreeProgress = new DegreeTracker();
                 Student s = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisor, failureRisk, notes, hasScholarship, degreeProgress);
@@ -48,15 +48,46 @@ public class DataLoader extends DataConstants {
         return students;
     }
 
-    public ArrayList<Advisor> getAdvisors(){
-        return new ArrayList<Advisor>();
+    public static ArrayList<Advisor> getAdvisors() {
+        ArrayList<Advisor> advisors = new ArrayList<Advisor>();
+
+        try {
+            FileReader reader = new FileReader(ADVISOR_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray advisorList = (JSONArray) new JSONParser().parse(reader);
+
+            for(int i = 0; i < advisorList.size(); i++) {
+                JSONObject advisorJSON = (JSONObject)advisorList.get(i);
+                
+                UUID id = UUID.fromString((String)advisorJSON.get(USER_ID));
+                String firstName = (String)advisorJSON.get(USER_FIRST_NAME);
+                String lastName = (String)advisorJSON.get(USER_LAST_NAME);
+                String email = (String)advisorJSON.get(USER_EMAIL);
+
+                boolean isAdmin = (boolean)advisorJSON.get(ADVISOR_IS_ADMIN);
+
+                ArrayList<UUID> students = new ArrayList<UUID>();
+                JSONArray studentList = (JSONArray) advisorJSON.get(ADVISOR_STUDENT_LIST);
+
+                for(Object j : studentList) {
+                    UUID studentID = UUID.fromString(j.toString());
+                    students.add(studentID);
+                }
+                Advisor a = new Advisor(firstName, lastName, email, id, students, isAdmin);
+                advisors.add(a);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return advisors;
     }
 
-    public ArrayList<Degree> getDegrees(){
+    public static ArrayList<Degree> getDegrees(){
         return new ArrayList<Degree>();
     }
 
-    public ArrayList<Course> getCourses(){
+    public static ArrayList<Course> getCourses(){
         return new ArrayList<Course>();
     }
 
