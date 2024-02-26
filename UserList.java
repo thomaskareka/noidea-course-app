@@ -1,5 +1,6 @@
 //#21
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class UserList {
     private static UserList userlist;
@@ -24,10 +25,28 @@ public class UserList {
         return null;
     }
 
+    public Student getStudentFromID(UUID id) {
+        for (Student student : students) {
+            if(student.getID() == id) {
+                return student;
+            }
+        }
+        return null;
+    }
+
     public Advisor getAdvisorUser(String email){
         for (Advisor advisor : advisors) {
             if(advisor.getEmail().equals(email))
                 return advisor;
+        }
+        return null;
+    }
+
+    public Advisor getAdvisorFromID(UUID id) {
+        for (Advisor advisor : advisors) {
+            if(advisor.getID() == id) {
+                return advisor;
+            }
         }
         return null;
     }
