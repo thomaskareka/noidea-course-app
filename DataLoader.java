@@ -26,8 +26,7 @@ public class DataLoader {
                 double overallGPA = (double) studentJson.get("overallGPA");
                 String classLevel = (String) studentJson.get("classLevel");
                 
-                JSONObject advisorJson = (JSONObject) studentJson.get("advisor");
-                Advisor advisor = new Advisor(firstName, lastName, email, id, students. isAdmin);
+                UUID advisorID = UUID.fromString((String) studentJson.get("id"));
                 
                 boolean failureRisk = (boolean) studentJson.get("failureRisk");
                 ArrayList<String> notes = new ArrayList<>((JSONArray) studentJson.get("notes"));
@@ -36,7 +35,7 @@ public class DataLoader {
                 JSONObject degreeProgressJson = (JSONObject) studentJson.get("degreeProgress");
                 DegreeTracker degreeProgress = new DegreeTracker();
                 
-                Student student = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisor, failureRisk, notes, hasScholarship, degreeProgress);
+                Student student = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisorID, failureRisk, notes, hasScholarship, degreeProgress);
                 students.add(student);
             }
 

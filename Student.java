@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Student extends User{
+public class Student extends User {
     private String major;
     private String minor;
     private double majorGPA;
     private double overallGPA;
     private String classLevel;
-    private Advisor advisor;
+    private UUID advisor;
     private boolean failureRisk;
     private ArrayList<String> notes;
-    private boolean hasScholorship;
+    private boolean hasScholarship;
     private DegreeTracker degreeProgress;
 
     //new student constructor
@@ -20,7 +20,7 @@ public class Student extends User{
     }
 
     //loading from JSON files constructor
-    public Student(String firstName, String lastName, String email, UUID id, String major, String minor, double majorGPA, double overallGPA, String classLevel, Advisor advisor, boolean failureRisk, ArrayList<String> notes, boolean hasScholarship, DegreeTracker degreeProgess){
+    public Student(String firstName, String lastName, String email, UUID id, String major, String minor, double majorGPA, double overallGPA, String classLevel, UUID advisor, boolean failureRisk, ArrayList<String> notes, boolean hasScholarship, DegreeTracker degreeProgess){
         super(firstName, lastName, email, id);
         this.major = major; 
         this.minor = minor;
@@ -31,10 +31,7 @@ public class Student extends User{
         this.failureRisk = failureRisk;
         this.notes = notes;
         
-        if(hasScholarship)
-            this.hasScholorship = true;
-        else
-            this.hasScholorship = false;
+        this.hasScholarship = hasScholarship;
         
         this.degreeProgress = degreeProgress;
         
