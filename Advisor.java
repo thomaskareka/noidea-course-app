@@ -50,4 +50,12 @@ public class Advisor extends User {
     public void removeFailureRisk(Student student, boolean failureRisk) {
 
     }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public ArrayList<UUID> getStudents() {
+        return students;
+    }
 }

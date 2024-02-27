@@ -12,7 +12,7 @@ public abstract class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        id = new UUID(18, 18);
+        this.id = UUID.randomUUID();
     }
     
     // constructor for loading users from JSON files

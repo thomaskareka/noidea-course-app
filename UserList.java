@@ -72,5 +72,13 @@ public class UserList {
         Advisor advisor = new Advisor(firstName, lastName, email, isAdmin);
         advisors.add(advisor);
     }
+
+    public ArrayList<Student> getStudents() {
+        return students;
+    }
+
+    public ArrayList<Advisor> getAdvisors() {
+        return advisors;
+    }
     
 }

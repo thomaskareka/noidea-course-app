@@ -9,10 +9,16 @@ public class Degree {
 
     public Degree(String major, String minor, String title, ArrayList<DegreeRequirement> requirements,
             int requiredCredits) {
-
+        this.major = major;
+        this.minor = minor;
+        this.title = title;
+        this.requirements = requirements;
+        this.requiredCredits = requiredCredits;
     }
 
     public Degree(String major, String title, ArrayList<DegreeRequirement> requirements) {
-
+        this.major = major;
+        this.title = title;
+        this.requirements = requirements;
     }
 }

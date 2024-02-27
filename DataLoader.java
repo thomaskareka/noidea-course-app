@@ -84,7 +84,34 @@ public class DataLoader extends DataConstants {
     }
 
     public static ArrayList<Degree> getDegrees(){
-        return new ArrayList<Degree>();
+        ArrayList<Degree> degrees = new ArrayList<Degree>();
+
+        try {
+            FileReader reader = new FileReader(DEGREE_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray advisorList = (JSONArray) new JSONParser().parse(reader);
+
+            for(int i = 0; i < degreeList.size(); i++) {
+                JSONObject advisorJSON = (JSONObject)advisorList.get(i);
+            
+                String major = (String)degreeJSON.get(MAJOR);
+                String minor = (String)degreeJSON.get(MINOR);
+                String title = (String)degreeJSON.get(TITLE);
+                int requiredCredits = (int)degreeJSON.get(REQUIRED_CREDITS);
+
+                ArrayList<DegreeRequirement> requirements = new ArrayList<DegreeRequirement>();
+
+                for(Object j : degrees) {
+                    degrees.add(degrees);
+                }
+                Degree d = new Degree(major,minor,title,requirements, requiredCredits);
+                degrees.add(d);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return degrees;
     }
 
     public static ArrayList<Course> getCourses(){
