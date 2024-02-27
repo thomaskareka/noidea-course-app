@@ -10,9 +10,9 @@ public class DegreeList {
 
     }
     public DegreeList getInstance(){
-        
+        return degreeList;
     }
-    public Major getMajor(String major){
-        
+    public Degree getMajor(String major){
+        return null;
     }
 }
