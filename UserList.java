@@ -17,6 +17,20 @@ public class UserList {
         }
         return userlist;
     }
+    
+    public boolean login(String email, String password){
+        for (Advisor advisor : advisors) {
+            if(advisor.getEmail().equals(email) && advisor.getPassword().equals(password))
+                return true;
+        }
+        for (Student student : students) {
+            if(student.getEmail().equals(email) && student.getPassword().equals(password))
+                return true;
+        }
+        
+        return false;
+    }
+    
     public Student getStudentUser(String email) {
         for (Student student : students) {
             if(student.getEmail().equals(email))

@@ -12,17 +12,17 @@ public class UI {
     }
 
     public void scenario1(){
-        if(!system.login("abc", "abc")) {
-            System.out.println("Sorry we couldn't login.");
+        if(!system.login("abc@example.com", "f46fab9f9f91073a4262a6bce61dc3d05ad0a060")) {
+            System.out.println("Sorry, you were unable to login.");
             return;
         }
-        System.out.println("abc is nw logged in");
+        System.out.println("abc is now logged in");
         system.logout();
         return;
     }
 
     public void scenario2(){
-        if(!system.studentSignUp("abc", "abc", "abc", "abc", "abc")){
+        if(!system.studentSignUp("Random", "Person", "123@example.com", "Computer Science", "000000000023")){
             System.out.println("Sorry, you were unable to signup.");
             return;
         }
