@@ -7,12 +7,28 @@ public class DegreeList {
     private ArrayList<Degree> degrees;
 
     private DegreeList(){
-
+        degrees = new ArrayList<Degree>();
     }
     public DegreeList getInstance(){
-        return degreeList;
-    }
+        if (degreeList == null) {
+			degreeList = new DegreeList();
+		}
+		    return degreeList;
+    } //not finished
     public Degree getMajor(String major){
+        for (Degree degree : degrees) {
+            if(degree.getMajor().equals(major))
+                return degree;
+        }
+        return null;
+    }
+    public Degree getMinor(String minor){
+        return null;
+    }
+    public Degree getTitle(String title) {
+        return null;
+    }
+    public Degree getRequiredCredits(int requiredCredits) {
         return null;
     }
 }

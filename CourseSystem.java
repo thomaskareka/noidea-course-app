@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class CourseSystem{
     private UserList userList;
     private CourseList courseList;
-    public User user;
+    private User user;
 
     public CourseSystem() {
         userList = UserList.getInstance();
