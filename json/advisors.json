@@ -1,12 +1,47 @@
 [
     {
         "uuid": "2c622e0d-975f-436f-96e0-ffebf89269d0",
-        "type": "advisor",
         "firstName": "Place",
         "lastName": "Holder",
         "email": "placeholder@test.com",
         "password:": "f46fab9f9f91073a4262a6bce61dc3d05ad0a078",
         "admin": false,
         "students": ["3679308a-dda8-4a27-8260-8fd115426bd5", "e58ed763-928c-4155-bee9-fdbaaadc15f3"]
+    },{
+        "uuid": "1111",
+        "firstName": "1111",
+        "lastName": "1111",
+        "password": "1111",
+        "admin": true,
+        "students": []
+    },{
+        "uuid": "2222",
+        "firstName": "2222",
+        "lastName": "2222",
+        "password": "2222",
+        "admin": true,
+        "students": []
+    },{
+        "uuid": "3333",
+        "firstName": "3333",
+        "lastName": "3333",
+        "password": "3333",
+        "admin": false,
+        "students": []
+    },{
+        "uuid": "4444",
+        "firstName": "4444",
+        "lastName": "4444",
+        "password": "4444",
+        "admin": false,
+        "students": []
+    },{
+        "uuid": "5555",
+        "firstName": "5555",
+        "lastName": "5555",
+        "password": "5555",
+        "admin": true,
+        "students": []
     }
+
 ]
