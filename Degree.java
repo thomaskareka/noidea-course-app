@@ -21,4 +21,14 @@ public class Degree {
         this.title = title;
         this.requirements = requirements;
     }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public String getMinor() {
+        return minor;
+    }
+
+    
 }

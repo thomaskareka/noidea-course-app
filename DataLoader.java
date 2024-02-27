@@ -22,6 +22,7 @@ public class DataLoader extends DataConstants {
                 String firstName = (String)studentJSON.get(USER_FIRST_NAME);
                 String lastName = (String)studentJSON.get(USER_LAST_NAME);
                 String email = (String)studentJSON.get(USER_EMAIL);
+                String password = (String)studentJSON.get(USER_PASSWORD);
 
                 String major = (String)studentJSON.get(STUDENT_MAJOR);
                 String minor = (String)studentJSON.get(STUDENT_MINOR);
@@ -38,7 +39,7 @@ public class DataLoader extends DataConstants {
                 JSONArray degreeJSON = (JSONArray) studentJSON.get(STUDENT_COURSE_LIST);
                 //TODO: add degree tracker inilization from student info
                 DegreeTracker degreeProgress = new DegreeTracker();
-                Student s = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisor, failureRisk, notes, hasScholarship, degreeProgress);
+                Student s = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisor, failureRisk, notes, hasScholarship, degreeProgress, password);
                 students.add(s);
             }
         } catch (Exception e) {
@@ -63,6 +64,8 @@ public class DataLoader extends DataConstants {
                 String firstName = (String)advisorJSON.get(USER_FIRST_NAME);
                 String lastName = (String)advisorJSON.get(USER_LAST_NAME);
                 String email = (String)advisorJSON.get(USER_EMAIL);
+                String password = (String)advisorJSON.get(USER_PASSWORD);
+
 
                 boolean isAdmin = (boolean)advisorJSON.get(ADVISOR_IS_ADMIN);
 
@@ -73,7 +76,7 @@ public class DataLoader extends DataConstants {
                     UUID studentID = UUID.fromString(j.toString());
                     students.add(studentID);
                 }
-                Advisor a = new Advisor(firstName, lastName, email, id, students, isAdmin);
+                Advisor a = new Advisor(firstName, lastName, email, id, students, isAdmin, password);
                 advisors.add(a);
             }
         } catch (Exception e) {
