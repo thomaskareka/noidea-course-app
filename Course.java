@@ -10,11 +10,19 @@ public class Course {
     private ArrayList<Requisite> requisites;
     
     public Course(String name, String identifier, int credits, String description, ArrayList<String> attributes, Requisite requisites) {
-
+        this.name = name;
+        this.identifier = identifier;
+        this.credits = credits;
+        this.description = description;
+        this.attributes = attributes;
+        this.requisites = new ArrayList<>();
+        this.requisites.add(requisites);
     }
 
     public Course(String name, String identifier, int credits) {
-        
+        this.name = name;
+        this.identifier = identifier;
+        this.credits = credits;
     }
 
 }
