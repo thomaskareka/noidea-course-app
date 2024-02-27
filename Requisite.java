@@ -10,7 +10,7 @@ public class Requisite {
     public Requisite(RequisiteType type, ArrayList<String> courses, ArrayList<Grade> courseGrades){
         
     }
-    public Requisite getRequisitie(){
+    public Requisite getRequisite(){
         return null;
     }
 

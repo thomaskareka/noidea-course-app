@@ -1,6 +1,14 @@
 public class UI {
-    public void run(){
-    
+
+    public UI(){
     }
-    
+
+    public void run(){
+        CourseSystem s = new CourseSystem();
+    }
+
+    public static void main(String[] args){
+        UI ui = new UI();
+        ui.run();
+    }
 }
