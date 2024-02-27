@@ -94,16 +94,13 @@ public class DataLoader extends DataConstants {
             for(int i = 0; i < degreeList.size(); i++) {
                 JSONObject degreeJSON = (JSONObject)degreeList.get(i);
             
-                String major = (String)degreeJSON.get(MAJOR);
-                String minor = (String)degreeJSON.get(MINOR);
-                String title = (String)degreeJSON.get(TITLE);
-                int requiredCredits = (int)degreeJSON.get(REQUIRED_CREDITS);
+                String major = (String)degreeJSON.get(major);
+                String minor = (String)degreeJSON.get(minor);
+                String title = (String)degreeJSON.get(title);
+                int requiredCredits = (int)degreeJSON.get(credits);
 
                 ArrayList<DegreeRequirement> requirements = new ArrayList<DegreeRequirement>();
 
-                for(Object j : degrees) {
-                    degrees.add(degrees);
-                }
                 Degree d = new Degree(major,minor,title,requirements, requiredCredits);
                 degrees.add(d);
             }
@@ -135,17 +132,14 @@ public class DataLoader extends DataConstants {
                 ArrayList<String> attributes = new ArrayList<String>((JSONArray) courseJSON.get(COURSE_ATTRIBUTES));
             
 
-                for(Object j : courseList) {
-                    courses.add();
-                }
-                Advisor a = new Course(name, identifier, credits, description, attributes, requisites);
-                courses.add(courses);
+                Course c = new Course(name, identifier, credits, description, attributes, requisites);
+                courses.add(c);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return advisors;
+        return courses;
     }
 
 
