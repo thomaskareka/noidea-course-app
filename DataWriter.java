@@ -1,4 +1,6 @@
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -6,13 +8,39 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 
-public class DataWriter {
+public class DataWriter extends DataConstants {
     public static void saveStudents() {
+        UserList users = UserList.getInstance();
+        ArrayList<Student> studentList = users.getStudents();
+        JSONArray jsonUsers = new JSONArray();
 
+        for(int i = 0; i < studentList.size(); i++) {
+            jsonUsers.add(getStudentJSON(studentList.get(i)));
+        }
+
+        try(FileWriter file = new FileWriter(STUDENT_FILE_NAME)) {
+            file.write(jsonUsers.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     public static void saveAdvisors() {
-        
+        UserList users = UserList.getInstance();
+        ArrayList<Advisor> advisorList = users.getAdvisors();
+        JSONArray jsonUsers = new JSONArray();
+
+        for(int i = 0; i < advisorList.size(); i++) {
+            jsonUsers.add(getAdvisorJSON(advisorList.get(i)));
+        }
+
+        try(FileWriter file = new FileWriter(ADVISOR_FILE_NAME)) {
+            file.write(jsonUsers.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void saveCourses() {
@@ -21,5 +49,53 @@ public class DataWriter {
 
     public static void saveMajors() {
         
+    }
+
+    public static JSONObject getStudentJSON(Student student) {
+        JSONObject studentDetails = getUserJSON(student);
+        studentDetails.put(STUDENT_MAJOR, student.getMajor());
+        studentDetails.put(STUDENT_MINOR, student.getMinor());
+        studentDetails.put(STUDENT_MAJOR_GPA, student.getMajorGPA());
+        studentDetails.put(STUDENT_GPA, student.getClassLevel());
+        studentDetails.put(STUDENT_CLASS, student.getClassLevel());
+
+        studentDetails.put(STUDENT_ADVISOR_ID, student.getAdvisorReference());
+        studentDetails.put(STUDENT_AT_RISK, student.checkIfAtRisk());
+        
+        JSONArray noteArray = new JSONArray();
+        ArrayList<String> notes = student.getNotes();
+        for(String i : notes) {
+            noteArray.add(i);
+        }
+        studentDetails.put(STUDENT_NOTES, noteArray);
+        studentDetails.put(STUDENT_SCHOLARSHIP, student.hasScholarship());
+        //TODO: degree tracker into JSONArray
+        studentDetails.put(STUDENT_COURSE_LIST, new JSONArray());
+
+        return studentDetails;
+    }
+
+    public static JSONObject getAdvisorJSON(Advisor advisor) {
+        JSONObject advisorDetails = getUserJSON(advisor);
+        advisorDetails.put(ADVISOR_IS_ADMIN, advisor.isAdmin());
+
+        JSONArray studentArray = new JSONArray();
+        ArrayList<UUID> students = advisor.getStudents();
+        for(UUID i: students) {
+            studentArray.add(i.toString());
+        }
+        advisorDetails.put(ADVISOR_STUDENT_LIST, studentArray);
+
+        return advisorDetails;
+    }
+
+    private static JSONObject getUserJSON(User user) {
+        JSONObject userDetails = new JSONObject();
+        userDetails.put(USER_ID, user.getID().toString());
+        userDetails.put(USER_FIRST_NAME, user.getFirstName());
+        userDetails.put(USER_LAST_NAME, user.getLastName());
+        userDetails.put(USER_EMAIL, user.getEmail());
+
+        return userDetails;
     }
 }
