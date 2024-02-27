@@ -8,8 +8,9 @@ public class Course {
     private Grade minGrade;
     private ArrayList<String> attributes;
     private ArrayList<Requisite> requisites;
-    
-    public Course(String name, String identifier, int credits, String description, ArrayList<String> attributes, Requisite requisites) {
+
+    public Course(String name, String identifier, int credits, String description, ArrayList<String> attributes,
+            Requisite requisites) {
         this.name = name;
         this.identifier = identifier;
         this.credits = credits;
@@ -25,5 +26,4 @@ public class Course {
         this.credits = credits;
     }
 
-    
 }
