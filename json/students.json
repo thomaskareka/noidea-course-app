@@ -1,6 +1,9 @@
 [
     {
         "uuid": "3679308a-dda8-4a27-8260-8fd115426bd5",
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "janedoe@example.com",
         "major": "Computer Science",
         "minor": "none",
         "majorGPA": 3.67,

@@ -8,37 +8,42 @@
         "admin": false,
         "students": ["3679308a-dda8-4a27-8260-8fd115426bd5", "e58ed763-928c-4155-bee9-fdbaaadc15f3"]
     },{
-        "uuid": "1111",
+        "uuid": "2c622e0d-975f-436f-96e0-ffebf89269d1",
         "firstName": "1111",
         "lastName": "1111",
+        "email": "1",
         "password": "1111",
         "admin": true,
         "students": []
     },{
-        "uuid": "2222",
+        "uuid": "2c622e0d-975f-436f-96e0-ffebf89269d2",
         "firstName": "2222",
         "lastName": "2222",
+        "email": "2",
         "password": "2222",
         "admin": true,
         "students": []
     },{
-        "uuid": "3333",
+        "uuid": "2c622e0d-975f-436f-96e0-ffebf89269d3",
         "firstName": "3333",
         "lastName": "3333",
+        "email": "3",
         "password": "3333",
         "admin": false,
         "students": []
     },{
-        "uuid": "4444",
+        "uuid": "2c622e0d-975f-436f-96e0-ffebf89269d4",
         "firstName": "4444",
         "lastName": "4444",
+        "email":"4",
         "password": "4444",
         "admin": false,
         "students": []
     },{
-        "uuid": "5555",
+        "uuid": "2c622e0d-975f-436f-96e0-ffebf89269d5",
         "firstName": "5555",
         "lastName": "5555",
+        "email": "5",
         "password": "5555",
         "admin": true,
         "students": []

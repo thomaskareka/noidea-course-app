@@ -20,7 +20,7 @@ public class CourseSystem{
             return false;
         }
         else{
-            userList.addStudentUser(lastName, lastName, email, major);
+            userList.addStudentUser(lastName, lastName, email, major, password);
             return true;
         }
     }
@@ -29,7 +29,7 @@ public class CourseSystem{
             return false;
         }
         else{
-            userList.addAdvisorUser(firstName, lastName, email, isAdmin);
+            userList.addAdvisorUser(firstName, lastName, email, isAdmin, password);
             return true;
         }
     }
@@ -62,10 +62,10 @@ public class CourseSystem{
         return true;
     } 
     public Student searchByStudentId(Advisor advisor, String id){
-        return new Student(null, null, null, null);
+        return new Student(null, null, null, null, null);
     }
     public Student searchByStudentEmail(Advisor advisor, String email){
-        return new Student(null, null, null, null);
+        return new Student(null, null, null, null, null);
     }
     public void addNotes(Advisor advisor, Student student, String notes){
         
@@ -89,7 +89,7 @@ public class CourseSystem{
         return new ArrayList<Student>();
     }
     public Student getAdvisee(Advisor advisor, ArrayList<Student> students, String name){
-        return new Student(null, null, null, null);
+        return new Student(null, null, null, null, null);
     }
     public String getEightSemesterPlan(Student student){
         return "";
