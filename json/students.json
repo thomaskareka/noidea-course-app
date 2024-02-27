@@ -59,5 +59,25 @@
             {"id": "CSCE212","grade": "C"},
             {"id": "STAT509","grade": "in_progress"}
         ]
+    },{
+        "uuid": "3679308a-dda8-4a27-8260-8fd115426bd3",
+        "firstName": "xyz",
+        "lastName": "xyz",
+        "email": "xyz@example.com",
+        "major": "Computer Information Systems",
+        "minor": "none",
+        "majorGPA": 3.75,
+        "overallGPA": 3.82,
+        "studentID": "B001123",
+        "classLevel": "Senior",
+        "advisor": "2c622e0d-975f-436f-96e0-ffebf89269d4",
+        "failureRisk": false,
+        "notes": ["Advised for FA24", "test"],
+        "hasScholarship": true,
+        "courses": [
+            {"id": "MATH142","grade": "A"},
+            {"id": "CSCE215","grade": "B"},
+            {"id": "CSCE390","grade": "in_progress"}
+        ]
     }
 ]
