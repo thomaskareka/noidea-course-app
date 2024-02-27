@@ -9,17 +9,8 @@ public class CourseSystem{
         userList = UserList.getInstance();
     }
 
-    public User login (String email, String password){
-        if(userList.containsUser(email)){
-            if(userList.getStudentUser(email) == null){
-                user = userList.getAdvisorUser(email);
-            }
-            else{
-                user = userList.getStudentUser(email);
-            }
-            return user;
-        }
-        return null;
+    public boolean login (String email, String password){
+       return true;
     }
     public boolean logout(){
         return true;
