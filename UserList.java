@@ -63,13 +63,13 @@ public class UserList {
         return false;
     }
 
-    public void addStudentUser(String fisrtName, String lastName, String email, String major){       
-        Student student = new Student(fisrtName, lastName, email, major);
+    public void addStudentUser(String fisrtName, String lastName, String email, String major, String password){       
+        Student student = new Student(fisrtName, lastName, email, major, password);
         students.add(student);
     }
 
-    public void addAdvisorUser(String firstName, String lastName, String email, boolean isAdmin){
-        Advisor advisor = new Advisor(firstName, lastName, email, isAdmin);
+    public void addAdvisorUser(String firstName, String lastName, String email, boolean isAdmin, String password){
+        Advisor advisor = new Advisor(firstName, lastName, email, isAdmin, password);
         advisors.add(advisor);
     }
 
