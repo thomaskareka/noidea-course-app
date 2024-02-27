@@ -42,7 +42,7 @@ public class Student extends User {
     }
 
     public boolean checkIfAtRisk(){
-        return true;
+        return failureRisk;
     }
 
     public String getAllCompletedCourses(){
@@ -53,4 +53,35 @@ public class Student extends User {
         return "";
     }
 
+    public String getMajor() {
+        return major;
+    }
+
+    public String getMinor() {
+        return minor;
+    }
+
+    public double getMajorGPA() {
+        return majorGPA;
+    }
+
+    public double getOverallGPA() {
+        return overallGPA;
+    }
+
+    public String getClassLevel() {
+        return classLevel;
+    }
+
+    public UUID getAdvisorReference() {
+        return advisor;
+    }
+
+    public ArrayList<String> getNotes() {
+        return notes;
+    }
+
+    public boolean hasScholarship() {
+        return hasScholarship;
+    }
 }
