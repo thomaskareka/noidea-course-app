@@ -5,8 +5,8 @@ public class CourseSystem{
     private CourseList courseList;
     public User user;
 
-    public CourseSystem(){
-        
+    public CourseSystem() {
+        userList = UserList.getInstance();
     }
 
     public User login (String email, String password){
