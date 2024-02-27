@@ -8,9 +8,8 @@ public class DegreeList {
 
     private DegreeList(){
         degrees = new ArrayList<Degree>();
-
     }
-    public static DegreeList getInstance(){
+    public DegreeList getInstance(){
         if (degreeList == null) {
 			degreeList = new DegreeList();
 		}
@@ -18,7 +17,7 @@ public class DegreeList {
     } //not finished
     public Degree getMajor(String major){
         for (Degree degree : degrees) {
-            if(degree.major==major)
+            if(degree.getMajor().equals(major))
                 return degree;
         }
         return null;

@@ -10,9 +10,10 @@ public class Requisite {
     public Requisite(RequisiteType type, ArrayList<String> courses, ArrayList<Grade> courseGrades){
         courses = new ArrayList<String>();
         courseGrades = new ArrayList<Grade>();
+        this.type=type;
     } //not finished
     public Requisite getRequisite(){
-      
+       
     }
 
 }
