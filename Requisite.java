@@ -8,10 +8,12 @@ public class Requisite {
     private ArrayList<Grade> courseGrades;
 
     public Requisite(RequisiteType type, ArrayList<String> courses, ArrayList<Grade> courseGrades){
-        
-    }
+        courses = new ArrayList<String>();
+        this.courses=courses;
+        courseGrades = new ArrayList<Grade>();
+    } //not finished
     public Requisite getRequisite(){
-        return null;
+
     }
 
 }
