@@ -20,7 +20,7 @@ public class Student extends User {
     }
 
     //loading from JSON files constructor
-    public Student(String firstName, String lastName, String email, UUID id, String major, String minor, double majorGPA, double overallGPA, String classLevel, UUID advisor, boolean failureRisk, ArrayList<String> notes, boolean hasScholarship, DegreeTracker degreeProgess String password){
+    public Student(String firstName, String lastName, String email, UUID id, String major, String minor, double majorGPA, double overallGPA, String classLevel, UUID advisor, boolean failureRisk, ArrayList<String> notes, boolean hasScholarship, DegreeTracker degreeProgess, String password){
         super(firstName, lastName, email, id, password);
         this.major = major; 
         this.minor = minor;

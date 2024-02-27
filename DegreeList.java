@@ -22,4 +22,13 @@ public class DegreeList {
         }
         return null;
     }
+    public Degree getMinor(String minor){
+        return null;
+    }
+    public Degree getTitle(String title) {
+        return null;
+    }
+    public Degree getRequiredCredits(int requiredCredits) {
+        return null;
+    }
 }
