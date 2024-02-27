@@ -89,21 +89,18 @@ public class DataLoader extends DataConstants {
         try {
             FileReader reader = new FileReader(DEGREE_FILE_NAME);
             JSONParser parser = new JSONParser();
-            JSONArray advisorList = (JSONArray) new JSONParser().parse(reader);
+            JSONArray degreeList = (JSONArray) new JSONParser().parse(reader);
 
             for(int i = 0; i < degreeList.size(); i++) {
-                JSONObject advisorJSON = (JSONObject)advisorList.get(i);
+                JSONObject degreeJSON = (JSONObject)degreeList.get(i);
             
-                String major = (String)degreeJSON.get(MAJOR);
-                String minor = (String)degreeJSON.get(MINOR);
-                String title = (String)degreeJSON.get(TITLE);
-                int requiredCredits = (int)degreeJSON.get(REQUIRED_CREDITS);
+                String major = (String)degreeJSON.get(major);
+                String minor = (String)degreeJSON.get(minor);
+                String title = (String)degreeJSON.get(title);
+                int requiredCredits = (int)degreeJSON.get(credits);
 
                 ArrayList<DegreeRequirement> requirements = new ArrayList<DegreeRequirement>();
 
-                for(Object j : degrees) {
-                    degrees.add(degrees);
-                }
                 Degree d = new Degree(major,minor,title,requirements, requiredCredits);
                 degrees.add(d);
             }
@@ -115,7 +112,34 @@ public class DataLoader extends DataConstants {
     }
 
     public static ArrayList<Course> getCourses(){
-        return new ArrayList<Course>();
+        ArrayList<Course> courses = new ArrayList<Course>();
+
+        try {
+            FileReader reader = new FileReader(COURSE_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray courseList = (JSONArray) new JSONParser().parse(reader);
+
+            for(int i = 0; i < courseList.size(); i++) {
+                JSONObject courseJSON = (JSONObject)courseList.get(i);
+                
+                String name = (String)courseJSON.get(COURSE_NAME);
+                String identifier = (String)courseJSON.get(COURSE_ID);
+                int credits = (int)courseJSON.get(COURSE_CREDITS);
+                String description = (String)courseJSON.get(COURSE_DESCRIPTION);
+                ArrayList<Requisite> requisites = new ArrayList<Requisite>();
+
+                @SuppressWarnings("unchecked")
+                ArrayList<String> attributes = new ArrayList<String>((JSONArray) courseJSON.get(COURSE_ATTRIBUTES));
+            
+
+                Course c = new Course(name, identifier, credits, description, attributes, requisites);
+                courses.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return courses;
     }
 
 
