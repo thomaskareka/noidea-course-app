@@ -10,26 +10,24 @@ public class CourseSystem{
     }
 
     public boolean login (String email, String password){
-       return userList.login(email, password);
+       /* This method will call userList's login method and update the current user to be the person who logged in.
+        If user is not null then the person successfully logged in */
+        user = userList.login(email, password);
+       if(user != null)
+            return true;
+       return false;
     }
 
     public boolean logout(){
+        //need to save user in JSON files
+        user = null;
         return true;
     }
 
-    public boolean studentSignUp(String firstName, String lastName, String email, String major, String password){
-        if(!userList.containsUser(email)){
-            userList.addStudentUser(lastName, lastName, email, major, password);
-            return true;
-        }
-       return false;
-    }
-    public boolean advisorSignUp(String firstName, String lastName, String email, boolean isAdmin, String password){
-        if(!userList.containsUser(email)){
-            userList.addAdvisorUser(firstName, lastName, email, isAdmin, password);
-            return true;
-        }
-        return false;
+    public boolean signUp(boolean type, String firstName, String lastName, String email, String password){
+        /* the boolean 'type' will be true if the user signing up is a student, and false if an advisor.
+         All information that is not held in the User class will have to be inputted later in, maybe, an update profile method.*/
+        return userList.signUp(type, firstName, lastName, email, password);
     }
 
     public String courseDescriptionSearch(String name){

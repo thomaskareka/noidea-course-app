@@ -17,12 +17,15 @@ public class UI {
             return;
         }
         System.out.println("abc is now logged in");
-        system.logout();
+        if(system.logout()){
+            System.out.println("You have successfully logged out.");
+        }
         return;
     }
 
     public void scenario2(){
-        if(!system.studentSignUp("Random", "Person", "123@example.com", "Computer Science", "000000000023")){
+        // the boolean in signUp method will be true if the user signing up is a student, and false if an advisor.
+        if(!system.signUp(true, "random", "random", "random@example.com", "00000003")){
             System.out.println("Sorry, you were unable to signup.");
             return;
         }

@@ -18,19 +18,36 @@ public class UserList {
         return userlist;
     }
     
-    public boolean login(String email, String password){
+    public User login(String email, String password){
         for (Advisor advisor : advisors) {
             if(advisor.getEmail().equals(email) && advisor.getPassword().equals(password))
-                return true;
+                return advisor;
         }
         for (Student student : students) {
             if(student.getEmail().equals(email) && student.getPassword().equals(password))
-                return true;
+                return student;
         }
         
-        return false;
+        return null;
     }
     
+    public boolean signUp(boolean type, String firstName, String lastName, String email, String password){
+        if(!containsUser(email)){
+            // the boolean 'type' will be true if the user signing up is a student, and false if an advisor.
+            // all information that is not held in the User class will have to be inputted later in, maybe, an update profile method.
+            if(type){
+                addStudentUser(lastName, lastName, email, null, password);
+                return true;
+            }
+            else{
+                addAdvisorUser(firstName, lastName, email, false, password);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     public Student getStudentUser(String email) {
         for (Student student : students) {
             if(student.getEmail().equals(email))
@@ -65,7 +82,7 @@ public class UserList {
         return null;
     }
 
-    public boolean containsUser(String email){
+    private boolean containsUser(String email){
         for (Student student : students) {
             if(student.getEmail().equals(email))
                 return true;
