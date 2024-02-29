@@ -4,8 +4,8 @@ public class CourseList {
     private static CourseList courseList;
     private ArrayList<Course> courses;
 
-    private CourseList() {
-
+    private static CourseList() {
+        
     }
 
     public CourseList getInstance() {
