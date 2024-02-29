@@ -12,17 +12,20 @@ public class UI {
     }
 
     public void scenario1(){
-        if(!system.login("abc", "abc")) {
-            System.out.println("Sorry we couldn't login.");
+        if(!system.login("abc@example.com", "f46fab9f9f91073a4262a6bce61dc3d05ad0a060")) {
+            System.out.println("Sorry, you were unable to login.");
             return;
         }
-        System.out.println("abc is nw logged in");
-        system.logout();
+        System.out.println("abc is now logged in");
+        if(system.logout()){
+            System.out.println("You have successfully logged out.");
+        }
         return;
     }
 
     public void scenario2(){
-        if(!system.studentSignUp("abc", "abc", "abc", "abc", "abc")){
+        // the boolean in signUp method will be true if the user signing up is a student, and false if an advisor.
+        if(!system.signUp(true, "random", "random", "random@example.com", "00000003")){
             System.out.println("Sorry, you were unable to signup.");
             return;
         }
