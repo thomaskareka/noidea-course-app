@@ -96,15 +96,14 @@ public class DataLoader extends DataConstants {
 
             for(int i = 0; i < degreeList.size(); i++) {
                 JSONObject degreeJSON = (JSONObject)degreeList.get(i);
-            
-                String major = (String)degreeJSON.get(major);
-                String minor = (String)degreeJSON.get(minor);
-                String title = (String)degreeJSON.get(title);
-                int requiredCredits = (int)degreeJSON.get(credits);
-
-                ArrayList<DegreeRequirement> requirements = new ArrayList<DegreeRequirement>();
-
-                Degree d = new Degree(major,minor,title,requirements, requiredCredits);
+                
+                String type = (String)degreeJSON.get(DEGREE_TYPE);
+                String name = (String)degreeJSON.get(DEGREE_NAME);
+                int credits = (int)degreeJSON.get(DEGREE_CREDITS);
+                ArrayList<DegreeRequirement> requirements = getDegreeRequirement((JSONArray)degreeJSON.get(DEGREE_REQUIREMENTS));
+        
+                
+                Degree d = new Degree(type, name, requirements, credits);
                 degrees.add(d);
             }
         } catch (Exception e) {
@@ -112,6 +111,26 @@ public class DataLoader extends DataConstants {
         }
 
         return degrees;
+    }
+
+    private static ArrayList<DegreeRequirement> getDegreeRequirement(JSONArray a) {
+        ArrayList<DegreeRequirement> out = new ArrayList<DegreeRequirement>();
+        for(int i  = 0; i < a.size(); i++) {
+            JSONObject reqJSON = (JSONObject)a.get(i);
+            
+            String category = (String)reqJSON.get(DEGREE_REQ_CATEGORY);
+            int credits = (int)reqJSON.get(DEGREE_REQ_CREDITS);
+
+            JSONArray courseList = (JSONArray) reqJSON.get(DEGREE_REQ_COURSES);
+            ArrayList<String> courses = new ArrayList<String>();
+            for(Object j : courseList) {
+                String course = j.toString();
+                courses.add(course);
+            }
+
+            DegreeRequirement req = new DegreeRequirement(category, courses, credits);
+        }
+        return out;
     }
 
     public static ArrayList<Course> getCourses(){

@@ -1,33 +1,20 @@
 import java.util.ArrayList;
 
 public class Degree {
-    private String major;
-    private String minor;
+    private String type;
     private String title;
     private ArrayList<DegreeRequirement> requirements;
     private int requiredCredits;
 
-    public Degree(String major, String minor, String title, ArrayList<DegreeRequirement> requirements,
-            int requiredCredits) {
-        this.major = major;
-        this.minor = minor;
+    public Degree(String type, String title, ArrayList<DegreeRequirement> requirements, int requiredCredits) {
+        this.type = type;
         this.title = title;
         this.requirements = requirements;
         this.requiredCredits = requiredCredits;
     }
 
-    public Degree(String major, String title, ArrayList<DegreeRequirement> requirements) {
-        this.major = major;
-        this.title = title;
-        this.requirements = requirements;
-    }
-
-    public String getMajor() {
-        return major;
-    }
-
-    public String getMinor() {
-        return minor;
+    public String getType() {
+        return type;
     }
 
     public String getTitle() {
@@ -38,10 +25,7 @@ public class Degree {
         return requirements;
     }
 
-    public int getRequiredCredits(){
+    public int getCredits() {
         return requiredCredits;
     }
-
-
-    
 }
