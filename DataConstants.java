@@ -1,3 +1,5 @@
+import javax.print.DocFlavor.STRING;
+
 public abstract class DataConstants {
     //protected static final String = "";
 
@@ -31,9 +33,14 @@ public abstract class DataConstants {
     protected static final String STUDENT_SCHOLARSHIP = "hasScholarship";
     protected static final String STUDENT_COURSE_LIST = "courses";
 
-
     protected static final String ADVISOR_IS_ADMIN = "admin";
     protected static final String ADVISOR_STUDENT_LIST = "students";
 
-    
+    protected static final String DEGREE_TYPE = "type";
+    protected static final String DEGREE_NAME = "name";
+    protected static final String DEGREE_CREDITS = "requiredCredits";
+    protected static final String DEGREE_REQUIREMENTS = "requirements";
+    protected static final String DEGREE_REQ_CATEGORY = "category";
+    protected static final String DEGREE_REQ_CREDITS = "credits";
+    protected static final String DEGREE_REQ_COURSES = "courses";
 }
