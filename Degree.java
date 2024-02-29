@@ -30,5 +30,18 @@ public class Degree {
         return minor;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public ArrayList<DegreeRequirement> getRequirements() {
+        return requirements;
+    }
+
+    public int getRequiredCredits(){
+        return requiredCredits;
+    }
+
+
     
 }
