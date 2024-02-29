@@ -37,7 +37,7 @@ public class Student extends User {
         
     }
 
-    public String generateEightSemesterPlan(){
+    public String getEightSemesterPlan(){
         return "";
     }
 
