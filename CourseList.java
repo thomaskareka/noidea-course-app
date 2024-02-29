@@ -31,8 +31,8 @@ public class CourseList {
         return null;
     }
 
-    public ArrayList<Course> getReqCourses(String category) {
-        ArrayList<Course> required = new ArrayList<>();
+    public ArrayList<String> getReqCourses(String category) {
+        ArrayList<String> required = new ArrayList<>();
         DegreeRequirement degreeRequirement = new DegreeRequirement(category);
         required = degreeRequirement.getRequirements();
         return required;

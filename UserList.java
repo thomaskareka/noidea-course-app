@@ -48,7 +48,7 @@ public class UserList {
     }
 
 
-    public Student getStudentUser(String email) {
+    public Student getStudentByEmail(String email) {
         for (Student student : students) {
             if(student.getEmail().equals(email))
                 return student;
@@ -65,7 +65,7 @@ public class UserList {
         return null;
     }
 
-    public Advisor getAdvisorUser(String email){
+    public Advisor getAdvisorByEmail(String email){
         for (Advisor advisor : advisors) {
             if(advisor.getEmail().equals(email))
                 return advisor;
@@ -93,6 +93,10 @@ public class UserList {
         }
         return false;
     }
+
+    /*public String showAlluserCourses(Student student){ 
+        return "";
+    }*/
 
     public void addStudentUser(String fisrtName, String lastName, String email, String major, String password){       
         Student student = new Student(fisrtName, lastName, email, major, password);
