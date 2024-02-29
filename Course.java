@@ -17,7 +17,7 @@ public class Course {
         this.description = description;
         this.attributes = attributes;
         this.requisites = new ArrayList<>();
-        this.requisites.add(requisites2);
+        this.requisites.addAll(requisites2);
     }
 
     public Course(String name, String identifier, int credits) {
@@ -25,5 +25,6 @@ public class Course {
         this.identifier = identifier;
         this.credits = credits;
     }
+    
 
 }

@@ -11,9 +11,23 @@ public class Requisite {
         courses = new ArrayList<String>();
         courseGrades = new ArrayList<Grade>();
         this.type=type;
-    } //not finished
-    public Requisite getRequisite(){
-       
+    } 
+    /* copy construtor
+    public Requisite (Requisite r){
+        this.type = r.getType();    
+   }
+   */
+
+    // getters
+    public RequisiteType getType(){
+        return type;
     }
+    public ArrayList<String> getCourses(){
+        return courses;
+    }
+    public ArrayList<Grade> getcourseGrades(){
+        return courseGrades;
+    }
+
 
 }

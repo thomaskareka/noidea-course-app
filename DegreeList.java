@@ -14,7 +14,7 @@ public class DegreeList {
 			degreeList = new DegreeList();
 		}
 		    return degreeList;
-    } //not finished
+    } 
     public Degree getMajor(String major){
         for (Degree degree : degrees) {
             if(degree.getType().equals(major))
