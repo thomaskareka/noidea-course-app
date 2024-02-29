@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class DegreeRequirement {
     private String category;
-    private ArrayList<String> courses;
+    private ArrayList<Course> courses;
     private int requirementCredits;
 
-    public DegreeRequirement(String category, ArrayList<String> courses, int requirementCredits) {
+    public DegreeRequirement(String category, ArrayList<Course> courses, int requirementCredits) {
         this.category = category;
         this.courses = courses;
         this.requirementCredits = requirementCredits;
@@ -15,7 +15,7 @@ public class DegreeRequirement {
         this.category = category;
     }
 
-    public ArrayList<String> getRequirements() {
+    public ArrayList<Course> getRequirements() {
         return courses;
     }
 

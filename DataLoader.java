@@ -99,7 +99,7 @@ public class DataLoader extends DataConstants {
                 
                 String type = (String)degreeJSON.get(DEGREE_TYPE);
                 String name = (String)degreeJSON.get(DEGREE_NAME);
-                int credits = (int)degreeJSON.get(DEGREE_CREDITS);
+                int credits = Math.toIntExact((long)degreeJSON.get(DEGREE_CREDITS));
                 ArrayList<DegreeRequirement> requirements = getDegreeRequirement((JSONArray)degreeJSON.get(DEGREE_REQUIREMENTS));
         
                 
@@ -119,7 +119,7 @@ public class DataLoader extends DataConstants {
             JSONObject reqJSON = (JSONObject)a.get(i);
             
             String category = (String)reqJSON.get(DEGREE_REQ_CATEGORY);
-            int credits = (int)reqJSON.get(DEGREE_REQ_CREDITS);
+            int credits = Math.toIntExact((long)reqJSON.get(DEGREE_REQ_CREDITS));
 
             JSONArray courseList = (JSONArray) reqJSON.get(DEGREE_REQ_COURSES);
             ArrayList<String> courses = new ArrayList<String>();
@@ -146,7 +146,7 @@ public class DataLoader extends DataConstants {
                 
                 String name = (String)courseJSON.get(COURSE_NAME);
                 String identifier = (String)courseJSON.get(COURSE_ID);
-                int credits = (int)courseJSON.get(COURSE_CREDITS);
+                int credits = Math.toIntExact((long) courseJSON.get(COURSE_CREDITS));
                 String description = (String)courseJSON.get(COURSE_DESCRIPTION);
                 ArrayList<Requisite> requisites = new ArrayList<Requisite>();
 
