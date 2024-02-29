@@ -5,10 +5,10 @@ public class CourseList {
     private ArrayList<Course> courses;
 
     private CourseList() {
-        this.courses = new ArrayList<>();
+        this.courses = DataLoader.getCourses();
     }
 
-    public CourseList getInstance() {
+    public static CourseList getInstance() {
         if (courseList == null ) {
             courseList = new CourseList();
         }

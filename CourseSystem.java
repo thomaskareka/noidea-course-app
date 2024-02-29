@@ -7,6 +7,7 @@ public class CourseSystem{
 
     public CourseSystem() {
         userList = UserList.getInstance();
+        courseList = CourseList.getInstance();
     }
 
     public boolean login (String email, String password){
