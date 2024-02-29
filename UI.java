@@ -7,7 +7,6 @@ public class UI {
     }
 
     public void run(){
-        scenario1();
         scenario3();
         scenario4();
         scenario5();
@@ -20,11 +19,9 @@ public class UI {
             return;
         }
         System.out.println("abc is now logged in");
-        if(system.logout()){
-            System.out.println("You have successfully logged out.");
-        }
         return;
     }
+    
     // sign up
     public void scenario2(){
         // the boolean in signUp method will be true if the user signing up is a student, and false if an advisor.
@@ -38,7 +35,7 @@ public class UI {
 
     //show all classes
     public void scenario3(){
-        String allClasses= system.showAllCourses();
+        String allClasses = system.showAllCourses();
         System.out.println(allClasses);
     }
 
@@ -50,8 +47,8 @@ public class UI {
 
     //show all user classes
     public void scenario5(){
-       // String allUserClasses = system.showAllUserClasses();
-        // System.out.println(allUserClasses);
+        scenario1();
+
     }
 
     //create user transcript

@@ -32,14 +32,14 @@ public class CourseSystem{
     }
 
     public String showCourseByCode(String identifier){
-        return courseList.getCourse(null, identifier).toString();
+        return courseList.getCourseByIdentifer(identifier).toString();
     } 
 
     public String showAllCourses(){
-        return "";
+       return courseList.getAllCourses();
     }
 
-    public String showAllUserClasses(Student student){ 
+    public String showAllUserClasses(){ 
         return "";
     }
 
