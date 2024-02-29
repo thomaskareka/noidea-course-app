@@ -30,16 +30,32 @@ public class CourseSystem{
         return userList.signUp(type, firstName, lastName, email, password);
     }
 
+    public String showCourseByCode(String identifier){
+        return courseList.getCourse(null, identifier).toString();
+    } 
+
+    public String showAllCourses(){
+        return "";
+    }
+
+    public String showAllUserClasses(Student student){ 
+        return "";
+    }
+
+    public String createUsersTranscript(){
+        return "";
+    }
+
     public String courseDescriptionSearch(String name){
         return "";
     }
-    public String courseDescriptionSearch(String subject, int identifier){
+    public String courseDescriptionSearch( int identifier){
         return "";
     }
     public String courseRequistesSearch(String name){
         return "";
     }
-    public String courseRequistesSearch(String subject, int identfier){
+    public String courseRequistesSearch( int identfier){
         return "";
     }
     public boolean addCourse(Advisor advisor, String name, String identifier, int credits, String description, ArrayList<String> attributes, Requisite requisite){
