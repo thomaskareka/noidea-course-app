@@ -25,5 +25,6 @@ public class Course {
         this.identifier = identifier;
         this.credits = credits;
     }
+    
 
 }
