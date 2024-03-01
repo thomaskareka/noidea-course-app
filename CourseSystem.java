@@ -43,8 +43,8 @@ public class CourseSystem{
         return "";
     }
 
-    public String createUsersTranscript(){
-        return "";
+    public String createUserTranscript(String email){
+        return userList.createUserTranscript(email);
     }
 
     public String courseDescriptionSearch(String name){

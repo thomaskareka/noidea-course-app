@@ -9,7 +9,7 @@ public class UI {
     public void run(){
         scenario3();
         scenario4();
-        scenario5();
+        scenario6();
     }
 
     // login
@@ -53,7 +53,7 @@ public class UI {
 
     //create user transcript
     public void scenario6(){
-        String transcript = system.createUsersTranscript();
+        String transcript = system.createUserTranscript("johndoe@example.com");
         System.out.println(transcript);
     }
 

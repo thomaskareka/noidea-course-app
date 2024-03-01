@@ -40,4 +40,12 @@ public class DegreeTracker {
     public int requirmentCreditsRemaining(String category) {
         return 0;
     }
+
+    public String createTranscipt(){
+        String str = "";
+        for (CourseProgress courseProgress : studentCourses) {
+            str += courseProgress.getCourseName() + " - " + courseProgress.getCourseGrade() + "\n";
+        }
+        return str;
+    }
 }

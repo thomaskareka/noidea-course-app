@@ -37,6 +37,10 @@ public class Student extends User {
         
     }
 
+    public String getTranscript(){
+        return degreeProgress.createTranscipt();
+    }
+
     public String getEightSemesterPlan(){
         return "";
     }
