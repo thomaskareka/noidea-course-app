@@ -43,6 +43,7 @@ public class CourseSystem{
         return "";
     }
 
+    //Degree Tracker for student is null
     public String createUserTranscript(String email){
         return userList.createUserTranscript(email);
     }

@@ -9,7 +9,7 @@ public class UI {
     public void run(){
         scenario3();
         scenario4();
-        scenario6();
+        scenario5();
     }
 
     // login
@@ -53,6 +53,7 @@ public class UI {
 
     //create user transcript
     public void scenario6(){
+        // NEEDS WORK - Degree Tracker for student is null
         String transcript = system.createUserTranscript("johndoe@example.com");
         System.out.println(transcript);
     }
