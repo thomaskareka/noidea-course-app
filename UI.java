@@ -7,9 +7,10 @@ public class UI {
     }
 
     public void run(){
-        scenario3();
-        scenario4();
-        scenario5();
+        //scenario3();
+        //scenario4();
+        //scenario5();
+        //scenario6();
     }
 
     // login

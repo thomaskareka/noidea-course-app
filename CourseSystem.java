@@ -3,11 +3,13 @@ import java.util.ArrayList;
 public class CourseSystem{
     private UserList userList;
     private CourseList courseList;
+    private DegreeList degreeList;
     private User user;
 
     public CourseSystem() {
         userList = UserList.getInstance();
         courseList = CourseList.getInstance();
+        degreeList = DegreeList.getInstance();
     }
 
     public boolean login (String email, String password){
