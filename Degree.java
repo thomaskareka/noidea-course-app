@@ -28,4 +28,12 @@ public class Degree {
     public int getCredits() {
         return requiredCredits;
     }
+
+    public String toString() {
+        String out = "title:" + title + ", " + requiredCredits + " credits, type: " + type + "\n";
+        for (DegreeRequirement i : requirements) {
+            out += "  " + i.toString() + "\n";
+        }
+        return out;
+    }
 }

@@ -6,15 +6,17 @@ public class DegreeList {
     private static DegreeList degreeList;
     private ArrayList<Degree> degrees;
 
-    private DegreeList(){
-        degrees = new ArrayList<Degree>();
+    private DegreeList() {
+        degrees = DataLoader.getDegrees();
     }
-    public DegreeList getInstance(){
+
+    public static DegreeList getInstance() {
         if (degreeList == null) {
-			degreeList = new DegreeList();
-		}
-		    return degreeList;
-    } 
+            degreeList = new DegreeList();
+        }
+        return degreeList;
+    }
+
     public Degree getMajor(String major){
         for (Degree degree : degrees) {
             if(degree.getType().equals(major))
@@ -22,12 +24,15 @@ public class DegreeList {
         }
         return null;
     }
+
     public Degree getMinor(String minor){
         return null;
     }
+
     public Degree getTitle(String title) {
         return null;
     }
+    
     public Degree getRequiredCredits(int requiredCredits) {
         return null;
     }

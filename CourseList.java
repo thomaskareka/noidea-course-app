@@ -5,17 +5,17 @@ public class CourseList {
     private ArrayList<Course> courses;
 
     private CourseList() {
-        this.courses = new ArrayList<>();
+        this.courses = DataLoader.getCourses();
     }
 
-    public CourseList getInstance() {
+    public static CourseList getInstance() {
         if (courseList == null ) {
             courseList = new CourseList();
         }
         return courseList;
     }
 
-    public Course getCourse(String subject, String identifier) {
+    public Course getCourseByIdentifer(String identifier) {
         for( int i=0; i<courses.size(); i++ ){
             if(courses.get(i).getIdentifier().equals(identifier))
                 return courses.get(i);
@@ -23,12 +23,21 @@ public class CourseList {
         return null;
     }
 
-    public Course getCourse(String name) {
+    public Course getCourseByName(String name) {
         for( int i=0; i<courses.size(); i++ ){
             if(courses.get(i).getName().equals(name))
                 return courses.get(i);
         }  
         return null;
+    }
+
+    public String getAllCourses(){
+        String str = "";
+        for (Course course : courses) {
+            str += course.toString() + "\n";
+        }
+        
+        return str;
     }
 
     public ArrayList<String> getReqCourses(String category) {

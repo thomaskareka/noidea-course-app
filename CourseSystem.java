@@ -3,10 +3,13 @@ import java.util.ArrayList;
 public class CourseSystem{
     private UserList userList;
     private CourseList courseList;
+    private DegreeList degreeList;
     private User user;
 
     public CourseSystem() {
         userList = UserList.getInstance();
+        courseList = CourseList.getInstance();
+        degreeList = DegreeList.getInstance();
     }
 
     public boolean login (String email, String password){
@@ -31,19 +34,20 @@ public class CourseSystem{
     }
 
     public String showCourseByCode(String identifier){
-        return courseList.getCourse(null, identifier).toString();
+        return courseList.getCourseByIdentifer(identifier).toString();
     } 
 
     public String showAllCourses(){
+       return courseList.getAllCourses();
+    }
+
+    public String showAllUserClasses(){ 
         return "";
     }
 
-    public String showAllUserClasses(Student student){ 
-        return "";
-    }
-
-    public String createUsersTranscript(){
-        return "";
+    //Degree Tracker for student is null
+    public String createUserTranscript(String email){
+        return userList.createUserTranscript(email);
     }
 
     public String courseDescriptionSearch(String name){

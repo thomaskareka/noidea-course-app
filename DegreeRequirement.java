@@ -23,4 +23,13 @@ public class DegreeRequirement {
         return requirementCredits;
     }
 
+    public String toString() {
+        String creditText = (requirementCredits == -1)? "all courses required": requirementCredits + " credits";
+        String out = category + ", " + creditText + "\n    ";
+        for(String i: courses) {
+            out += i + ", ";
+        }
+        return out.substring(0, out.length()-2);
+    }
+
 }

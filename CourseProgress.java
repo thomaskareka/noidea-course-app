@@ -12,6 +12,20 @@ public class CourseProgress {
         this.isInProgress = isInProgress;
     }
 
+    public Course getCourse(){
+        return this.course;
+    }
+
+    public String getCourseName(){
+        String str = course.getIdentifier() + ": " + course.getName();
+        return str;
+    }
+
+    public String getCourseGrade(){
+        String str = gradeReceived.toString();
+        return str;
+    }
+
     public CourseProgress(Course course) {
         this.course = course;
     }

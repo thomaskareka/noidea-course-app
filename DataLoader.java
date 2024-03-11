@@ -123,12 +123,12 @@ public class DataLoader extends DataConstants {
 
             JSONArray courseList = (JSONArray) reqJSON.get(DEGREE_REQ_COURSES);
             ArrayList<String> courses = new ArrayList<String>();
-            for(Object j : courseList) {
-                String course = j.toString();
-                courses.add(course);
+            for(int j = 0; j < courseList.size(); j++) {
+                courses.add((String)courseList.get(j));
             }
 
             DegreeRequirement req = new DegreeRequirement(category, courses, credits);
+            out.add(req);
         }
         return out;
     }

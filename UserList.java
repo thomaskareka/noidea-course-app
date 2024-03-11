@@ -65,6 +65,14 @@ public class UserList {
         return null;
     }
 
+    public String createUserTranscript(String email){
+       Student holder = getStudentByEmail(email);
+        if(holder != null){
+          return holder.getTranscript();  
+        }
+        return "";
+    }
+
     public Advisor getAdvisorByEmail(String email){
         for (Advisor advisor : advisors) {
             if(advisor.getEmail().equals(email))

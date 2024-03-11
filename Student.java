@@ -17,6 +17,7 @@ public class Student extends User {
     public Student(String firstName, String lastName, String email, String major, String password){
         super(firstName, lastName, email, password);
         this.major = major;
+        this.degreeProgress = new DegreeTracker();
     }
 
     //loading from JSON files constructor
@@ -35,6 +36,10 @@ public class Student extends User {
         
         this.degreeProgress = degreeProgress;
         
+    }
+
+    public String getTranscript(){
+        return degreeProgress.createTranscipt();
     }
 
     public String getEightSemesterPlan(){
