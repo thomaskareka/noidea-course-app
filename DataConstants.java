@@ -13,8 +13,12 @@ public abstract class DataConstants {
     protected static final String COURSE_CREDITS = "credits";
     protected static final String COURSE_DESCRIPTION = "description";
     protected static final String COURSE_ATTRIBUTES = "attributes";
-    protected static final String COURSE_RESQUISITES = "requisites";
+    protected static final String COURSE_REQUISITES = "requisites";
     protected static final String COURSE_REQUISITES_TEXT = "requisiteText";
+
+    protected static final String REQ_COURSES = "courses";
+    protected static final String REQ_GRADE = "grade";
+    protected static final String REQ_TYPE = "type";
      
     protected static final String USER_ID = "uuid";
     protected static final String USER_FIRST_NAME = "firstName";

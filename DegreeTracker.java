@@ -10,7 +10,38 @@ public class DegreeTracker {
     }
 
     public double CalculateGPA() {
-        return 0.0;
+        double total = 0.0;
+        double gpa = 0.0;
+        for (CourseProgress courseProgress : studentCourses) {
+            String grade = courseProgress.getCourseGrade();
+            if(grade == "A") 
+                total += 4.00;
+
+            else if (grade == "B_PLUS")
+                total += 3.5;
+            
+            else if (grade == "B") 
+                total += 3.0;
+
+            else if (grade == "C_PLUS")
+                total += 2.5;
+            
+            else if (grade == "C")
+                total += 2.0;
+
+            else if (grade == "D_PLUS") 
+                total += 1.5;
+
+            else if (grade == "D")
+                total += 1.0;
+
+            else if (grade == "F") 
+                total += 0.0;
+        }
+        
+        gpa = total/studentCourses.size();
+        
+        return gpa;
     }
 
     public double CalculateMajorGPA() {
