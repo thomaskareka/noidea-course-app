@@ -14,29 +14,30 @@ public class DegreeTracker {
         double gpa = 0.0;
         for (CourseProgress courseProgress : studentCourses) {
             String grade = courseProgress.getCourseGrade();
+            String credits = courseProgress.getCredits();
             if(grade == "A") 
-                total += 4.00;
+                total += (4.00 * credits);
 
             else if (grade == "B_PLUS")
-                total += 3.5;
+                total += (3.5 * credits);
             
             else if (grade == "B") 
-                total += 3.0;
+                total += (3.0 * credits);
 
             else if (grade == "C_PLUS")
-                total += 2.5;
+                total += (2.5 * credits);
             
             else if (grade == "C")
-                total += 2.0;
+                total += (2.0 * credits);
 
             else if (grade == "D_PLUS") 
-                total += 1.5;
+                total += (1.5 *credits);
 
             else if (grade == "D")
-                total += 1.0;
+                total += (1.0 * credits);
 
             else if (grade == "F") 
-                total += 0.0;
+                total += (0.0 *credits);
         }
         
         gpa = total/studentCourses.size();
