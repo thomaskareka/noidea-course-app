@@ -12,9 +12,11 @@ public class DegreeTracker {
     public double CalculateGPA() {
         double total = 0.0;
         double gpa = 0.0;
+        int totalCredits = 0;
         for (CourseProgress courseProgress : studentCourses) {
             String grade = courseProgress.getCourseGrade();
-            String credits = courseProgress.getCredits();
+            int credits = courseProgress.getCourseCredits(courseProgress.getCourse());
+            totalCredits += credits;
             if(grade == "A") 
                 total += (4.00 * credits);
 
@@ -40,7 +42,7 @@ public class DegreeTracker {
                 total += (0.0 *credits);
         }
         
-        gpa = total/studentCourses.size();
+        gpa = total/totalCredits;
         
         return gpa;
     }
@@ -83,7 +85,11 @@ public class DegreeTracker {
     }
 
     public int requirementCreditsCompleted(String category) {
-        return 0;
+        for (CourseProgress courseProgress : studentCourses) {
+            if(courseProgress.getCompletionStatus())
+                completedCredits += courseProgress.getCourse().getCredits());
+        }
+        return completedCredits;
     }
 
     public int requirmentCreditsRemaining(String category) {
