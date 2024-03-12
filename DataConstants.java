@@ -37,6 +37,7 @@ public abstract class DataConstants {
     protected static final String STUDENT_SCHOLARSHIP = "hasScholarship";
     protected static final String STUDENT_COURSE_LIST = "courses";
     protected static final String STUDENT_APP_AREA = "applicationArea";
+    protected static final String STUDENT_ID = "studentID";
 
     protected static final String STUDENT_COURSE_ID = "id";
     protected static final String STUDENT_COURSE_GRADE = "grade";

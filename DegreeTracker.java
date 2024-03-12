@@ -72,8 +72,19 @@ public class DegreeTracker {
                 completedCourses.add(courseProgress.getCourseName());
         }
         
-        
         return completedCourses;
+    }
+
+    public void addCourse(Course course){
+        CourseProgress newCourse = new CourseProgress(course.toString(), null, false);
+        studentCourses.add(newCourse);
+    }
+
+    public void removeCourse(String courseName){
+        for (CourseProgress courseProgress : studentCourses) {
+            if(courseProgress.getCourseName().equalsIgnoreCase(courseName))
+                studentCourses.remove(courseProgress);
+        }
     }
 
     public String generateEightSememsterPlan() {
@@ -110,5 +121,9 @@ public class DegreeTracker {
             str += courseProgress.getCourseName() + " - " + courseProgress.getCourseGrade() + "\n";
         }
         return str;
+    }
+    //for data saving
+    public ArrayList<CourseProgress> getCourseProgress() {
+        return studentCourses;
     }
 }
