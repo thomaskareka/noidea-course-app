@@ -52,12 +52,25 @@ public class DegreeTracker {
         return 0.0;
     }
 
-    public ArrayList<Course> GetIncompleteCourses() {
-        return null;
+    public ArrayList<String> GetIncompleteCourses() {
+        ArrayList<String> incompletedCourses = new ArrayList<String>();
+        for (CourseProgress courseProgress : studentCourses) {
+            if(!courseProgress.getCompletionStatus())
+                incompletedCourses.add(courseProgress.getCourseName());
+        }
+        
+        return incompletedCourses;
     }
 
-    public ArrayList<Course> GetCompleteCourses() {
-        return null;
+    public ArrayList<String> GetCompleteCourses() {
+        ArrayList<String> completedCourses = new ArrayList<String>();
+        for (CourseProgress courseProgress : studentCourses) {
+            if(courseProgress.getCompletionStatus())
+                completedCourses.add(courseProgress.getCourseName());
+        }
+        
+        
+        return completedCourses;
     }
 
     public String generateEightSememsterPlan() {

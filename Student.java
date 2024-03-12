@@ -32,10 +32,8 @@ public class Student extends User {
         this.advisor = advisor;
         this.failureRisk = failureRisk;
         this.notes = notes;
-        
         this.hasScholarship = hasScholarship;
         this.applicationArea = applicationArea;
-        
         this.degreeProgress = degreeProgess;
         
     }
@@ -48,20 +46,37 @@ public class Student extends User {
         return degreeProgress.getAllCourses();
     }
 
+    /* 
     public String getEightSemesterPlan(){
         return "";
     }
+    */
 
     public boolean checkIfAtRisk(){
+        if(overallGPA < 3.00)
+            failureRisk = true;
+        else
+            failureRisk = false;
+        
         return failureRisk;
     }
 
     public String getAllCompletedCourses(){
-        return "";
+        ArrayList<String> completedCourse = degreeProgress.GetCompleteCourses();
+        String str = "";
+        for (String string : completedCourse) {
+            str += string + "\n";
+        }
+        return str;
     }
 
-    public String getAllUncompletedCourses(){
-        return "";
+    public String getAllIncompletedCourses(){
+        ArrayList<String> incompletedCourse = degreeProgress.GetIncompleteCourses();
+        String str = "";
+        for (String string : incompletedCourse) {
+            str += string + "\n";
+        }
+        return str;
     }
 
     public String getMajor() {
