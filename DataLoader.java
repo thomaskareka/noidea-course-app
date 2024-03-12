@@ -26,6 +26,7 @@ public class DataLoader extends DataConstants {
 
                 String major = (String)studentJSON.get(STUDENT_MAJOR);
                 String minor = (String)studentJSON.get(STUDENT_MINOR);
+                String applicationArea = (String)studentJSON.get(STUDENT_APP_AREA);
                 double majorGPA = (double)studentJSON.get(STUDENT_MAJOR_GPA);
                 double overallGPA = (double)studentJSON.get(STUDENT_GPA);
                 String classLevel = (String)studentJSON.get(STUDENT_CLASS);
@@ -37,9 +38,18 @@ public class DataLoader extends DataConstants {
                 boolean hasScholarship = (boolean)studentJSON.get(STUDENT_SCHOLARSHIP);
 
                 JSONArray degreeJSON = (JSONArray) studentJSON.get(STUDENT_COURSE_LIST);
-                //TODO: add degree tracker inilization from student info
-                DegreeTracker degreeProgress = new DegreeTracker();
-                Student s = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisor, failureRisk, notes, hasScholarship, degreeProgress, password);
+                ArrayList<CourseProgress> progress = new ArrayList<CourseProgress>();
+                for(int j = 0; j < degreeJSON.size(); j++) {
+                    JSONObject courseJSON = (JSONObject)degreeJSON.get(j);
+                    String courseID = (String)courseJSON.get(STUDENT_COURSE_ID);
+                    Grade courseGrade = Grade.valueOf((String)courseJSON.get(STUDENT_COURSE_GRADE));
+                    boolean complete = (courseGrade == Grade.IN_PROGRESS)? true : false;
+                    CourseProgress c = new CourseProgress(courseID, courseGrade, complete);
+                    progress.add(c);
+                }
+
+                DegreeTracker degreeProgress = new DegreeTracker(progress);
+                Student s = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisor, failureRisk, notes, hasScholarship, degreeProgress, password, applicationArea);
                 students.add(s);
             }
         } catch (Exception e) {

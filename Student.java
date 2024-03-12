@@ -4,6 +4,7 @@ import java.util.UUID;
 public class Student extends User {
     private String major;
     private String minor;
+    private String applicationArea;
     private double majorGPA;
     private double overallGPA;
     private String classLevel;
@@ -17,11 +18,11 @@ public class Student extends User {
     public Student(String firstName, String lastName, String email, String major, String password){
         super(firstName, lastName, email, password);
         this.major = major;
-        this.degreeProgress = new DegreeTracker();
+        this.degreeProgress = new DegreeTracker(new ArrayList<CourseProgress>());
     }
 
     //loading from JSON files constructor
-    public Student(String firstName, String lastName, String email, UUID id, String major, String minor, double majorGPA, double overallGPA, String classLevel, UUID advisor, boolean failureRisk, ArrayList<String> notes, boolean hasScholarship, DegreeTracker degreeProgess, String password){
+    public Student(String firstName, String lastName, String email, UUID id, String major, String minor, double majorGPA, double overallGPA, String classLevel, UUID advisor, boolean failureRisk, ArrayList<String> notes, boolean hasScholarship, DegreeTracker degreeProgess, String password, String applicationArea){
         super(firstName, lastName, email, id, password);
         this.major = major; 
         this.minor = minor;
@@ -33,6 +34,7 @@ public class Student extends User {
         this.notes = notes;
         
         this.hasScholarship = hasScholarship;
+        this.applicationArea = applicationArea;
         
         this.degreeProgress = degreeProgress;
         
