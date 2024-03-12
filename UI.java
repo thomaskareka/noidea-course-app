@@ -16,6 +16,12 @@ public class UI {
         scenario6();
     }
 
+    public void exit() {
+        DataWriter.saveAdvisors();
+        DataWriter.saveStudents();
+        DataWriter.saveCourses();
+        DataWriter.saveMajors();
+    }
     // login
     public void scenario1(){
         if(!system.login("abc@example.com", "f46fab9f9f91073a4262a6bce61dc3d05ad0a060")) {
@@ -65,5 +71,6 @@ public class UI {
     public static void main(String[] args){
         UI ui = new UI();
         ui.run();
+        ui.exit();
     }
 }

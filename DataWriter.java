@@ -56,10 +56,12 @@ public class DataWriter extends DataConstants {
         studentDetails.put(STUDENT_MAJOR, student.getMajor());
         studentDetails.put(STUDENT_MINOR, student.getMinor());
         studentDetails.put(STUDENT_MAJOR_GPA, student.getMajorGPA());
-        studentDetails.put(STUDENT_GPA, student.getClassLevel());
+        studentDetails.put(STUDENT_GPA, student.getOverallGPA());
         studentDetails.put(STUDENT_CLASS, student.getClassLevel());
+        studentDetails.put(STUDENT_APP_AREA, student.getApplicationArea());
+        studentDetails.put(STUDENT_ID, student.getStudentID());
 
-        studentDetails.put(STUDENT_ADVISOR_ID, student.getAdvisorReference());
+        studentDetails.put(STUDENT_ADVISOR_ID, student.getAdvisorReference().toString());
         studentDetails.put(STUDENT_AT_RISK, student.checkIfAtRisk());
         
         JSONArray noteArray = new JSONArray();
@@ -70,9 +72,20 @@ public class DataWriter extends DataConstants {
         studentDetails.put(STUDENT_NOTES, noteArray);
         studentDetails.put(STUDENT_SCHOLARSHIP, student.hasScholarship());
         //TODO: degree tracker into JSONArray
-        studentDetails.put(STUDENT_COURSE_LIST, new JSONArray());
+        studentDetails.put(STUDENT_COURSE_LIST, getStudentCourseJSON(student.getDegreeTracker()));
 
         return studentDetails;
+    }
+
+    private static JSONArray getStudentCourseJSON(DegreeTracker t) {
+        JSONArray out = new JSONArray();
+        for(CourseProgress c : t.getCourseProgress()) {
+            JSONObject cpJSON = new JSONObject();
+            cpJSON.put(STUDENT_COURSE_GRADE, c.getCourseGrade());
+            cpJSON.put(STUDENT_COURSE_ID, c.getCourseName());
+            out.add(cpJSON);
+        }
+        return out;
     }
 
     public static JSONObject getAdvisorJSON(Advisor advisor) {

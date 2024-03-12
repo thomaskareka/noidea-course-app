@@ -30,6 +30,7 @@ public class DataLoader extends DataConstants {
                 double majorGPA = (double)studentJSON.get(STUDENT_MAJOR_GPA);
                 double overallGPA = (double)studentJSON.get(STUDENT_GPA);
                 String classLevel = (String)studentJSON.get(STUDENT_CLASS);
+                String studentID = (String)studentJSON.get(STUDENT_ID);
 
                 UUID advisor = UUID.fromString((String)studentJSON.get(STUDENT_ADVISOR_ID));
 
@@ -53,7 +54,7 @@ public class DataLoader extends DataConstants {
                 }
 
                 DegreeTracker degreeProgress = new DegreeTracker(progress);
-                Student s = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisor, failureRisk, notes, hasScholarship, degreeProgress, password, applicationArea);
+                Student s = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisor, failureRisk, notes, hasScholarship, degreeProgress, password, applicationArea, studentID);
                 students.add(s);
             }
         } catch (Exception e) {

@@ -104,4 +104,8 @@ public class DegreeTracker {
         }
         return str;
     }
+    //for data saving
+    public ArrayList<CourseProgress> getCourseProgress() {
+        return studentCourses;
+    }
 }

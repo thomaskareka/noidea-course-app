@@ -13,6 +13,7 @@ public class Student extends User {
     private ArrayList<String> notes;
     private boolean hasScholarship;
     private DegreeTracker degreeProgress;
+    private String studentID;
 
     //new student constructor
     public Student(String firstName, String lastName, String email, String major, String password){
@@ -22,7 +23,7 @@ public class Student extends User {
     }
 
     //loading from JSON files constructor
-    public Student(String firstName, String lastName, String email, UUID id, String major, String minor, double majorGPA, double overallGPA, String classLevel, UUID advisor, boolean failureRisk, ArrayList<String> notes, boolean hasScholarship, DegreeTracker degreeProgess, String password, String applicationArea){
+    public Student(String firstName, String lastName, String email, UUID id, String major, String minor, double majorGPA, double overallGPA, String classLevel, UUID advisor, boolean failureRisk, ArrayList<String> notes, boolean hasScholarship, DegreeTracker degreeProgess, String password, String applicationArea, String studentID){
         super(firstName, lastName, email, id, password);
         this.major = major; 
         this.minor = minor;
@@ -35,6 +36,7 @@ public class Student extends User {
         this.hasScholarship = hasScholarship;
         this.applicationArea = applicationArea;
         this.degreeProgress = degreeProgess;
+        this.studentID = studentID;
         
     }
 
@@ -111,6 +113,17 @@ public class Student extends User {
         return hasScholarship;
     }
 
+    public String getApplicationArea() {
+        return applicationArea;
+    }
+
+    public String getStudentID() {
+        return studentID;
+    }
+
+    public DegreeTracker getDegreeTracker() {
+        return degreeProgress;
+    }
     public String toString() {
         String out = super.toString();
         out += String.format("Major: %s (%f), Minor: %s, Application Area: %s\n", major, majorGPA, minor, applicationArea);
