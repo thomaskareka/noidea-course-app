@@ -1,3 +1,5 @@
+import java.util.UUID;
+
 public class UI {
 
     private CourseSystem system;
@@ -7,10 +9,10 @@ public class UI {
     }
 
     public void run(){
-        //scenario3();
-        //scenario4();
-        //scenario5();
-        //scenario6();
+        // scenario3();
+        // scenario4();
+        // scenario5();
+        scenario6();
     }
 
     // login
@@ -54,8 +56,8 @@ public class UI {
 
     //create user transcript
     public void scenario6(){
-        // NEEDS WORK - Degree Tracker for student is null
-        String transcript = system.createUserTranscript("johndoe@example.com");
+        UUID id = UUID.fromString("3679308a-dda8-4a27-8260-8fd115426bd0");
+        String transcript = system.createUserTranscript(id);
         System.out.println(transcript);
     }
 

@@ -58,15 +58,15 @@ public class UserList {
 
     public Student getStudentFromID(UUID id) {
         for (Student student : students) {
-            if(student.getID() == id) {
+            if(student.getID().equals(id)) {
                 return student;
             }
         }
         return null;
     }
 
-    public String createUserTranscript(String email){
-       Student holder = getStudentByEmail(email);
+    public String createUserTranscript(UUID id){
+       Student holder = getStudentFromID(id);
         if(holder != null){
           return holder.getTranscript();  
         }

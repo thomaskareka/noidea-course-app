@@ -36,7 +36,7 @@ public class Student extends User {
         this.hasScholarship = hasScholarship;
         this.applicationArea = applicationArea;
         
-        this.degreeProgress = degreeProgress;
+        this.degreeProgress = degreeProgess;
         
     }
 
