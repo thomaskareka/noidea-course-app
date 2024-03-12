@@ -2,8 +2,12 @@ import java.util.ArrayList;
 
 public class DegreeTracker {
     private ArrayList<CourseProgress> studentCourses;
-    private Degree degree;
+    //private Degree degree;
     private int completedCredits;
+
+    public DegreeTracker(ArrayList<CourseProgress> studentCourses) {
+        this.studentCourses = studentCourses;
+    }
 
     public double CalculateGPA() {
         return 0.0;
@@ -39,6 +43,14 @@ public class DegreeTracker {
 
     public int requirmentCreditsRemaining(String category) {
         return 0;
+    }
+
+    public String getAllCourses(){
+        String str = "";
+        for (CourseProgress courseProgress : studentCourses) {
+            str += courseProgress.getCourseName() + "\n";
+        }
+        return str;
     }
 
     public String createTranscipt(){

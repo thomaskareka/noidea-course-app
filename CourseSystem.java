@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class CourseSystem{
     private UserList userList;
@@ -41,13 +42,13 @@ public class CourseSystem{
        return courseList.getAllCourses();
     }
 
-    public String showAllUserClasses(){ 
-        return "";
+    public String getAllUserClasses(){ 
+        return userList.getAllStudentCourses(user.getID());
     }
 
     //Degree Tracker for student is null
-    public String createUserTranscript(String email){
-        return userList.createUserTranscript(email);
+    public String createUserTranscript(){
+        return userList.createUserTranscript(user.getID());
     }
 
     public String courseDescriptionSearch(String name){

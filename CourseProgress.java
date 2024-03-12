@@ -1,23 +1,23 @@
 public class CourseProgress {
-    private Course course;
+    private String course;
     private Grade gradeReceived;
     private String term;
     private boolean isComplete;
-    private boolean isInProgress;
 
-    public CourseProgress(Course course, Grade gradeReceived, boolean isComplete, boolean isInProgress) {
+
+    public CourseProgress(String course, Grade gradeReceived, boolean isComplete) {
         this.course = course;
         this.gradeReceived = gradeReceived;
         this.isComplete = isComplete;
-        this.isInProgress = isInProgress;
     }
 
     public Course getCourse(){
-        return this.course;
+        return CourseList.getInstance().getCourseByIdentifer(course);
     }
 
     public String getCourseName(){
-        String str = course.getIdentifier() + ": " + course.getName();
+        Course courseObj = CourseList.getInstance().getCourseByIdentifer(course);
+        String str = course + ": " + courseObj.getName();
         return str;
     }
 
@@ -26,17 +26,16 @@ public class CourseProgress {
         return str;
     }
 
-    public CourseProgress(Course course) {
+    public CourseProgress(String course) {
         this.course = course;
     }
 
     public void makeCourseComplete() {
         isComplete = true;
-        isInProgress = false;
     }
 
     public void makeCourseInProgress() {
-        isInProgress = true;
+        gradeReceived = Grade.IN_PROGRESS;
         isComplete = false;
     }
 
@@ -44,5 +43,7 @@ public class CourseProgress {
         isComplete = false;
     }
 
-    
+    public String toString() {
+        return course + ": " + gradeReceived.toString();
+    }
 }
