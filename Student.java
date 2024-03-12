@@ -54,6 +54,10 @@ public class Student extends User {
     }
     */
 
+    public void editFailureRisk(boolean bool){
+        failureRisk = bool;
+    }
+
     public boolean checkIfAtRisk(){
         if(overallGPA < 3.00)
             failureRisk = true;
@@ -81,6 +85,14 @@ public class Student extends User {
         return str;
     }
 
+    public void addCourse(Course course){
+        degreeProgress.addCourse(course);
+    }
+
+    public void removeCourse(Course course){
+        degreeProgress.removeCourse(course.getName());
+    }
+
     public String getMajor() {
         return major;
     }
@@ -103,6 +115,10 @@ public class Student extends User {
 
     public UUID getAdvisorReference() {
         return advisor;
+    }
+
+    public void addNotes(String newNotes){
+        notes.add(newNotes);
     }
 
     public ArrayList<String> getNotes() {
