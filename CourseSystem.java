@@ -126,11 +126,13 @@ public class CourseSystem{
     public String getDegreeCourses(String degree){
         return "";
     }
-    public double  getStudentOverallGPA(Student student){
-        return 0.0;
+    public double getStudentOverallGPA(Student student) {
+        gpa = student.getOverallGPA;
+        return gpa;
     }
     public double  getStudentMajorGPA(Student student){
-        return 0.0;
+        gpa = student.getMajorGPA;
+        return gpa;
     }
     public int calculateDegreeCompletionPercentage(Student student){
         return 0;
