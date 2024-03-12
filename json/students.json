@@ -87,5 +87,49 @@
             {"id": "CSCE215","grade": "B"},
             {"id": "CSCE390","grade": "IN_PROGRESS"}
         ]
+    },{
+        "uuid": "3679308a-dda8-4a27-8260-8fd115426bd4",
+        "firstName": "Brian",
+        "lastName": "McNab",
+        "email": "brainme@example.com",
+        "password": "f46fab9f9f91073a4262a6bce61dc3d05ad0a043",
+        "major": "Computer Science",
+        "minor": "none",
+        "applicationArea": "none",
+        "majorGPA": 2.91,
+        "overallGPA": 2.73,
+        "studentID": "B001132",
+        "classLevel": "Junior",
+        "advisor": "2c622e0d-975f-436f-96e0-ffebf89269d2",
+        "failureRisk": true,
+        "notes": ["Advised for FA24", "test"],
+        "hasScholarship": false,
+        "courses": [
+            {"id": "CSCE520","grade": "F"},
+            {"id": "CSCE350","grade": "C"},
+            {"id": "CSCE390","grade": "IN_PROGRESS"}
+        ]
+    },{
+        "uuid": "3679308a-dda8-4a27-8260-8fd115426Cv74",
+        "firstName": "Lauren",
+        "lastName": "Smith",
+        "email": "laurens@example.com",
+        "password": "f46fab9f9f91073a4262a6bce61dc3d05aPl852",
+        "major": "Computer Information Systems",
+        "minor": "none",
+        "applicationArea": "none",
+        "majorGPA": 3.51,
+        "overallGPA": 3.49,
+        "studentID": "B0012431",
+        "classLevel": "Sophomore",
+        "advisor": "2c622e0d-975f-436f-96e0-ffebf899083H",
+        "failureRisk": false,
+        "notes": ["Advised for FA24", "test"],
+        "hasScholarship": true,
+        "courses": [
+            {"id": "ENGL101","grade": "B"},
+            {"id": "CSCE190","grade": "A"},
+            {"id": "CSCE146","grade": "B"}
+        ]
     }
 ]
