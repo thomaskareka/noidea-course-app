@@ -15,7 +15,7 @@ public class DegreeTracker {
         int totalCredits = 0;
         for (CourseProgress courseProgress : studentCourses) {
             String grade = courseProgress.getCourseGrade();
-            int credits = courseProgress.getCourseCredits(courseProgress.getCourse());
+            int credits = courseProgress.getCourse().getCredits();
             totalCredits += credits;
             if(grade == "A") 
                 total += (4.00 * credits);
@@ -48,7 +48,43 @@ public class DegreeTracker {
     }
 
     public double CalculateMajorGPA() {
-        return 0.0;
+        double total = 0.0;
+        double gpa = 0.0;
+        int totalCredits = 0;
+        for (CourseProgress courseProgress : studentCourses) {
+            if(courseProgress.getCourse().getIdentifier() == "CSCE") {
+                String grade = courseProgress.getCourseGrade();
+                int credits = courseProgress.getCourse().getCredits();
+                totalCredits += credits;
+                if(grade == "A") 
+                    total += (4.00 * credits);
+
+                else if (grade == "B_PLUS")
+                    total += (3.5 * credits);
+                
+                else if (grade == "B") 
+                    total += (3.0 * credits);
+
+                else if (grade == "C_PLUS")
+                    total += (2.5 * credits);
+                
+                else if (grade == "C")
+                    total += (2.0 * credits);
+
+                else if (grade == "D_PLUS") 
+                    total += (1.5 *credits);
+
+                else if (grade == "D")
+                    total += (1.0 * credits);
+
+                else if (grade == "F") 
+                    total += (0.0 *credits);
+            }
+            
+            gpa = total/totalCredits;
+        }
+        
+        return gpa;
     }
 
     public double CalculateProgress() {
@@ -98,7 +134,7 @@ public class DegreeTracker {
     public int requirementCreditsCompleted(String category) {
         for (CourseProgress courseProgress : studentCourses) {
             if(courseProgress.getCompletionStatus())
-                completedCredits += courseProgress.getCourse().getCredits());
+                completedCredits += courseProgress.getCourse().getCredits();
         }
         return completedCredits;
     }
