@@ -82,7 +82,7 @@ public class DataWriter extends DataConstants {
         for(CourseProgress c : t.getCourseProgress()) {
             JSONObject cpJSON = new JSONObject();
             cpJSON.put(STUDENT_COURSE_GRADE, c.getCourseGrade());
-            cpJSON.put(STUDENT_COURSE_ID, c.getCourseName());
+            cpJSON.put(STUDENT_COURSE_ID, c.getCourseID());
             out.add(cpJSON);
         }
         return out;
