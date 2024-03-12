@@ -10,8 +10,9 @@ public class UI {
 
     public void run(){
         // scenario3();
-        // scenario4();
-        // scenario5();
+        scenario4();
+        scenario1();
+        scenario5();
         scenario6();
     }
 
@@ -50,14 +51,14 @@ public class UI {
 
     //show all user classes
     public void scenario5(){
-        scenario1();
-
+        String userClasses =  system.getAllUserClasses();
+        System.out.println(userClasses);
     }
 
     //create user transcript
     public void scenario6(){
-        UUID id = UUID.fromString("3679308a-dda8-4a27-8260-8fd115426bd0");
-        String transcript = system.createUserTranscript(id);
+
+        String transcript = system.createUserTranscript();
         System.out.println(transcript);
     }
 

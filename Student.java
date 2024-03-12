@@ -44,6 +44,10 @@ public class Student extends User {
         return degreeProgress.createTranscipt();
     }
 
+    public String getAllCourses(){
+        return degreeProgress.getAllCourses();
+    }
+
     public String getEightSemesterPlan(){
         return "";
     }

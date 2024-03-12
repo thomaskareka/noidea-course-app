@@ -73,6 +73,14 @@ public class UserList {
         return "";
     }
 
+    public String getAllStudentCourses(UUID id){
+        Student holder = getStudentFromID(id);
+        if(holder != null){
+            return holder.getAllCourses();
+        }
+        return "";
+    }
+
     public Advisor getAdvisorByEmail(String email){
         for (Advisor advisor : advisors) {
             if(advisor.getEmail().equals(email))

@@ -45,6 +45,14 @@ public class DegreeTracker {
         return 0;
     }
 
+    public String getAllCourses(){
+        String str = "";
+        for (CourseProgress courseProgress : studentCourses) {
+            str += courseProgress.getCourseName() + "\n";
+        }
+        return str;
+    }
+
     public String createTranscipt(){
         String str = "";
         for (CourseProgress courseProgress : studentCourses) {
