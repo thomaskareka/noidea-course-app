@@ -119,7 +119,7 @@ public class DataWriter extends DataConstants {
         for(DegreeRequirement dr : d) {
             JSONObject reqJSON = new JSONObject();
             reqJSON.put(DEGREE_REQ_CATEGORY, dr.getCategory());
-            reqJSON.put(DEGREE_CREDITS, dr.getRequirementsCredits());
+            reqJSON.put(DEGREE_REQ_CREDITS, dr.getRequirementsCredits());
 
             ArrayList<String> reqCourses = dr.getRequirements();
             JSONArray courseJSON = new JSONArray();
