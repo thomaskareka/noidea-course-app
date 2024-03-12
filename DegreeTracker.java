@@ -52,7 +52,8 @@ public class DegreeTracker {
         double gpa = 0.0;
         int totalCredits = 0;
         for (CourseProgress courseProgress : studentCourses) {
-            if(courseProgress.getCourse().getIdentifier() == "CSCE") {
+            String id = courseProgress.getCourse().getIdentifier().substring(0,3);
+            if(id == "CSCE") {
                 String grade = courseProgress.getCourseGrade();
                 int credits = courseProgress.getCourse().getCredits();
                 totalCredits += credits;
