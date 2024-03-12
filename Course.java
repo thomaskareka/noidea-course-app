@@ -36,6 +36,10 @@ public class Course {
         return this.name;
     }
 
+    public int getCredits() {
+        return this.credits;
+    }
+
     public String toString(){
         String str = identifier + ": " + name + "\nCredits: " + credits + "\nDescription: " + description;
         return str;
