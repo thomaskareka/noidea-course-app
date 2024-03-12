@@ -21,6 +21,10 @@ public class CourseProgress {
         return str;
     }
 
+    public boolean getCompletionStatus(){
+        return isComplete;
+    }
+
     public String getCourseGrade(){
         String str = gradeReceived.toString();
         return str;
