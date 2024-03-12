@@ -91,4 +91,13 @@ public class Student extends User {
     public boolean hasScholarship() {
         return hasScholarship;
     }
+
+    public String toString() {
+        String out = super.toString();
+        out += String.format("Major: %s (%f), Minor: %s, Application Area: %s\n", major, majorGPA, minor, applicationArea);
+        out += "GPA: " + overallGPA + ", At risk: " + failureRisk + ", Has Scholarship: " + hasScholarship;
+        out += "Advisor: " + advisor + "\n";
+        out += "Notes: " + notes.toString();
+        return out + "\n";
+    }
 }

@@ -43,5 +43,7 @@ public class CourseProgress {
         isComplete = false;
     }
 
-    
+    public String toString() {
+        return course + ": " + gradeReceived.toString();
+    }
 }

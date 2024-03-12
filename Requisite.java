@@ -29,5 +29,11 @@ public class Requisite {
         return courseGrades;
     }
 
-
+    public String toString() {
+        String out = type.toString() + ": ";
+        for(int i = 0; i < courses.size() && i < courseGrades.size(); i++) {
+            out += String.format("%s (%s)", courses.get(i), courseGrades.get(i).toString());
+        }
+        return out;
+    }
 }

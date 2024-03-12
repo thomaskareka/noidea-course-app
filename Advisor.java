@@ -58,4 +58,11 @@ public class Advisor extends User {
     public ArrayList<UUID> getStudents() {
         return students;
     }
+
+    public String toString() {
+        String out = super.toString() + "\n";
+        out += "Advisor" + (isAdmin? " and Admin" : "") + "\n";
+        out += "Students: " + students.toString();
+        return out;
+    }
 }
