@@ -19,6 +19,10 @@ public class DegreeRequirement {
         return courses;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     public int getRequirementsCredits() {
         return requirementCredits;
     }

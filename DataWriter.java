@@ -48,7 +48,44 @@ public class DataWriter extends DataConstants {
     }
 
     public static void saveMajors() {
-        
+        DegreeList degreeList = DegreeList.getInstance();
+        ArrayList<Degree> degrees = degreeList.getDegrees();
+        JSONArray jsonDegrees = new JSONArray();
+
+        for(Degree d : degrees) {
+            JSONObject dJson = new JSONObject();
+            dJson.put(DEGREE_TYPE, d.getType());
+            dJson.put(DEGREE_NAME, d.getTitle());
+            dJson.put(DEGREE_CREDITS, d.getCredits());
+            dJson.put(DEGREE_REQUIREMENTS, getDegreeReqJSON(d.getRequirements()));
+            jsonDegrees.add(dJson);
+        }
+
+        try(FileWriter file = new FileWriter(DEGREE_FILE_NAME)) {
+            file.write(jsonDegrees.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static JSONArray getDegreeReqJSON(ArrayList<DegreeRequirement> d) {
+        JSONArray out = new JSONArray();
+        for(DegreeRequirement dr : d) {
+            JSONObject reqJSON = new JSONObject();
+            reqJSON.put(DEGREE_REQ_CATEGORY, dr.getCategory());
+            reqJSON.put(DEGREE_CREDITS, dr.getRequirementsCredits());
+
+            ArrayList<String> reqCourses = dr.getRequirements();
+            JSONArray courseJSON = new JSONArray();
+            for (String s : reqCourses) {
+                courseJSON.add(s);
+            }
+            reqJSON.put(DEGREE_REQ_COURSES, courseJSON);
+            out.add(reqJSON);
+        }
+
+        return out;
     }
 
     public static JSONObject getStudentJSON(Student student) {
@@ -71,7 +108,6 @@ public class DataWriter extends DataConstants {
         }
         studentDetails.put(STUDENT_NOTES, noteArray);
         studentDetails.put(STUDENT_SCHOLARSHIP, student.hasScholarship());
-        //TODO: degree tracker into JSONArray
         studentDetails.put(STUDENT_COURSE_LIST, getStudentCourseJSON(student.getDegreeTracker()));
 
         return studentDetails;

@@ -166,8 +166,11 @@ public class DataLoader extends DataConstants {
                 ArrayList<Requisite> requisites = getRequisites((JSONArray)courseJSON.get(COURSE_REQUISITES));
                 String reqText = (String)courseJSON.get(COURSE_REQUISITES_TEXT);
 
-                @SuppressWarnings("unchecked")
-                ArrayList<String> attributes = new ArrayList<String>((JSONArray) courseJSON.get(COURSE_ATTRIBUTES));
+                ArrayList<String> attributes = new ArrayList<String>();
+                JSONArray attributeJSON = (JSONArray)courseJSON.get(COURSE_ATTRIBUTES);
+                for (int j = 0; j < attributeJSON.size(); j++) {
+                    attributes.add((String) attributeJSON.get(j));
+                }
             
 
                 Course c = new Course(name, identifier, credits, description, attributes, requisites, reqText);
