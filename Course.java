@@ -40,6 +40,22 @@ public class Course {
         return this.credits;
     }
 
+    public String getRequisiteText() {
+        return reqText;
+    }
+
+    public ArrayList<Requisite> getRequisites() {
+        return requisites;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public ArrayList<String> getAttributes() {
+        return attributes;
+    }
+
     public String toString(){
         String str = identifier + ": " + name + "\nCredits: " + credits + "\nDescription: " + description;
         return str;

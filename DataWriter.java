@@ -44,7 +44,20 @@ public class DataWriter extends DataConstants {
     }
 
     public static void saveCourses() {
-        
+        CourseList courseList = CourseList.getInstance();
+        ArrayList<Course> courses = courseList.getCourses();
+        JSONArray jsonCourses = new JSONArray();
+
+        for(Course c : courses) {
+            jsonCourses.add(getCourseJSON(c));
+        }
+
+        try(FileWriter file = new FileWriter(COURSE_FILE_NAME)) {
+            file.write(jsonCourses.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void saveMajors() {
@@ -67,6 +80,38 @@ public class DataWriter extends DataConstants {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static JSONObject getCourseJSON(Course c) {
+        JSONObject out = new JSONObject();
+        out.put(COURSE_ID, c.getIdentifier());
+        out.put(COURSE_REQUISITES_TEXT, c.getRequisiteText());
+        out.put(COURSE_CREDITS, c.getCredits());
+        out.put(COURSE_NAME, c.getName());
+        out.put(COURSE_DESCRIPTION, c.getDescription());
+
+        JSONArray attributes = new JSONArray();
+        for(String a : c.getAttributes()) {
+            attributes.add(a);
+        }
+        out.put(COURSE_ATTRIBUTES, attributes);
+
+        JSONArray requisites = new JSONArray();
+        for(Requisite r : c.getRequisites()) {
+            requisites.add(getReqJSON(r));
+        }
+        out.put(COURSE_REQUISITES, requisites);
+        return out;
+    }
+
+    private static JSONObject getReqJSON(Requisite r) {
+        JSONObject out = new JSONObject();
+
+        out.put(REQ_COURSES, r.getCourseString());
+        out.put(REQ_GRADE, r.getMinGrade().toString());
+        out.put(REQ_TYPE, r.getType().toString());
+
+        return out;
     }
 
     public static JSONArray getDegreeReqJSON(ArrayList<DegreeRequirement> d) {

@@ -26,6 +26,11 @@ public class Requisite {
     public ArrayList<String> getCourses(){
         return courses;
     }
+
+    public String getCourseString() {
+        return courseString;
+    }
+
     public Grade getMinGrade(){
         return minGrade;
     }

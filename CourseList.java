@@ -40,6 +40,10 @@ public class CourseList {
         return str;
     }
 
+    public ArrayList<Course> getCourses() {
+        return courses;
+    }
+
     public ArrayList<String> getReqCourses(String category) {
         ArrayList<String> required = new ArrayList<>();
         DegreeRequirement degreeRequirement = new DegreeRequirement(category);
