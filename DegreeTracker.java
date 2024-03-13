@@ -12,9 +12,11 @@ public class DegreeTracker {
     public double CalculateGPA() {
         double total = 0.0;
         double gpa = 0.0;
+        int totalCredits = 0;
         for (CourseProgress courseProgress : studentCourses) {
             String grade = courseProgress.getCourseGrade();
-            String credits = courseProgress.getCredits();
+            int credits = courseProgress.getCourse().getCredits();
+            totalCredits += credits;
             if(grade == "A") 
                 total += (4.00 * credits);
 
@@ -40,13 +42,50 @@ public class DegreeTracker {
                 total += (0.0 *credits);
         }
         
-        gpa = total/studentCourses.size();
+        gpa = total/totalCredits;
         
         return gpa;
     }
 
     public double CalculateMajorGPA() {
-        return 0.0;
+        double total = 0.0;
+        double gpa = 0.0;
+        int totalCredits = 0;
+        for (CourseProgress courseProgress : studentCourses) {
+            String id = courseProgress.getCourse().getIdentifier().substring(0,3);
+            if(id == "CSCE") {
+                String grade = courseProgress.getCourseGrade();
+                int credits = courseProgress.getCourse().getCredits();
+                totalCredits += credits;
+                if(grade == "A") 
+                    total += (4.00 * credits);
+
+                else if (grade == "B_PLUS")
+                    total += (3.5 * credits);
+                
+                else if (grade == "B") 
+                    total += (3.0 * credits);
+
+                else if (grade == "C_PLUS")
+                    total += (2.5 * credits);
+                
+                else if (grade == "C")
+                    total += (2.0 * credits);
+
+                else if (grade == "D_PLUS") 
+                    total += (1.5 *credits);
+
+                else if (grade == "D")
+                    total += (1.0 * credits);
+
+                else if (grade == "F") 
+                    total += (0.0 *credits);
+            }
+            
+            gpa = total/totalCredits;
+        }
+        
+        return gpa;
     }
 
     public double CalculateProgress() {
@@ -94,7 +133,14 @@ public class DegreeTracker {
     }
 
     public int requirementCreditsCompleted(String category) {
-        return 0;
+        for (CourseProgress courseProgress : studentCourses) {
+            String id = courseProgress.getCourse().getIdentifier().substring(0,3);
+            if(id == "CSCE") {
+                if(courseProgress.getCompletionStatus())
+                    completedCredits += courseProgress.getCourse().getCredits();
+            }
+        }
+        return completedCredits;
     }
 
     public int requirmentCreditsRemaining(String category) {
@@ -115,5 +161,9 @@ public class DegreeTracker {
             str += courseProgress.getCourseName() + " - " + courseProgress.getCourseGrade() + "\n";
         }
         return str;
+    }
+    //for data saving
+    public ArrayList<CourseProgress> getCourseProgress() {
+        return studentCourses;
     }
 }

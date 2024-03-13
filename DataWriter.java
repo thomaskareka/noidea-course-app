@@ -44,11 +44,93 @@ public class DataWriter extends DataConstants {
     }
 
     public static void saveCourses() {
-        
+        CourseList courseList = CourseList.getInstance();
+        ArrayList<Course> courses = courseList.getCourses();
+        JSONArray jsonCourses = new JSONArray();
+
+        for(Course c : courses) {
+            jsonCourses.add(getCourseJSON(c));
+        }
+
+        try(FileWriter file = new FileWriter(COURSE_FILE_NAME)) {
+            file.write(jsonCourses.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void saveMajors() {
-        
+        DegreeList degreeList = DegreeList.getInstance();
+        ArrayList<Degree> degrees = degreeList.getDegrees();
+        JSONArray jsonDegrees = new JSONArray();
+
+        for(Degree d : degrees) {
+            JSONObject dJson = new JSONObject();
+            dJson.put(DEGREE_TYPE, d.getType());
+            dJson.put(DEGREE_NAME, d.getTitle());
+            dJson.put(DEGREE_CREDITS, d.getCredits());
+            dJson.put(DEGREE_REQUIREMENTS, getDegreeReqJSON(d.getRequirements()));
+            jsonDegrees.add(dJson);
+        }
+
+        try(FileWriter file = new FileWriter(DEGREE_FILE_NAME)) {
+            file.write(jsonDegrees.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static JSONObject getCourseJSON(Course c) {
+        JSONObject out = new JSONObject();
+        out.put(COURSE_ID, c.getIdentifier());
+        out.put(COURSE_REQUISITES_TEXT, c.getRequisiteText());
+        out.put(COURSE_CREDITS, c.getCredits());
+        out.put(COURSE_NAME, c.getName());
+        out.put(COURSE_DESCRIPTION, c.getDescription());
+
+        JSONArray attributes = new JSONArray();
+        for(String a : c.getAttributes()) {
+            attributes.add(a);
+        }
+        out.put(COURSE_ATTRIBUTES, attributes);
+
+        JSONArray requisites = new JSONArray();
+        for(Requisite r : c.getRequisites()) {
+            requisites.add(getReqJSON(r));
+        }
+        out.put(COURSE_REQUISITES, requisites);
+        return out;
+    }
+
+    private static JSONObject getReqJSON(Requisite r) {
+        JSONObject out = new JSONObject();
+
+        out.put(REQ_COURSES, r.getCourseString());
+        out.put(REQ_GRADE, r.getMinGrade().toString());
+        out.put(REQ_TYPE, r.getType().toString());
+
+        return out;
+    }
+
+    public static JSONArray getDegreeReqJSON(ArrayList<DegreeRequirement> d) {
+        JSONArray out = new JSONArray();
+        for(DegreeRequirement dr : d) {
+            JSONObject reqJSON = new JSONObject();
+            reqJSON.put(DEGREE_REQ_CATEGORY, dr.getCategory());
+            reqJSON.put(DEGREE_REQ_CREDITS, dr.getRequirementsCredits());
+
+            ArrayList<String> reqCourses = dr.getRequirements();
+            JSONArray courseJSON = new JSONArray();
+            for (String s : reqCourses) {
+                courseJSON.add(s);
+            }
+            reqJSON.put(DEGREE_REQ_COURSES, courseJSON);
+            out.add(reqJSON);
+        }
+
+        return out;
     }
 
     public static JSONObject getStudentJSON(Student student) {
@@ -56,10 +138,12 @@ public class DataWriter extends DataConstants {
         studentDetails.put(STUDENT_MAJOR, student.getMajor());
         studentDetails.put(STUDENT_MINOR, student.getMinor());
         studentDetails.put(STUDENT_MAJOR_GPA, student.getMajorGPA());
-        studentDetails.put(STUDENT_GPA, student.getClassLevel());
+        studentDetails.put(STUDENT_GPA, student.getOverallGPA());
         studentDetails.put(STUDENT_CLASS, student.getClassLevel());
+        studentDetails.put(STUDENT_APP_AREA, student.getApplicationArea());
+        studentDetails.put(STUDENT_ID, student.getStudentID());
 
-        studentDetails.put(STUDENT_ADVISOR_ID, student.getAdvisorReference());
+        studentDetails.put(STUDENT_ADVISOR_ID, student.getAdvisorReference().toString());
         studentDetails.put(STUDENT_AT_RISK, student.checkIfAtRisk());
         
         JSONArray noteArray = new JSONArray();
@@ -69,10 +153,20 @@ public class DataWriter extends DataConstants {
         }
         studentDetails.put(STUDENT_NOTES, noteArray);
         studentDetails.put(STUDENT_SCHOLARSHIP, student.hasScholarship());
-        //TODO: degree tracker into JSONArray
-        studentDetails.put(STUDENT_COURSE_LIST, new JSONArray());
+        studentDetails.put(STUDENT_COURSE_LIST, getStudentCourseJSON(student.getDegreeTracker()));
 
         return studentDetails;
+    }
+
+    private static JSONArray getStudentCourseJSON(DegreeTracker t) {
+        JSONArray out = new JSONArray();
+        for(CourseProgress c : t.getCourseProgress()) {
+            JSONObject cpJSON = new JSONObject();
+            cpJSON.put(STUDENT_COURSE_GRADE, c.getCourseGrade());
+            cpJSON.put(STUDENT_COURSE_ID, c.getCourseID());
+            out.add(cpJSON);
+        }
+        return out;
     }
 
     public static JSONObject getAdvisorJSON(Advisor advisor) {

@@ -30,6 +30,7 @@ public class DataLoader extends DataConstants {
                 double majorGPA = (double)studentJSON.get(STUDENT_MAJOR_GPA);
                 double overallGPA = (double)studentJSON.get(STUDENT_GPA);
                 String classLevel = (String)studentJSON.get(STUDENT_CLASS);
+                String studentID = (String)studentJSON.get(STUDENT_ID);
 
                 UUID advisor = UUID.fromString((String)studentJSON.get(STUDENT_ADVISOR_ID));
 
@@ -53,7 +54,7 @@ public class DataLoader extends DataConstants {
                 }
 
                 DegreeTracker degreeProgress = new DegreeTracker(progress);
-                Student s = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisor, failureRisk, notes, hasScholarship, degreeProgress, password, applicationArea);
+                Student s = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisor, failureRisk, notes, hasScholarship, degreeProgress, password, applicationArea, studentID);
                 students.add(s);
             }
         } catch (Exception e) {
@@ -165,8 +166,11 @@ public class DataLoader extends DataConstants {
                 ArrayList<Requisite> requisites = getRequisites((JSONArray)courseJSON.get(COURSE_REQUISITES));
                 String reqText = (String)courseJSON.get(COURSE_REQUISITES_TEXT);
 
-                @SuppressWarnings("unchecked")
-                ArrayList<String> attributes = new ArrayList<String>((JSONArray) courseJSON.get(COURSE_ATTRIBUTES));
+                ArrayList<String> attributes = new ArrayList<String>();
+                JSONArray attributeJSON = (JSONArray)courseJSON.get(COURSE_ATTRIBUTES);
+                for (int j = 0; j < attributeJSON.size(); j++) {
+                    attributes.add((String) attributeJSON.get(j));
+                }
             
 
                 Course c = new Course(name, identifier, credits, description, attributes, requisites, reqText);

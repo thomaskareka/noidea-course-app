@@ -36,4 +36,8 @@ public class DegreeList {
     public Degree getRequiredCredits(int requiredCredits) {
         return null;
     }
+
+    public ArrayList<Degree> getDegrees() {
+        return degrees;
+    }
 }

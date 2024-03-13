@@ -40,12 +40,20 @@ public class Course {
         return this.credits;
     }
 
-    public String getDescription(){
+    public String getRequisiteText() {
+        return reqText;
+    }
+
+    public ArrayList<Requisite> getRequisites() {
+        return requisites;
+    }
+
+    public String getDescription() {
         return description;
     }
-    
-    public ArrayList<Requisite> getRequisites(){
-        return requisites;
+
+    public ArrayList<String> getAttributes() {
+        return attributes;
     }
 
     public String toString(){
