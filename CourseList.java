@@ -31,6 +31,52 @@ public class CourseList {
         return null;
     }
 
+    public String getCourseDescriptionByName(String name){
+        Course course = getCourseByName(name);
+        return course.getDescription();
+    }
+
+    public String getCourseDescriptionByIdentifer(String identfier){
+        Course course = getCourseByIdentifer(identfier);
+        return course.getDescription();
+    }
+
+    public String getReqsByName(String name){
+        Course course = getCourseByName(name);
+        ArrayList<Requisite> holder = course.getRequisites();
+        String str = "";
+        for (Requisite requisite : holder) {
+            str += requisite + "\n";
+        }
+        return str;
+    }
+
+    public String getReqsByIdentifer(String identifer){
+        Course course = getCourseByIdentifer(identifer);
+        ArrayList<Requisite> holder = course.getRequisites();
+        String str = "";
+        for (Requisite requisite : holder) {
+            str += requisite + "\n";
+        }
+        return str;
+    }
+
+    public boolean addCourse(Advisor advisor, String name, String identifier, int credits, String description, ArrayList<String> attributes, ArrayList<Requisite> requisite, String reqText){
+        if(advisor.isAdmin()){
+            Course newCourse = new Course(name, identifier, credits, description, attributes, requisite, reqText);
+            courses.add(newCourse);
+        }
+        return containsCourse(name);
+    }
+
+    private boolean containsCourse(String name){
+        for (Course course : courses) {
+            if(course.getName().equalsIgnoreCase(name))
+                return true;
+        }
+        return false;
+    }
+
     public String getAllCourses(){
         String str = "";
         for (Course course : courses) {

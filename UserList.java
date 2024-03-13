@@ -110,9 +110,25 @@ public class UserList {
         return false;
     }
 
-    /*public String showAlluserCourses(Student student){ 
-        return "";
-    }*/
+    public String getStudentIncompleteCourses(Student student){
+        return student.getAllIncompletedCourses();
+    }
+
+    public String getStudentCompleteCourses(Student student){
+        return student.getAllCompletedCourses();
+    }
+
+    public boolean checkIfStudentIsAtRisk(Student student){
+        return student.checkIfAtRisk();
+    }
+
+    public double studentOverallGPA(Student student){
+        return student.getOverallGPA();
+    }
+
+    public double studentMajorGPA(Student student){
+        return student.getMajorGPA();
+    }
 
     public void addStudentUser(String fisrtName, String lastName, String email, String major, String password){       
         Student student = new Student(fisrtName, lastName, email, major, password);
