@@ -134,8 +134,11 @@ public class DegreeTracker {
 
     public int requirementCreditsCompleted(String category) {
         for (CourseProgress courseProgress : studentCourses) {
-            if(courseProgress.getCompletionStatus())
-                completedCredits += courseProgress.getCourse().getCredits();
+            String id = courseProgress.getCourse().getIdentifier().substring(0,3);
+            if(id == "CSCE") {
+                if(courseProgress.getCompletionStatus())
+                    completedCredits += courseProgress.getCourse().getCredits();
+            }
         }
         return completedCredits;
     }
