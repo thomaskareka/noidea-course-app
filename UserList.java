@@ -153,6 +153,10 @@ public class UserList {
         return student.getCourseGrade(name, identifier);
     }
 
+    public double calculateDegreeCompletionPercentage(Student student){
+        return student.getDegreePercentage();
+    }
+
     public void addStudentUser(String fisrtName, String lastName, String email, String major, String password){       
         Student student = new Student(fisrtName, lastName, email, major, password);
         students.add(student);

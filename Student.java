@@ -96,6 +96,9 @@ public class Student extends User {
     public void addCourseForStudent(Course course){
         degreeProgress.addCourse(course);
     }
+    public double getDegreePercentage(){
+       return degreeProgress.CalculateProgress();
+    }
 
     public void removeCourseForStudent(Course course){
         degreeProgress.removeCourse(course.getName());

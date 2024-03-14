@@ -141,8 +141,8 @@ public class CourseSystem{
     public double  getStudentMajorGPA(Student student){
         return userList.studentMajorGPA(student);
     }
-    public int calculateDegreeCompletionPercentage(Student student){
-        return 0;
+    public double calculateDegreeCompletionPercentage(Student student){
+        return userList.calculateDegreeCompletionPercentage(student);
     }
     public String getCourseGrade(Student student, Course course){
         return userList.getCourseGrade(student, course);
