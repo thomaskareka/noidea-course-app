@@ -30,6 +30,9 @@ public class UserList {
         
         return null;
     }
+    public boolean logout(User user){
+        return true;
+    }
     
     public boolean signUp(boolean type, String firstName, String lastName, String email, String password){
         if(!containsUser(email)){
