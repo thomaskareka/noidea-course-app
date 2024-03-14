@@ -56,13 +56,12 @@ public class CourseSystem{
     public String courseRequistesSearchByIdentifer(String identfier){
         return courseList.getReqsByIdentifer(identfier);
     }
-
-    public boolean addCourse(String name, String identifier, int credits, String description, ArrayList<String> attributes, Requisite requisite){
-        //return courseList.addCourse(user, name, identifier, credits, description, attributes, null, description);
-        return true;
+    public boolean addCourse(Advisor advisor, String name, String identifier, int credits, String description, ArrayList<String> attributes, ArrayList<Requisite> requisite, String reqText){
+        return courseList.addCourse(advisor, name, identifier, credits, description, attributes,  requisite, reqText);
     }
     public boolean addCourse(Advisor advisor, String name, String identifier, int credits){
-        return true;
+       return courseList.addCourse(advisor, name, identifier, credits, new String(), new ArrayList<String>(), new ArrayList<Requisite>(), new String());
+
     }
     public boolean removeCourse(Advisor advisor, Course course){
         return true;
