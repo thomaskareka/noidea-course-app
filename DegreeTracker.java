@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class DegreeTracker {
     private ArrayList<CourseProgress> studentCourses;
-    //private Degree degree;
     private int completedCredits;
     private int requiredCredits;
 
