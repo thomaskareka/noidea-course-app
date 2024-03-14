@@ -33,6 +33,14 @@ public class CourseProgress {
         String str = gradeReceived.toString().replace("_PLUS", "+");
         return str;
     }
+    
+    public boolean editCourseGrade(Grade grade){
+        gradeReceived = grade;
+        if(gradeReceived != null)
+            return true;
+
+        return false;
+    }
 
     public CourseProgress(String course) {
         this.course = course;

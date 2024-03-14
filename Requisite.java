@@ -13,11 +13,6 @@ public class Requisite {
         this.courseString = courseString;
         this.minGrade = minGrade;
     }
-    /* copy construtor
-    public Requisite (Requisite r){
-        this.type = r.getType();    
-   }
-   */
 
     // getters
     public RequisiteType getType(){

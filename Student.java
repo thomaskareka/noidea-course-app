@@ -84,13 +84,28 @@ public class Student extends User {
         }
         return str;
     }
-
     public void addCourse(Course course){
         degreeProgress.addCourse(course);
     }
-
     public void removeCourse(Course course){
         degreeProgress.removeCourse(course.getName());
+    }
+    public String getCourseGrade(String name, String identifier){
+       return degreeProgress.getCourseGrade(name, identifier);
+    }
+    public void addCourseForStudent(Course course){
+        degreeProgress.addCourse(course);
+    }
+    public double getDegreePercentage(){
+       return degreeProgress.CalculateProgress();
+    }
+
+    public void removeCourseForStudent(Course course){
+        degreeProgress.removeCourse(course.getName());
+    }
+
+    public boolean addGrade(Course course, Grade grade){
+        return degreeProgress.addGrade(course, grade);
     }
 
     public String getMajor() {

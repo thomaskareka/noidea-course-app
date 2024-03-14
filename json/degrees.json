@@ -49,4 +49,50 @@
         {"category": "Required Course", "credits": -1, "courses": ["MATH241"]},
         {"category": "Additional Courses", "credits": 15, "courses": ["MATH242", "MATH300", "MATH344", "MATH374", "..."]}
     ]
+},
+{
+    "type": "applicationArea",
+    "name": "Scientific Computing",
+    "requiredCredits": 9,
+    "requirements": [
+        {"category": "Required Application Area Courses", "credits": 6, "courses": ["MATH240", "MATH300"]},
+        {"category": "Recommended Application Area Courses", "credits": 3, "courses": ["MATH520", "MATH546", "MATH554", "MATH574"]},
+        {"category": "CSCE Courses", "credits": 0, "courses": ["CSCE564", "CSCE565", "CSCE567", "CSCE569"]}
+    ]
+},
+{
+    "type": "applicationArea",
+    "name": "Linguistics (Speech)",
+    "requiredCredits": 9,
+    "requirements": [
+        {"category": "Application Area Courses", "credits": 9, "courses": ["LING340", "LING421", "LING440", "LING565", "LING567"]},
+        {"category": "CSCE Courses", "credits": 0, "courses": ["CSCE520", "CSCE552", "CSCE564", "CSCE565", "CSCE567"]}
+    ]
+},
+{
+    "type": "applicationArea",
+    "name": "Robotics",
+    "requiredCredits": 9,
+    "requirements": [
+        {"category": "Application Area Courses", "credits": 9, "courses": ["EMCH535", "ELCT331", "ELCT531"]},
+        {"category": "CSCE Courses", "credits": 0, "courses": ["CSCE574, CSCE580"]}
+    ]
+},
+{
+    "type": "applicationArea",
+    "name": "Data Scientist (Statistics)",
+    "requiredCredits": 9,
+    "requirements": [
+        {"category": "Application Area Courses", "credits": 9, "courses": ["STAT530", "STAT511", "STAT535", "STAT512", "STAT513"]},
+        {"category": "CSCE Courses", "credits": 0, "courses": ["CSCE520", "CSCE580", "CSCE587", "CSCE582", "CSCE567", "CSCE578"]}
+    ]
+},
+{
+    "type": "applicationArea",
+    "name": "Digital Design",
+    "requiredCredits": 9,
+    "requirements": [
+        {"category": "Application Area Courses", "credits": 9, "courses": ["MGMT371", "MGMT374", "MGMT376", "MGMT402", "MGMT403"]},
+        {"category": "CSCE Courses", "credits": 0, "courses": ["CSCE520", "CSCE547", "CSCE590"]}
+    ]
 }]
