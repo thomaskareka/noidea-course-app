@@ -92,6 +92,24 @@ public class DegreeTracker {
         return 0.0;
     }
 
+    public String getCourseGrade(String name, String identifer){
+        CourseProgress holder = getCourseProgress(name);
+        return holder.getCourseGrade();
+    }
+
+    public boolean addGrade(Course course, Grade grade){
+        CourseProgress holder = getCourseProgress(course.getName());
+        return holder.editCourseGrade(grade);
+    }
+
+    private CourseProgress getCourseProgress(String name){
+        for (CourseProgress courseProgress : studentCourses) {
+            if(courseProgress.getCourseName().equalsIgnoreCase(name))
+                return courseProgress;
+        }
+        return null;
+    }
+
     public ArrayList<String> GetIncompleteCourses() {
         ArrayList<String> incompletedCourses = new ArrayList<String>();
         for (CourseProgress courseProgress : studentCourses) {
