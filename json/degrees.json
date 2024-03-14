@@ -3,9 +3,42 @@
     "name": "Bachelor of Science in Computer Science",
     "requiredCredits": 125,
     "requirements": [
+        {"category": "CC Communication and Writing", "credits": 6, "courses": ["CC-CMW"]},
+        {"category": "CC Analytical Reasoning and Problem Solving", "credits": 6, "courses": ["CC-ARP"]},
+        {"category": "CC Scientific Literacy", "credits": 7, "courses": ["CC-SCI"]},
+        {"category": "CC Foreign Language", "credits": 0, "courses": ["CC-GFL"]},
+        {"category": "CC Historical Thinking", "credits": 3, "courses": ["CC-GHS"]},
+        {"category": "CC Social Sciences", "credits": 3, "courses": ["CC-GSS"]},
+        {"category": "CC Aesthetic and Interpretive Understanding", "credits": 3, "courses": ["CC-AIU"]},
+        {"category": "CC Communication: Spoken Component", "credits": 3, "courses": ["CC-CMS"]},
+        {"category": "CC Information Literacy", "credits": 3, "courses": ["CC-INF"]},
+        {"category": "CC Ethics", "credits": -1, "courses": ["CSCE390"]},
         {"category": "Foundational Courses", "credits": -1, "courses": ["MATH241", "MATH344+MATH344L", "ENGL462/ENGL463"]},
-        {"category": "Major Courses", "credits": -1, "courses": ["CSCE311", "CSCE330", "CSCE350"]}, 
-        {"category": "CSCE Electives", "credits": 9, "courses": ["..."]}
+        {"category": "Laboratory Science Elective", "credits": 4, "courses": ["ANTH161", "ASTR101", "BIOL101+BIOL101L", "CHEM111+CHEM111L", "CHEM141", "ENVR101+ENVR101L", "ENVR200", "BIOL110", "GEOG201", "GEOG202", "GEOL101", "GEOL103", "GEOL201", "GEOL215+GEOL215L", "GEOL302", "MSCI101", "MSCI102", "MSCI210+MSCI210L", "MSCI215", "MSCI215L", "PHYS211", "PHYS211L"]},
+        {"category": "Liberal Arts Electives", "credits": 9, "courses": ["..."]},
+        {"category": "Lower Division Computing", "credits": -1, "courses": ["CSCE145", "CSCE146", "CSCE190", "CSCE211", "CSCE212", "CSCE215", "CSCE240", "CSCE247"]},
+        {"category": "Major Courses", "credits": -1, "courses": ["CSCE311", "CSCE330", "CSCE350", "CSCE355", "CSCE416", "CSCE490", "CSCE490"]}, 
+        {"category": "CSCE Electives", "credits": 9, "courses": ["CSCE317", "CSCE611", "CSCE510","CSCE512","CSCE513","CSCE515","CSCE516","CSCE517","CSCE518","CSCE520","CSCE522","CSCE526","CSCE531","CSCE546","CSCE547","CSCE548","CSCE551","CSCE552","CSCE555","CSCE557","CSCE561","CSCE563","CSCE564","CSCE565","CSCE567","CSCE569","CSCE571","CSCE572","CSCE574","CSCE578","CSCE580","CSCE582","CSCE585","CSCE587","CSCE590","CSCE594"]}
+    ]
+}, 
+{
+    "type": "major",
+    "name": "Computer Information Systems",
+    "requiredCredits": 125,
+    "requirements": [
+        {"category": "CC Communication and Writing", "credits": 6, "courses": ["CC-CMW"]},
+        {"category": "CC Analytical Reasoning and Problem Solving", "credits": 6, "courses": ["CC-ARP"]},
+        {"category": "CC Scientific Literacy", "credits": 7, "courses": ["CC-SCI"]},
+        {"category": "CC Foreign Language", "credits": 0, "courses": ["CC-GFL"]},
+        {"category": "CC Historical Thinking", "credits": 3, "courses": ["CC-GHS"]},
+        {"category": "CC Social Sciences", "credits": 3, "courses": ["CC-GSS"]},
+        {"category": "CC Aesthetic and Interpretive Understanding", "credits": 3, "courses": ["CC-AIU"]},
+        {"category": "CC Communication: Spoken Component", "credits": 3, "courses": ["CC-CMS"]},
+        {"category": "CC Information Literacy", "credits": 3, "courses": ["CC-INF"]},
+        {"category": "CC Ethics", "credits": -1, "courses": ["CSCE390"]},
+        {"category": "Major Courses", "credits": 14, "courses": ["CSCE205", "CSCE350", "CSCE416", "CSCE490", "CSCE492", "CSCE520", "CSCE522", "CSCE594"]},
+        {"category": "Major Elective", "credits" : 3, "courses": ["ITEC447", "ITEC560", "CSCE611", "CSCE510","CSCE512","CSCE513","CSCE515","CSCE516","CSCE517","CSCE518","CSCE526","CSCE531","CSCE546","CSCE547","CSCE548","CSCE551","CSCE552","CSCE555","CSCE557","CSCE561","CSCE563","CSCE564","CSCE565","CSCE567","CSCE569","CSCE571","CSCE572","CSCE574","CSCE578","CSCE580","CSCE582","CSCE585","CSCE587","CSCE590"]},
+        {"category": "Integrative Course", "credits": -1, "courses": ["CSCE490"]}
     ]
 }, 
 {

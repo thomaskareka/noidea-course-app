@@ -4,6 +4,7 @@ public class DegreeTracker {
     private ArrayList<CourseProgress> studentCourses;
     //private Degree degree;
     private int completedCredits;
+    private int requiredCredits;
 
     public DegreeTracker(ArrayList<CourseProgress> studentCourses) {
         this.studentCourses = studentCourses;
@@ -89,7 +90,7 @@ public class DegreeTracker {
     }
 
     public double CalculateProgress() {
-        return 0.0;
+        return (completedCredits/requiredCredits)*100;
     }
 
     public String getCourseGrade(String name, String identifer){
@@ -147,13 +148,16 @@ public class DegreeTracker {
     }
 
     public boolean checkIfDegreeRequirementsMet(Degree degree) {
+        if(CalculateProgress() != 100)
+            return false;
+
         return true;
     }
 
     public int requirementCreditsCompleted(String category) {
         for (CourseProgress courseProgress : studentCourses) {
             String id = courseProgress.getCourse().getIdentifier().substring(0,3);
-            if(id == "CSCE") {
+            if(id == category) {
                 if(courseProgress.getCompletionStatus())
                     completedCredits += courseProgress.getCourse().getCredits();
             }
@@ -161,8 +165,10 @@ public class DegreeTracker {
         return completedCredits;
     }
 
-    public int requirmentCreditsRemaining(String category) {
-        return 0;
+    public int requirementCreditsRemaining(String category, String major) {
+        Degree d = DegreeList.getInstance().getMajor(major);
+        requiredCredits = d.getCredits();
+        return requiredCredits - completedCredits;
     }
 
     public String getAllCourses(){
