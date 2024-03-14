@@ -110,6 +110,18 @@ public class UserList {
         return false;
     }
 
+    public void addCourseForStudent(Student student, Course course){
+        student.addCourseForStudent(course);
+    }
+
+    public void removeCourseForStudent(Student student, Course course){
+        student.removeCourseForStudent(course);
+    }
+
+    public boolean addGrade(Student student, Course course, Grade grade){
+        return student.addGrade(course, grade);
+    }
+
     public String getStudentIncompleteCourses(Student student){
         return student.getAllIncompletedCourses();
     }
@@ -128,6 +140,14 @@ public class UserList {
 
     public double studentMajorGPA(Student student){
         return student.getMajorGPA();
+    }
+
+    public String getCourseGrade(Student student, Course course){
+        return student.getCourseGrade(course.getName(), course.getIdentifier());
+    }
+
+    public String getCourseGrade(Student student, String name, String identifier){
+        return student.getCourseGrade(name, identifier);
     }
 
     public void addStudentUser(String fisrtName, String lastName, String email, String major, String password){       

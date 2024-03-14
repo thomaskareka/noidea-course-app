@@ -77,8 +77,11 @@ public class CourseSystem{
     public boolean removeCourse(Advisor advisor, String name, int identifier){
         return true;
     }
-    public boolean addGrade(Advisor advisor, Student student, Course course){
-        return true;
+    public boolean addGrade( Student student, Course course, Grade grade){
+        if(user.getClass().toString().equals("Advisor")){
+            return userList.addGrade(student, course, grade);
+        }
+        return false;
     } 
     public Student searchByStudentId(Advisor advisor, String id){
         return new Student(null, null, null, null, null);
@@ -86,23 +89,30 @@ public class CourseSystem{
     public Student searchByStudentEmail(Advisor advisor, String email){
         return new Student(null, null, null, null, null);
     }
-    public void addNotes(Advisor advisor, Student student, String notes){
-        
+    public void addNotes(Student student, String notes){
+        if(user.getClass().toString().equals("Advisor")){
+            student.addNotes(notes);
+        }
     }
     public void  addCourseForStudent(Advisor advisor, Student student, Course course){
-
-    }
-    public void moveCourse(Advisor advisor, Student student, Course course){
-
+        if(user.getClass().toString().equals("Advisor")){
+            userList.addCourseForStudent(student, course);
+        }
     }
     public void removeCourseForStudent(Advisor advisor, Student student, Course course){
-
+        if(user.getClass().toString().equals("Advisor")){
+            userList.removeCourseForStudent(student, course);
+        }
     }
-    public void enterFailureRisk(Advisor advisor, Student student, boolean failureRisk){
-
+    public void enterFailureRisk(Student student, boolean failureRisk){
+        if(user.getClass().toString().equals("Advisor")){
+            student.editFailureRisk(failureRisk);
+        }
     }
     public void removeFailureRisk(Advisor advisor, Student student, boolean failureRisk){
-
+        if(user.getClass().toString().equals("Advisor")){
+            student.editFailureRisk(failureRisk);
+        }
     }
     public ArrayList<Student> getListOfAdvisses(Advisor advisor){
         return new ArrayList<Student>();
@@ -140,11 +150,11 @@ public class CourseSystem{
     public int calculateDegreeCompletionPercentage(Student student){
         return 0;
     }
-    public Grade getCourseGrade(Student student, Course course){
-        return null;
+    public String getCourseGrade(Student student, Course course){
+        return userList.getCourseGrade(student, course);
     }
-    public Grade getCourseGrade(Student student, String name, int identifier){
-        return null;
+    public String getCourseGrade(Student student, String name, String identifier){
+        return userList.getCourseGrade(student, name, identifier);
     }
 
 }
