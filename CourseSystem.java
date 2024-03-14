@@ -42,32 +42,34 @@ public class CourseSystem{
        return courseList.getAllCourses();
     }
 
+    // has to be overwritten so advisor can get a student's classes
     public String getAllUserClasses(){ 
         return userList.getAllStudentCourses(user.getID());
     }
 
-    //Degree Tracker for student is null
+    // has to be overwritten so advisor can get a student's classes
     public String createUserTranscript(){
         return userList.createUserTranscript(user.getID());
     }
 
-    public String courseDescriptionSearch(String name){
-        return "";
+    public String courseDescriptionSearchByName(String name){
+        return courseList.getCourseDescriptionByName(name);
     }
-    public String courseDescriptionSearch(int identifier){
-        return "";
+    public String courseDescriptionSearchByIdentifier(String identifier){
+        return courseList.getCourseDescriptionByIdentifer(identifier);
     }
-    public String courseRequistesSearch(String name){
-        return "";
+    public String courseRequistesSearchByName(String name){
+        return courseList.getReqsByName(name);
     }
-    public String courseRequistesSearch(int identfier){
-        return "";
+    public String courseRequistesSearchByIdentifer(String identfier){
+        return courseList.getReqsByIdentifer(identfier);
     }
-    public boolean addCourse(Advisor advisor, String name, String identifier, int credits, String description, ArrayList<String> attributes, Requisite requisite){
-        return true;
+    public boolean addCourse(Advisor advisor, String name, String identifier, int credits, String description, ArrayList<String> attributes, ArrayList<Requisite> requisite, String reqText){
+        return courseList.addCourse(advisor, name, identifier, credits, description, attributes,  requisite, reqText);
     }
     public boolean addCourse(Advisor advisor, String name, String identifier, int credits){
-        return true;
+       return courseList.addCourse(advisor, name, identifier, credits, new String(), new ArrayList<String>(), new ArrayList<Requisite>(), new String());
+
     }
     public boolean removeCourse(Advisor advisor, Course course){
         return true;
@@ -112,13 +114,13 @@ public class CourseSystem{
         return "";
     }
     public String  getAllCompletedCourses(Student student){
-        return "";
+        return userList.getStudentCompleteCourses(student);
     }
     public String getAllUncompletedCourses(Student student){
-        return "";
+        return userList.getStudentIncompleteCourses(student);
     }
     public boolean checkIfStudentAtRisk(Advisor advisor, Student student){
-        return true;
+        return userList.checkIfStudentIsAtRisk(student);
     }
     public String getDegreeRequirements(String category){
         return "";
@@ -126,12 +128,15 @@ public class CourseSystem{
     public String getDegreeCourses(String degree){
         return "";
     }
-    public double  getStudentOverallGPA(Student student){
-        return 0.0;
+
+    public double getStudentOverallGPA(Student student) {
+        return userList.studentOverallGPA(student);
     }
+
     public double  getStudentMajorGPA(Student student){
-        return 0.0;
+        return userList.studentMajorGPA(student);
     }
+
     public int calculateDegreeCompletionPercentage(Student student){
         return 0;
     }

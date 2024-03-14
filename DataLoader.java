@@ -30,11 +30,16 @@ public class DataLoader extends DataConstants {
                 double majorGPA = (double)studentJSON.get(STUDENT_MAJOR_GPA);
                 double overallGPA = (double)studentJSON.get(STUDENT_GPA);
                 String classLevel = (String)studentJSON.get(STUDENT_CLASS);
+                String studentID = (String)studentJSON.get(STUDENT_ID);
 
                 UUID advisor = UUID.fromString((String)studentJSON.get(STUDENT_ADVISOR_ID));
 
                 boolean failureRisk = (boolean)studentJSON.get(STUDENT_AT_RISK);
-                ArrayList<String> notes = new ArrayList<String>((JSONArray) studentJSON.get(STUDENT_NOTES));
+                ArrayList<String> notes = new ArrayList<String>();
+                JSONArray noteArray = ((JSONArray) studentJSON.get(STUDENT_NOTES));
+                for(int j = 0; j < noteArray.size(); j++) {
+                    notes.add((String) noteArray.get(j));
+                }
                 boolean hasScholarship = (boolean)studentJSON.get(STUDENT_SCHOLARSHIP);
 
                 JSONArray degreeJSON = (JSONArray) studentJSON.get(STUDENT_COURSE_LIST);
@@ -49,7 +54,7 @@ public class DataLoader extends DataConstants {
                 }
 
                 DegreeTracker degreeProgress = new DegreeTracker(progress);
-                Student s = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisor, failureRisk, notes, hasScholarship, degreeProgress, password, applicationArea);
+                Student s = new Student(firstName, lastName, email, id, major, minor, majorGPA, overallGPA, classLevel, advisor, failureRisk, notes, hasScholarship, degreeProgress, password, applicationArea, studentID);
                 students.add(s);
             }
         } catch (Exception e) {
@@ -158,13 +163,17 @@ public class DataLoader extends DataConstants {
                 String identifier = (String)courseJSON.get(COURSE_ID);
                 int credits = Math.toIntExact((long) courseJSON.get(COURSE_CREDITS));
                 String description = (String)courseJSON.get(COURSE_DESCRIPTION);
-                ArrayList<Requisite> requisites = new ArrayList<Requisite>();
+                ArrayList<Requisite> requisites = getRequisites((JSONArray)courseJSON.get(COURSE_REQUISITES));
+                String reqText = (String)courseJSON.get(COURSE_REQUISITES_TEXT);
 
-                @SuppressWarnings("unchecked")
-                ArrayList<String> attributes = new ArrayList<String>((JSONArray) courseJSON.get(COURSE_ATTRIBUTES));
+                ArrayList<String> attributes = new ArrayList<String>();
+                JSONArray attributeJSON = (JSONArray)courseJSON.get(COURSE_ATTRIBUTES);
+                for (int j = 0; j < attributeJSON.size(); j++) {
+                    attributes.add((String) attributeJSON.get(j));
+                }
             
 
-                Course c = new Course(name, identifier, credits, description, attributes, requisites);
+                Course c = new Course(name, identifier, credits, description, attributes, requisites, reqText);
                 courses.add(c);
             }
         } catch (Exception e) {
@@ -172,6 +181,27 @@ public class DataLoader extends DataConstants {
         }
 
         return courses;
+    }
+
+    private static ArrayList<Requisite> getRequisites(JSONArray a) {
+        ArrayList<Requisite> out = new ArrayList<Requisite>();
+
+        for(int i = 0; i < a.size(); i++) {
+            JSONObject reqJSON = (JSONObject)a.get(i);
+
+            if(reqJSON.toJSONString().length() < 3) { 
+                return out;
+            }
+
+            String courses = (String)reqJSON.get(REQ_COURSES);
+            Grade minGrade = Grade.valueOf(((String)reqJSON.get(REQ_GRADE)).replace("+", "_PLUS"));
+            RequisiteType type = RequisiteType.valueOf((String)reqJSON.get(REQ_TYPE));
+
+
+            out.add(new Requisite(type, courses, minGrade));
+        }        
+
+        return out;
     }
 
 

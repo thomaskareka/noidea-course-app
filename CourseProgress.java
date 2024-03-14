@@ -15,14 +15,22 @@ public class CourseProgress {
         return CourseList.getInstance().getCourseByIdentifer(course);
     }
 
+    public String getCourseID() {
+        return course;
+    }
+
     public String getCourseName(){
         Course courseObj = CourseList.getInstance().getCourseByIdentifer(course);
         String str = course + ": " + courseObj.getName();
         return str;
     }
 
+    public boolean getCompletionStatus(){
+        return isComplete;
+    }
+
     public String getCourseGrade(){
-        String str = gradeReceived.toString();
+        String str = gradeReceived.toString().replace("_PLUS", "+");
         return str;
     }
 

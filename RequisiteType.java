@@ -1,3 +1,3 @@
 public enum RequisiteType {
-    PREREQ, COREQ, PRE_OR_CO
+    pre, co, pre_or_co
 }

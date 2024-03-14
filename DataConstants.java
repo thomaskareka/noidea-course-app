@@ -13,8 +13,12 @@ public abstract class DataConstants {
     protected static final String COURSE_CREDITS = "credits";
     protected static final String COURSE_DESCRIPTION = "description";
     protected static final String COURSE_ATTRIBUTES = "attributes";
-    protected static final String COURSE_RESQUISITES = "requisites";
+    protected static final String COURSE_REQUISITES = "requisites";
     protected static final String COURSE_REQUISITES_TEXT = "requisiteText";
+
+    protected static final String REQ_COURSES = "courses";
+    protected static final String REQ_GRADE = "grade";
+    protected static final String REQ_TYPE = "type";
      
     protected static final String USER_ID = "uuid";
     protected static final String USER_FIRST_NAME = "firstName";
@@ -33,6 +37,7 @@ public abstract class DataConstants {
     protected static final String STUDENT_SCHOLARSHIP = "hasScholarship";
     protected static final String STUDENT_COURSE_LIST = "courses";
     protected static final String STUDENT_APP_AREA = "applicationArea";
+    protected static final String STUDENT_ID = "studentID";
 
     protected static final String STUDENT_COURSE_ID = "id";
     protected static final String STUDENT_COURSE_GRADE = "grade";

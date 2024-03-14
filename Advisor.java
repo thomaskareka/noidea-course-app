@@ -28,27 +28,23 @@ public class Advisor extends User {
     }
 
     public void addCourseForStudent(Student student, Course course) {
-
-    }
-
-    public void moveCourse(Student student, Course course) {
-
+        student.addCourse(course);
     }
 
     public void removeCourseForStudent(Student student, Course course) {
-
+        student.removeCourse(course);
     }
 
     public void addNotes(Student student, String notes) {
-
+        student.addNotes(notes);
     }
 
-    public void enterFailureRisk(Student student, boolean failureRisk) {
-
+    public void enterFailureRisk(Student student) {
+        student.editFailureRisk(true);
     }
 
-    public void removeFailureRisk(Student student, boolean failureRisk) {
-
+    public void removeFailureRisk(Student student) {
+        student.editFailureRisk(false);
     }
 
     public boolean isAdmin() {
