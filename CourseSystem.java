@@ -54,13 +54,13 @@ public class CourseSystem{
     public String courseDescriptionSearch(String name){
         return "";
     }
-    public String courseDescriptionSearch( int identifier){
+    public String courseDescriptionSearch(int identifier){
         return "";
     }
     public String courseRequistesSearch(String name){
         return "";
     }
-    public String courseRequistesSearch( int identfier){
+    public String courseRequistesSearch(int identfier){
         return "";
     }
     public boolean addCourse(Advisor advisor, String name, String identifier, int credits, String description, ArrayList<String> attributes, Requisite requisite){
