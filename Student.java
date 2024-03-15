@@ -182,4 +182,40 @@ public class Student extends User {
         out += "Notes: " + notes.toString();
         return out + "\n";
     }
+
+    public void printAllRequirements() {
+        System.out.println(firstName + " " + lastName + " course progress:"); 
+        DegreeList degreeList = DegreeList.getInstance();
+        Degree ma = degreeList.getMajor(major);
+        Degree mi = degreeList.getMajor(minor);
+        Degree a = degreeList.getMajor(applicationArea);
+
+        ArrayList<String> courseStrings = degreeProgress.GetCompleteCourses();
+        ArrayList<Course> courses = new ArrayList<Course>();
+        ArrayList<DegreeRequirement> dr = new ArrayList<DegreeRequirement>();
+        CourseList cl = CourseList.getInstance();
+        for(String s : courseStrings) {
+            courses.add(cl.getCourseByIdentifer(s));
+        }
+        if(ma != null) {
+            dr = ma.getRequirements();
+            System.out.println(major);
+            for (DegreeRequirement degreeRequirement : dr) {
+                System.out.println(degreeRequirement.calculateRequirement(courses));
+            }
+        }  if(mi != null) {
+            dr = mi.getRequirements();
+            System.out.println(minor);
+            for (DegreeRequirement degreeRequirement : dr) {
+                System.out.println(degreeRequirement.calculateRequirement(courses));
+            }
+        } if(a != null) {
+            dr = a.getRequirements();
+            System.out.println(applicationArea);
+            for (DegreeRequirement degreeRequirement : dr) {
+                System.out.println(degreeRequirement.calculateRequirement(courses));
+            }
+        }
+
+    }
 }

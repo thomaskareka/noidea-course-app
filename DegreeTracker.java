@@ -8,6 +8,8 @@ public class DegreeTracker {
 
     public DegreeTracker(ArrayList<CourseProgress> studentCourses) {
         this.studentCourses = studentCourses;
+        CalculateGPA();
+        CalculateMajorGPA();
     }
 
     public double CalculateGPA() {
@@ -127,7 +129,7 @@ public class DegreeTracker {
         ArrayList<String> incompletedCourses = new ArrayList<String>();
         for (CourseProgress courseProgress : studentCourses) {
             if(!courseProgress.getCompletionStatus())
-                incompletedCourses.add(courseProgress.getCourseName());
+                incompletedCourses.add(courseProgress.getCourseID());
         }
         
         return incompletedCourses;
@@ -137,7 +139,7 @@ public class DegreeTracker {
         ArrayList<String> completedCourses = new ArrayList<String>();
         for (CourseProgress courseProgress : studentCourses) {
             if(courseProgress.getCompletionStatus())
-                completedCourses.add(courseProgress.getCourseName());
+                completedCourses.add(courseProgress.getCourseID());
         }
         
         return completedCourses;
@@ -199,7 +201,7 @@ public class DegreeTracker {
     }
 
     public String createTranscipt(){
-        String str = completedCredits + "credits completed.\n";
+        String str = completedCredits + " credits completed.\n";
         for (CourseProgress courseProgress : studentCourses) {
             str += courseProgress.getCourseName() + " - " + courseProgress.getCourseGrade() + "\n";
         }

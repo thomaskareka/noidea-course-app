@@ -15,7 +15,8 @@ public class UI {
         // scenario5();
         // scenario6();
 
-        init_braxScenario();
+        // init_braxScenario();
+        // braxScenario();
     }
 
     public void exit() {
@@ -72,12 +73,34 @@ public class UI {
     public void init_braxScenario() {
         system.signUp(true, "Brax", "West", "bwest@email.sc.edu", "password");
         system.setStudentMajor("Bachelor of Science in Computer Science");
+        system.addGrade("GEOG210", Grade.B);
+        system.addGrade("CSCE145", Grade.A);
+        system.addGrade("POLI201", Grade.B);
+        system.addGrade("MATH141", Grade.B_PLUS);
         system.addGrade("CSCE145", Grade.A);
         system.addGrade("CSCE146", Grade.A);
-        system.addGrade("CSCE146", Grade.B);
-        system.addGrade("CSCE247", Grade.D);
-        system.addGrade("MATH242", Grade.B_PLUS);
+        system.addGrade("CSCE190", Grade.B_PLUS);
+        system.addGrade("ENGL101", Grade.A);
+        system.addGrade("PHYS211", Grade.A);
+        system.addGrade("MATH142", Grade.C);
+        system.addGrade("PHYS211L", Grade.A);
+        system.addGrade("CSCE211", Grade.A);
+        system.addGrade("CSCE215", Grade.A);
+        system.addGrade("ENGL102", Grade.D);
+        system.addGrade("MATH241", Grade.A);
         system.addGrade("MUSC114", Grade.A);
+        system.addGrade("PHYS212", Grade.B);
+        system.addGrade("PHYS212L", Grade.A);
+        system.addGrade("CHIN121", Grade.A);
+        system.addGrade("CSCE212", Grade.A);
+        system.addGrade("CSCE240", Grade.A);
+        system.addGrade("MATH374", Grade.B);
+        system.addGrade("CSCE247", Grade.A);
+        system.addGrade("CSCE311", Grade.A);
+        system.addGrade("CSCE350", Grade.A);
+        system.addGrade("CSCE390", Grade.A);
+        system.addGrade("STAT509", Grade.A);
+        system.addGrade("CSCE520", Grade.B);
 
         system.addCourseForStudent("CSCE330");
         system.addCourseForStudent("CSCE490");
@@ -86,12 +109,16 @@ public class UI {
         system.addCourseForStudent("MATH344");
         system.addCourseForStudent("SCHC425");
 
-        system.printActiveUser();
-
         System.out.println(system.createUserTranscript());
+        system.printActiveUser();
+        system.printAllRequirements();
+        
     }
     public void braxScenario() {
-
+        system.login("bwest@email.sc.edu", "password");
+        System.out.println(system.createUserTranscript());
+        system.printActiveUser();
+        system.printAllRequirements();
     }
 
     public void braxScenarioShowChanges() {

@@ -49,7 +49,7 @@ public class DataLoader extends DataConstants {
                     String courseID = (String)courseJSON.get(STUDENT_COURSE_ID);
                     String gradeString = ((String)courseJSON.get(STUDENT_COURSE_GRADE)).replace("+", "_PLUS");
                     Grade courseGrade = Grade.valueOf(gradeString);
-                    boolean complete = (courseGrade == Grade.IN_PROGRESS)? true : false;
+                    boolean complete = (courseGrade == Grade.IN_PROGRESS)? false : true;
                     CourseProgress c = new CourseProgress(courseID, courseGrade, complete);
                     progress.add(c);
                 }

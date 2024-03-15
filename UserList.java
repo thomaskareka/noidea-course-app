@@ -176,4 +176,21 @@ public class UserList {
         return advisors;
     }
     
+    public void saveUser(Student in) {
+        for(int i = 0; i < students.size(); i++) {
+            Student s = students.get(i);
+            if (s.getID().equals(in.getID())) {
+                students.set(i, in);
+            }
+        }
+    }
+
+        public void saveUser(Advisor in) {
+        for(int i = 0; i < advisors.size(); i++) {
+            Advisor s = advisors.get(i);
+            if (s.getID().equals(in.getID())) {
+                advisors.set(i, in);
+            }
+        }
+    }
 }

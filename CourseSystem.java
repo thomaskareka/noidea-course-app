@@ -21,10 +21,15 @@ public class CourseSystem{
             return true;
        return false;
     }
-    public boolean logout(){
-        userList.logout(user);
-        user = null;
-        return true;
+    public void logout() {
+        if(user instanceof Student) {
+            userList.saveUser((Student) user);
+        } else {
+            userList.saveUser((Advisor) user);
+            if(activeStudent != null) {
+                userList.saveUser(activeStudent);
+            }
+        }
     }
     public boolean signUp(boolean type, String firstName, String lastName, String email, String password){
         /* the boolean 'type' will be true if the user signing up is a student, and false if an advisor.
@@ -45,6 +50,10 @@ public class CourseSystem{
     // has to be overwritten so advisor can get a student's classes
     public String createUserTranscript(){
         return userList.createUserTranscript(user.getID());
+    }
+    public void printAllRequirements() {
+        Student s = (Student)user;
+        s.printAllRequirements();
     }
     public String courseDescriptionSearchByName(String name){
         return courseList.getCourseDescriptionByName(name);
