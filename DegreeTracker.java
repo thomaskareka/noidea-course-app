@@ -145,6 +145,10 @@ public class DegreeTracker {
 
     public void addCourse(String course){
         CourseProgress newCourse = new CourseProgress(course, Grade.IN_PROGRESS, false);
+        if(getCourseProgress(course) != null) {
+            System.out.println("Student already has this course added!");
+            return;
+        }
         studentCourses.add(newCourse);
         if(newCourse != null) {
             System.out.println("Course successfully added: " + newCourse.toString());
