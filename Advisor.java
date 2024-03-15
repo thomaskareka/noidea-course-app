@@ -20,18 +20,19 @@ public class Advisor extends User {
     }
 
     public Student searchByStudentID(UUID id) {
-        return new Student("first","last", "test@example.com", "Computer Science", "password");
+        for (UUID uuid : students) {
+            if(uuid.equals(id)) {
+                return UserList.getInstance().getStudentFromID(id);
+            }
+        }
+        return null;
     }
 
-    public Student searchByStudentEmail(String email) {
-        return new Student("first", "last", email, "Computer Science", "password");
-    }
-
-    public void addCourseForStudent(Student student, Course course) {
+    public void addCourseForStudent(Student student, String course) {
         student.addCourse(course);
     }
 
-    public void removeCourseForStudent(Student student, Course course) {
+    public void removeCourseForStudent(Student student, String course) {
         student.removeCourse(course);
     }
 

@@ -20,6 +20,18 @@ public class Student extends User {
         super(firstName, lastName, email, password);
         this.major = major;
         this.degreeProgress = new DegreeTracker(new ArrayList<CourseProgress>());
+        //prevent null references
+        this.minor = "None";
+        this.applicationArea = "None";
+        this.majorGPA = 0;
+        this.overallGPA = 0;
+        this.classLevel = "Freshman";
+        this.advisor = new UUID(0L, 0L);
+        this.failureRisk = false;
+        this.notes = new ArrayList<String>();
+        this.hasScholarship = false;
+        this.degreeProgress = new DegreeTracker(new ArrayList<CourseProgress>());
+        this.studentID = "";
     }
 
     //loading from JSON files constructor
@@ -84,32 +96,39 @@ public class Student extends User {
         }
         return str;
     }
-    public void addCourse(Course course){
+    public void addCourse(String course){
         degreeProgress.addCourse(course);
     }
-    public void removeCourse(Course course){
-        degreeProgress.removeCourse(course.getName());
+    public void removeCourse(String course){
+        degreeProgress.removeCourse(course);
     }
     public String getCourseGrade(String name, String identifier){
        return degreeProgress.getCourseGrade(name, identifier);
     }
-    public void addCourseForStudent(Course course){
-        degreeProgress.addCourse(course);
-    }
+
     public double getDegreePercentage(){
        return degreeProgress.CalculateProgress();
     }
 
-    public void removeCourseForStudent(Course course){
-        degreeProgress.removeCourse(course.getName());
-    }
 
-    public boolean addGrade(Course course, Grade grade){
-        return degreeProgress.addGrade(course, grade);
+    public boolean addGrade(String course, Grade grade){
+        boolean out = degreeProgress.addGrade(course, grade);
+        overallGPA = degreeProgress.CalculateGPA();
+        majorGPA = degreeProgress.CalculateMajorGPA();
+        return out;
     }
 
     public String getMajor() {
         return major;
+    }
+
+    public void setMajor(String major) {
+        if(DegreeList.getInstance().getMajor(major) != null) {
+            this.major = major;
+        } else {
+            System.out.println("Major does not exist!");
+        }
+        
     }
 
     public String getMinor() {
@@ -156,9 +175,9 @@ public class Student extends User {
         return degreeProgress;
     }
     public String toString() {
-        String out = super.toString();
+        String out = super.toString() + "\n";
         out += String.format("Major: %s (%f), Minor: %s, Application Area: %s\n", major, majorGPA, minor, applicationArea);
-        out += "GPA: " + overallGPA + ", At risk: " + failureRisk + ", Has Scholarship: " + hasScholarship;
+        out += "GPA: " + overallGPA + ", At risk: " + failureRisk + ", Has Scholarship: " + hasScholarship + "\n";
         out += "Advisor: " + advisor + "\n";
         out += "Notes: " + notes.toString();
         return out + "\n";

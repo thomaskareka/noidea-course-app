@@ -6,6 +6,7 @@ public class CourseSystem{
     private CourseList courseList;
     private DegreeList degreeList;
     private User user;
+    private Student activeStudent;  // only for advisors
 
     public CourseSystem() {
         userList = UserList.getInstance();
@@ -28,7 +29,8 @@ public class CourseSystem{
     public boolean signUp(boolean type, String firstName, String lastName, String email, String password){
         /* the boolean 'type' will be true if the user signing up is a student, and false if an advisor.
          All information that is not held in the User class will have to be inputted later in, maybe, an update profile method.*/
-        return userList.signUp(type, firstName, lastName, email, password);
+        user = userList.signUp(type, firstName, lastName, email, password);
+        return (user != null);
     }
     public String showCourseByCode(String identifier){
         return courseList.getCourseByIdentifer(identifier).toString();
@@ -70,40 +72,65 @@ public class CourseSystem{
         return true;
     }
 
-    public boolean addGrade( Student student, Course course, Grade grade){
-        if(user.getClass().toString().equals("Advisor")){
-            return userList.addGrade(student, course, grade);
+    public boolean addGrade(String course, Grade grade){
+        if(courseList.getCourseByIdentifer(course) == null) {
+            System.out.println("Course doesn't exist: " + course);
+            return false;
         }
-        return false;
+        if(user instanceof Advisor){
+            return userList.addGrade(activeStudent, course, grade);
+        }
+        return userList.addGrade((Student) user, course, grade);
     } 
-    public Student searchByStudentId(Advisor advisor, String id){
-        return new Student(null, null, null, null, null);
+    public boolean searchByStudentId(UUID id){
+        if(user instanceof Advisor) {
+            Advisor a = (Advisor) user;
+            activeStudent = a.searchByStudentID(id);
+            return (a != null);
+        } else {
+            System.out.println("Error: Invalid permissions (active user is a Student)");
+            return false;
+        }
     }
-    public Student searchByStudentEmail(Advisor advisor, String email){
-        return new Student(null, null, null, null, null);
-    }
+
     public void addNotes(Student student, String notes){
-        if(user.getClass().toString().equals("Advisor")){
+        if(user instanceof Advisor) {
             student.addNotes(notes);
         }
     }
-    public void  addCourseForStudent(Advisor advisor, Student student, Course course){
-        if(user.getClass().toString().equals("Advisor")){
-            userList.addCourseForStudent(student, course);
+    public void addCourseForStudent(String id) {
+        Course course = courseList.getCourseByIdentifer(id);
+        if(course == null) {
+            System.out.println("Course not found.");
+        }
+        System.out.println("Attempting to add course: " + id);
+        if(user instanceof Advisor) {
+            userList.addCourseForStudent(activeStudent, id);
+        } else {
+            userList.addCourseForStudent((Student) user, id);
         }
     }
-    public void removeCourseForStudent(Advisor advisor, Student student, Course course){
-        if(user.getClass().toString().equals("Advisor")){
-            userList.removeCourseForStudent(student, course);
+
+    public void setStudentMajor(String major) {
+        if(user instanceof Student) {
+            Student s = (Student) user;
+            s.setMajor(major);
+        } else {
+            activeStudent.setMajor(major);
+        }
+    }
+    public void removeCourseForStudent(Course course){
+        if(user instanceof Advisor) {
+            //userList.removeCourseForStudent(student, course);
         }
     }
     public void enterFailureRisk(Student student, boolean failureRisk){
-        if(user.getClass().toString().equals("Advisor")){
+        if(user instanceof Advisor) {
             student.editFailureRisk(failureRisk);
         }
     }
     public void removeFailureRisk(Advisor advisor, Student student, boolean failureRisk){
-        if(user.getClass().toString().equals("Advisor")){
+        if(user instanceof Advisor) {
             student.editFailureRisk(failureRisk);
         }
     }
@@ -150,5 +177,8 @@ public class CourseSystem{
     public String getCourseGrade(Student student, String name, String identifier){
         return userList.getCourseGrade(student, name, identifier);
     }
-
+    // debug functions
+    public void printActiveUser() {
+        System.out.println(user.toString());
+    }
 }

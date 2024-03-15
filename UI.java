@@ -10,10 +10,12 @@ public class UI {
 
     public void run(){
         // scenario3();
-        scenario4();
-        scenario1();
-        scenario5();
-        scenario6();
+        // scenario4();
+        // scenario1();
+        // scenario5();
+        // scenario6();
+
+        init_braxScenario();
     }
 
     public void exit() {
@@ -67,7 +69,46 @@ public class UI {
         String transcript = system.createUserTranscript();
         System.out.println(transcript);
     }
+    public void init_braxScenario() {
+        system.signUp(true, "Brax", "West", "bwest@email.sc.edu", "password");
+        system.setStudentMajor("Bachelor of Science in Computer Science");
+        system.addGrade("CSCE145", Grade.A);
+        system.addGrade("CSCE146", Grade.A);
+        system.addGrade("CSCE146", Grade.B);
+        system.addGrade("CSCE247", Grade.D);
+        system.addGrade("MATH242", Grade.B_PLUS);
+        system.addGrade("MUSC114", Grade.A);
 
+        system.addCourseForStudent("CSCE330");
+        system.addCourseForStudent("CSCE490");
+        system.addCourseForStudent("MATH344L");
+        system.addCourseForStudent("ENGL462");
+        system.addCourseForStudent("MATH344");
+        system.addCourseForStudent("SCHC425");
+
+        system.printActiveUser();
+
+        System.out.println(system.createUserTranscript());
+    }
+    public void braxScenario() {
+
+    }
+
+    public void braxScenarioShowChanges() {
+
+    }
+
+    public void init_oddenScenario() {
+
+    }
+
+    public void oddenScenario() {
+
+    }
+
+    public void oddenScenarioShowChanges() {
+        
+    }
     public static void main(String[] args){
         UI ui = new UI();
         ui.run();

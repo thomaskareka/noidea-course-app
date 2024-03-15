@@ -47,7 +47,8 @@ public class DataLoader extends DataConstants {
                 for(int j = 0; j < degreeJSON.size(); j++) {
                     JSONObject courseJSON = (JSONObject)degreeJSON.get(j);
                     String courseID = (String)courseJSON.get(STUDENT_COURSE_ID);
-                    Grade courseGrade = Grade.valueOf((String)courseJSON.get(STUDENT_COURSE_GRADE));
+                    String gradeString = ((String)courseJSON.get(STUDENT_COURSE_GRADE)).replace("+", "_PLUS");
+                    Grade courseGrade = Grade.valueOf(gradeString);
                     boolean complete = (courseGrade == Grade.IN_PROGRESS)? true : false;
                     CourseProgress c = new CourseProgress(courseID, courseGrade, complete);
                     progress.add(c);

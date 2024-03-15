@@ -34,20 +34,19 @@ public class UserList {
         return true;
     }
     
-    public boolean signUp(boolean type, String firstName, String lastName, String email, String password){
+    public User signUp(boolean type, String firstName, String lastName, String email, String password){
         if(!containsUser(email)){
             // the boolean 'type' will be true if the user signing up is a student, and false if an advisor.
             // all information that is not held in the User class will have to be inputted later in, maybe, an update profile method.
             if(type){
-                addStudentUser(lastName, lastName, email, null, password);
-                return true;
+                return addStudentUser(firstName, lastName, email, new String(), password);
             }
             else{
-                addAdvisorUser(firstName, lastName, email, false, password);
-                return true;
+                return addAdvisorUser(firstName, lastName, email, false, password);
             }
         }
-        return false;
+        System.out.println("User already exists, attempting to sign in.");
+        return login(email, password);
     }
 
 
@@ -113,15 +112,15 @@ public class UserList {
         return false;
     }
 
-    public void addCourseForStudent(Student student, Course course){
-        student.addCourseForStudent(course);
+    public void addCourseForStudent(Student student, String course){
+        student.addCourse(course);
     }
 
-    public void removeCourseForStudent(Student student, Course course){
-        student.removeCourseForStudent(course);
+    public void removeCourseForStudent(Student student, String course){
+        student.removeCourse(course);
     }
 
-    public boolean addGrade(Student student, Course course, Grade grade){
+    public boolean addGrade(Student student, String course, Grade grade){
         return student.addGrade(course, grade);
     }
 
@@ -157,14 +156,16 @@ public class UserList {
         return student.getDegreePercentage();
     }
 
-    public void addStudentUser(String fisrtName, String lastName, String email, String major, String password){       
+    public Student addStudentUser(String fisrtName, String lastName, String email, String major, String password){       
         Student student = new Student(fisrtName, lastName, email, major, password);
         students.add(student);
+        return student;
     }
 
-    public void addAdvisorUser(String firstName, String lastName, String email, boolean isAdmin, String password){
+    public Advisor  addAdvisorUser(String firstName, String lastName, String email, boolean isAdmin, String password){
         Advisor advisor = new Advisor(firstName, lastName, email, isAdmin, password);
         advisors.add(advisor);
+        return advisor;
     }
 
     public ArrayList<Student> getStudents() {
