@@ -12,6 +12,31 @@ public class DegreeTracker {
         CalculateMajorGPA();
     }
 
+    public String getGradeLevel() {
+        int credits = getCompletedCredits();
+        if(credits < 30) {
+            return "Freshman";
+        } else if (credits < 60) {
+            return "Sophomore";
+        } else if (credits < 90) {
+            return "Junior";
+        } else {
+            return "Senior";
+        }
+    }
+
+    public int getCompletedCredits() {
+        completedCredits = 0;
+        for(CourseProgress courseProgress : studentCourses) {
+            String grade = courseProgress.getCourseGrade();
+            if(grade.equals("IN_PROGRESS") || grade.equals("F")) {
+                continue;
+            }
+            completedCredits += courseProgress.getCourse().getCredits();
+        }
+        return completedCredits;
+    }
+
     public double CalculateGPA() {
         double total = 0.0;
         double gpa = 0.0;

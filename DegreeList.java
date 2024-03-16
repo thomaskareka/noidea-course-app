@@ -29,6 +29,15 @@ public class DegreeList {
         return null;
     }
 
+    public String getAllApplicationAreas() {
+        String out = "Application Areas:\n";
+        for (Degree degree : degrees) {
+            if(degree.getType().equals("applicationArea"))
+                out += degree.toString() + "\n";
+        }
+        return out;
+    }
+
     public Degree getTitle(String title) {
         return null;
     }

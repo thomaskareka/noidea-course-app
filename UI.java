@@ -17,6 +17,7 @@ public class UI {
 
         // init_braxScenario();
         // braxScenario();
+        // braxScenarioShowChanges();
     }
 
     public void exit() {
@@ -102,27 +103,36 @@ public class UI {
         system.addGrade("STAT509", Grade.A);
         system.addGrade("CSCE520", Grade.B);
 
-        system.addCourseForStudent("CSCE330");
+
         system.addCourseForStudent("CSCE490");
         system.addCourseForStudent("MATH344L");
         system.addCourseForStudent("ENGL462");
-        system.addCourseForStudent("MATH344");
-        system.addCourseForStudent("SCHC425");
 
-        System.out.println(system.createUserTranscript());
-        system.printActiveUser();
-        system.printAllRequirements();
-        
     }
     public void braxScenario() {
         system.login("bwest@email.sc.edu", "password");
         System.out.println(system.createUserTranscript());
         system.printActiveUser();
         system.printAllRequirements();
+
+        System.out.println(system.getCoursesWithAttribute("CC-GFL"));
+        System.out.println(system.getAllApplicationAreas());
+
+        system.setStudentApplicationArea("Digital Design");
+        system.addCourseForStudent("MGMT371");
+        system.addCourseForStudent("MGMT374");
+        system.addCourseForStudent("CSCE520");
+
+        system.printActiveUser();
+        system.printAllRequirements();
+
+        system.getEightSemesterPlan();
     }
 
     public void braxScenarioShowChanges() {
-
+        system.login("bwest@email.sc.edu", "password");
+        system.printActiveUser();
+        system.printAllRequirements();
     }
 
     public void init_oddenScenario() {

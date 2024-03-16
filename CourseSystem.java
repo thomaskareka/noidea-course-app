@@ -43,6 +43,10 @@ public class CourseSystem{
     public String showAllCourses(){
        return courseList.getAllCourses();
     }
+
+    public String getCoursesWithAttribute(String attribute) {
+        return courseList.getCoursesWithAttribute(attribute);
+    }
     // has to be overwritten so advisor can get a student's classes
     public String getAllUserClasses(){ 
         return userList.getAllStudentCourses(user.getID());
@@ -128,6 +132,15 @@ public class CourseSystem{
             activeStudent.setMajor(major);
         }
     }
+
+    public void setStudentApplicationArea(String appArea) {
+        if(user instanceof Student) {
+            Student s = (Student) user;
+            s.setApplicationArea(appArea);
+        } else {
+            activeStudent.setApplicationArea(appArea);
+        }
+    }
     public void removeCourseForStudent(Course course){
         if(user instanceof Advisor) {
             //userList.removeCourseForStudent(student, course);
@@ -150,7 +163,7 @@ public class CourseSystem{
         return new Student(null, null, null, null, null);
     }
 
-    public String getEightSemesterPlan(Student student){
+    public String getEightSemesterPlan(){
         return "";
     }
 
@@ -169,6 +182,10 @@ public class CourseSystem{
     }
     public String getDegreeCourses(String degree){
         return "";
+    }
+
+    public String getAllApplicationAreas() {
+        return degreeList.getAllApplicationAreas();
     }
 
     public double getStudentOverallGPA(Student student) {

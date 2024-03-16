@@ -32,7 +32,7 @@ public class Degree {
     public String toString() {
         String out = "title:" + title + ", " + requiredCredits + " credits, type: " + type + "\n";
         for (DegreeRequirement i : requirements) {
-            out += "  " + i.toString() + "\n";
+            out += "  " + i.toStringDetailed() + "\n";
         }
         return out;
     }

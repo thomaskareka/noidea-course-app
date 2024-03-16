@@ -50,6 +50,7 @@ public class Student extends User {
         this.degreeProgress = degreeProgess;
         this.studentID = studentID;
         
+        classLevel = getClassLevel();
     }
 
     public String getTranscript(){
@@ -109,7 +110,7 @@ public class Student extends User {
     public double getDegreePercentage(){
        return degreeProgress.CalculateProgress();
     }
-
+    
 
     public boolean addGrade(String course, Grade grade){
         boolean out = degreeProgress.addGrade(course, grade);
@@ -128,7 +129,14 @@ public class Student extends User {
         } else {
             System.out.println("Major does not exist!");
         }
-        
+    }
+
+    public void setApplicationArea(String appArea) {
+        if(DegreeList.getInstance().getMajor(appArea) != null) {
+            this.applicationArea = appArea;
+        } else {
+            System.out.println("Application Area does not exist!");
+        }
     }
 
     public String getMinor() {

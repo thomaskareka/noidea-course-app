@@ -90,6 +90,16 @@ public class CourseList {
         return courses;
     }
 
+    public String getCoursesWithAttribute(String attribute) {
+        String out = "Valid courses with attribute " + attribute + ":\n";
+        for(Course course : courses) {
+            if(course.getAttributes().contains(attribute)) {
+                out += course.getIdentifier() + " ";
+            }
+        }
+        return out;
+    }
+
     public ArrayList<String> getReqCourses(String category) {
         ArrayList<String> required = new ArrayList<>();
         DegreeRequirement degreeRequirement = new DegreeRequirement(category);

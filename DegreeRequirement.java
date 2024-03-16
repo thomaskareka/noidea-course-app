@@ -28,11 +28,20 @@ public class DegreeRequirement {
     }
 
     public String toString() {
-        String creditText = (requirementCredits == -1)? "all courses required": requirementCredits + " credits required";
+        String creditText = (requirementCredits == -1)? "all courses required": requirementCredits + " credits required:";
         String out = category + ", " + creditText;
         // for(String i: courses) {
         //     out += i + ", ";
         // }
+        return out;
+    }
+
+    public String toStringDetailed() {
+        String creditText = (requirementCredits == -1)? "all courses required": requirementCredits + " credits required:";
+        String out = category + ", " + creditText;
+        for(String i: courses) {
+            out += "  " + i;
+        }
         return out;
     }
     public String calculateRequirement(ArrayList<Course> inCourses) {
@@ -47,9 +56,9 @@ public class DegreeRequirement {
                 }
             }
             if(completedCredits >= requirementCredits) {
-                out = "COMPLETE: " + this.toString() + ", " + completedCredits + " credits completed\n" + out;
+                out = "  COMPLETE: " + this.toString() + ", " + completedCredits + " credits completed\n" + out;
             } else {
-                out = this.toString() + ", " + completedCredits + " credits completed\n" + out;
+                out = "  " + this.toString() + ", " + completedCredits + " credits completed\n" + out;
             }
         } else if (requirementCredits == -1) {
             ArrayList<String> courseIDList = new ArrayList<String>();
@@ -65,7 +74,7 @@ public class DegreeRequirement {
                     allSatisified = false;
                 }
             }
-            out = (allSatisified? "COMPLETE: " : "") + this.toString() + "\n" + out;
+            out = (allSatisified? "  COMPLETE: " : "  ") + this.toString() + "\n" + out;
         } else { // X credits required
             ArrayList<String> courseIDList = new ArrayList<String>();
             for(Course c: inCourses) {
@@ -80,9 +89,9 @@ public class DegreeRequirement {
                 }
             }
             if(completedCredits >= requirementCredits) {
-                out = "COMPLETE: " + this.toString() + ", " + completedCredits + " credits completed\n" + out;
+                out = "  COMPLETE: " + this.toString() + ", " + completedCredits + " credits completed\n" + out;
             } else {
-                out = this.toString() + ", " + completedCredits + " credits completed\n" + out;
+                out = "  " + this.toString() + ", " + completedCredits + " credits completed\n" + out;
             }
         }
         if(out.endsWith("\n"))
