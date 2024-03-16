@@ -18,6 +18,10 @@ public class UI {
         // init_braxScenario();
         // braxScenario();
         // braxScenarioShowChanges();
+
+        // init_oddenScenario();
+        // oddenScenario();
+        // oddenScenarioShowChanges();
     }
 
     public void exit() {
@@ -74,6 +78,7 @@ public class UI {
     public void init_braxScenario() {
         system.signUp(true, "Brax", "West", "bwest@email.sc.edu", "password");
         system.setStudentMajor("Bachelor of Science in Computer Science");
+        system.setStudentID("B12345678");
         system.addGrade("GEOG210", Grade.B);
         system.addGrade("CSCE145", Grade.A);
         system.addGrade("POLI201", Grade.B);
@@ -136,15 +141,33 @@ public class UI {
     }
 
     public void init_oddenScenario() {
+        system.signUp(true, "Tawnie", "Hill", "thill@email.sc.edu", "notnull");
+        system.setStudentID("B00112233");
+        system.setStudentMajor("Computer Information Systems");
+        system.addGrade("CSCE247", Grade.B);
+        system.addGrade("STAT509", Grade.A);
+        system.addGrade("STAT512", Grade.A);
+        system.addGrade("STAT513", Grade.B_PLUS);
 
+        system.logout();
     }
 
     public void oddenScenario() {
+        system.signUp(false, "Osbert", "Odden", "oodd@email.sc.edu", "securepassword12345");
+        system.addAdvisee("B00112233");
+        system.printActiveStudent();
+        System.out.println(system.createUserTranscript());
+        
+        system.addNote("You have not declared your application area, Statistics would be a great choice.");
+        system.printActiveStudent();
 
+        system.logout();
     }
 
     public void oddenScenarioShowChanges() {
-        
+        system.login("oodd@email.sc.edu", "securepassword12345");
+        system.chooseActiveStudent("B00112233");
+        system.printActiveStudent();
     }
     public static void main(String[] args){
         UI ui = new UI();

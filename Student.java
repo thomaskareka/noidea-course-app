@@ -159,6 +159,10 @@ public class Student extends User {
         return advisor;
     }
 
+    public void setAdvisor(UUID advisor) {
+        this.advisor = advisor;
+    }
+
     public void addNotes(String newNotes){
         notes.add(newNotes);
     }
@@ -179,6 +183,10 @@ public class Student extends User {
         return studentID;
     }
 
+    public void setStudentID(String id) {
+        studentID = id;
+    }
+
     public DegreeTracker getDegreeTracker() {
         return degreeProgress;
     }
@@ -186,7 +194,7 @@ public class Student extends User {
         String out = super.toString() + "\n";
         out += String.format("Major: %s (%f), Minor: %s, Application Area: %s\n", major, majorGPA, minor, applicationArea);
         out += "GPA: " + overallGPA + ", At risk: " + failureRisk + ", Has Scholarship: " + hasScholarship + "\n";
-        out += "Advisor: " + advisor + "\n";
+        out += "Advisor: " + advisor + ", Student ID: " + studentID + "\n";
         out += "Notes: " + notes.toString();
         return out + "\n";
     }

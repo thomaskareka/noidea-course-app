@@ -37,6 +37,17 @@ public class CourseSystem{
         user = userList.signUp(type, firstName, lastName, email, password);
         return (user != null);
     }
+    public void setStudentID(String id) {
+        if(user instanceof Student) {
+            ((Student) user).setStudentID(id);
+        } else {
+            if(activeStudent != null) {
+                activeStudent.setStudentID(id);
+            } else {
+                System.out.println("No chosen student!");
+            }
+        }
+    }
     public String showCourseByCode(String identifier){
         return courseList.getCourseByIdentifer(identifier).toString();
     } 
@@ -51,13 +62,28 @@ public class CourseSystem{
     public String getAllUserClasses(){ 
         return userList.getAllStudentCourses(user.getID());
     }
-    // has to be overwritten so advisor can get a student's classes
-    public String createUserTranscript(){
-        return userList.createUserTranscript(user.getID());
+
+    public String createUserTranscript() {
+        if(user instanceof Student) {
+            return userList.createUserTranscript(user.getID());
+        } else {
+            if(activeStudent == null) {
+                System.out.println("No student chosen!");
+                return "";
+            }
+            return userList.createUserTranscript(activeStudent.getID());
+        }
     }
     public void printAllRequirements() {
-        Student s = (Student)user;
-        s.printAllRequirements();
+        if(user instanceof Student) {
+            ((Student) user).printAllRequirements();
+        } else {
+            if(activeStudent != null) {
+                activeStudent.printAllRequirements();
+            } else {
+                System.out.println("No chosen student!");
+            }
+        }
     }
     public String courseDescriptionSearchByName(String name){
         return courseList.getCourseDescriptionByName(name);
@@ -106,9 +132,15 @@ public class CourseSystem{
         }
     }
 
-    public void addNotes(Student student, String notes){
+    public void addNote(String note){
         if(user instanceof Advisor) {
-            student.addNotes(notes);
+            if(user == null) {
+                System.out.println("No student chosen!");
+                return;
+            }
+            activeStudent.addNotes(note);
+        } else {
+            System.out.println("Only advisors can do this!");
         }
     }
     public void addCourseForStudent(String id) {
@@ -159,8 +191,42 @@ public class CourseSystem{
     public ArrayList<Student> getListOfAdvisses(Advisor advisor){
         return new ArrayList<Student>();
     }
-    public Student getAdvisee(Advisor advisor, ArrayList<Student> students, String name){
-        return new Student(null, null, null, null, null);
+
+    public boolean addAdvisee(String id) {
+        System.out.println("Attempting to add student with ID " + id);
+        if (!(user instanceof Advisor)) {
+            System.out.println("Only advisors can do this!");
+            return false;
+        } else {
+            Student advisee = userList.getStudentFromStudentID(id);
+            if(advisee == null) {
+                System.out.println("Student not found!");
+                return false;
+            }
+            ((Advisor) user).addAdvisee(advisee.getID());
+            advisee.setAdvisor(user.getID());
+            activeStudent = advisee;
+            System.out.println(String.format("%s %s successfully added as %s %s's advisor!", user.getFirstName(), user.getLastName(), advisee.getFirstName(), advisee.getLastName()));
+            return true;
+        }
+    }
+
+    public boolean chooseActiveStudent(String id) {
+        if (!(user instanceof Advisor)) {
+            System.out.println("Only advisors can do this!");
+            return false;
+        }
+        Advisor a = (Advisor) user;
+        for(UUID uuid : a.getStudents()) {
+            Student s = (userList.getStudentFromID(uuid));
+            if(s != null && s.getStudentID().equals(id)) {
+                activeStudent = s;
+                System.out.println(String.format("%s %s successfully loaded!", s.getFirstName(), s.getLastName()));
+                return true;
+            }
+        }
+        System.out.println("Student not found!");
+        return false;
     }
 
     public String getEightSemesterPlan(){
@@ -206,5 +272,13 @@ public class CourseSystem{
     // debug functions
     public void printActiveUser() {
         System.out.println(user.toString());
+    }
+
+    public void printActiveStudent() {
+        if(activeStudent != null) {
+            System.out.println(activeStudent.toString());
+        } else {
+            System.out.println("No student selected!");
+        }
     }
 }

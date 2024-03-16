@@ -28,6 +28,14 @@ public class Advisor extends User {
         return null;
     }
 
+    public void addAdvisee(UUID id) {
+        if(students.contains(id)) {
+            System.out.println("Student already added!");
+        } else {
+            students.add(id);
+        }
+    }
+
     public void addCourseForStudent(Student student, String course) {
         student.addCourse(course);
     }

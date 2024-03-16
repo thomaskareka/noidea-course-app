@@ -50,28 +50,28 @@ public class DegreeTracker {
             int credits = courseProgress.getCourse().getCredits();
             completedCredits += credits;
             totalCredits += credits;
-            if(grade == "A") 
+            if(grade.equals("A")) 
                 total += (4.00 * credits);
 
-            else if (grade == "B_PLUS")
+            else if(grade.equals("B+"))
                 total += (3.5 * credits);
             
-            else if (grade == "B") 
+            else if(grade.equals("B"))
                 total += (3.0 * credits);
 
-            else if (grade == "C_PLUS")
+            else if(grade.equals("C+"))
                 total += (2.5 * credits);
             
-            else if (grade == "C")
+            else if(grade.equals("C"))
                 total += (2.0 * credits);
 
-            else if (grade == "D_PLUS") 
+            else if(grade.equals("D+"))
                 total += (1.5 *credits);
 
-            else if (grade == "D")
+            else if(grade.equals("D"))
                 total += (1.0 * credits);
 
-            else if (grade == "F") {
+            else if(grade.equals("F")) {
                 total += (0.0 *credits);
                 completedCredits -= credits;
             }
@@ -93,29 +93,31 @@ public class DegreeTracker {
             }
             int credits = courseProgress.getCourse().getCredits();
             totalCredits += credits;
-            if(grade == "A") 
+            if(grade.equals("A")) 
                 total += (4.00 * credits);
 
-            else if (grade == "B_PLUS")
+            else if(grade.equals("B+"))
                 total += (3.5 * credits);
             
-            else if (grade == "B") 
+            else if(grade.equals("B"))
                 total += (3.0 * credits);
 
-            else if (grade == "C_PLUS")
+            else if(grade.equals("C+"))
                 total += (2.5 * credits);
             
-            else if (grade == "C")
+            else if(grade.equals("C"))
                 total += (2.0 * credits);
 
-            else if (grade == "D_PLUS") 
+            else if(grade.equals("D+"))
                 total += (1.5 *credits);
 
-            else if (grade == "D")
+            else if(grade.equals("D"))
                 total += (1.0 * credits);
 
-            else if (grade == "F") 
+            else if(grade.equals("F")) {
                 total += (0.0 *credits);
+                completedCredits -= credits;
+            }
         }
         
         gpa = total/totalCredits;

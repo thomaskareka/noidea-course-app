@@ -67,6 +67,15 @@ public class UserList {
         return null;
     }
 
+    public Student getStudentFromStudentID(String id) {
+        for (Student student : students) {
+            if(student.getStudentID().equals(id)) {
+                return student;
+            }
+        }
+        return null;
+    }
+
     public String createUserTranscript(UUID id){
        Student holder = getStudentFromID(id);
         if(holder != null){
