@@ -168,8 +168,15 @@ public class DegreeTracker {
             if(courseProgress.getCompletionStatus())
                 completedCourses.add(courseProgress.getCourseID());
         }
-        
         return completedCourses;
+    }
+
+    public ArrayList<String> getCourses() {
+        ArrayList<String> courses = new ArrayList<String>();
+        for (CourseProgress courseProgress : studentCourses) {
+            courses.add(courseProgress.getCourseID());
+        }
+        return courses;
     }
 
     public void addCourse(String course){

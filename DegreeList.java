@@ -19,7 +19,15 @@ public class DegreeList {
 
     public Degree getMajor(String major){
         for (Degree degree : degrees) {
-            if(degree.getTitle().equals(major))
+            if(degree.getTitle().equals(major) && !degree.getType().equals("majorMap"))
+                return degree;
+        }
+        return null;
+    }
+
+    public Degree getMajorMap(String majorMap) {
+        for (Degree degree : degrees) {
+            if(degree.getTitle().equals(majorMap) && degree.getType().equals("majorMap"))
                 return degree;
         }
         return null;

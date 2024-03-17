@@ -15,13 +15,13 @@ public class UI {
         // scenario5();
         // scenario6();
 
-        // init_braxScenario();
-        // braxScenario();
-        // braxScenarioShowChanges();
+        init_braxScenario();
+        braxScenario();
+        braxScenarioShowChanges();
 
-        // init_oddenScenario();
-        // oddenScenario();
-        // oddenScenarioShowChanges();
+        init_oddenScenario();
+        oddenScenario();
+        oddenScenarioShowChanges();
     }
 
     public void exit() {
@@ -130,8 +130,6 @@ public class UI {
 
         system.printActiveUser();
         system.printAllRequirements();
-
-        system.getEightSemesterPlan();
     }
 
     public void braxScenarioShowChanges() {
@@ -148,6 +146,17 @@ public class UI {
         system.addGrade("STAT509", Grade.A);
         system.addGrade("STAT512", Grade.A);
         system.addGrade("STAT513", Grade.B_PLUS);
+        system.addGrade("GEOG210", Grade.B);
+        system.addGrade("CSCE145", Grade.A);
+        system.addGrade("POLI201", Grade.B);
+        system.addGrade("MATH141", Grade.B_PLUS);
+        system.addGrade("CSCE145", Grade.A);
+        system.addGrade("CSCE146", Grade.A);
+        system.addGrade("CSCE190", Grade.B_PLUS);
+        system.addGrade("ENGL101", Grade.A);
+        system.addGrade("PHYS211", Grade.A);
+        system.addGrade("MATH142", Grade.C);
+        system.addGrade("PHYS211L", Grade.A);
 
         system.logout();
     }
@@ -168,6 +177,7 @@ public class UI {
         system.login("oodd@email.sc.edu", "securepassword12345");
         system.chooseActiveStudent("B00112233");
         system.printActiveStudent();
+        System.out.println(system.getEightSemesterPlan());
     }
     public static void main(String[] args){
         UI ui = new UI();

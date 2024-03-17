@@ -128,4 +128,41 @@ public class DegreeRequirement {
         }
         return false;
     }
+
+    public String calculateMajorMapSemester(ArrayList<DegreeRequirement> majorReqs, ArrayList<Course> inCourses, ArrayList<String> courseIDs) {
+        String out = String.format("  %s (%d credits)\n", category, requirementCredits);
+        for(String course : courses) {
+            if(course.startsWith("CC-")) {
+                boolean found = false;
+                for(Course c : inCourses) {
+                    if(c.getAttributes().contains(course)) {
+                        out += "+   " + course + "(" + c.getIdentifier() + ")\n" ;
+                        inCourses.remove(c);
+                        found = true;
+                        break;
+                    }
+                }
+                if(!found) {
+                    out += "-   " + course + "\n";
+                }
+            } else if (course.equals("BIMELEC")) {
+                //TODO
+                out += "-- BIM Minor Elective\n";
+            } else if (course.equals("MAJORELEC")) {
+                //TODO
+                out += "-- Major Elective\n";
+            } else if (course.equals("LIBELEC")) {
+                //TODO
+                out += "-- Liberal Arts Elective\n";
+            } else if (course.equals("APP")) {
+                //TODO
+                out += "--  Application Area Elective\n";
+            } else if(calculateCourse(courseIDs, course)) {
+                    out += "+   " + course + "\n";
+                } else {
+                    out += "-   " + course + "\n";
+                }
+            }
+        return out;
+    }
 }

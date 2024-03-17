@@ -229,8 +229,23 @@ public class CourseSystem{
         return false;
     }
 
-    public String getEightSemesterPlan(){
-        return "";
+    public String getEightSemesterPlan() {
+        String out = "";
+        String fileID = "";
+        if(user instanceof Student) {
+            out = ((Student) user).getMajorMap();
+            fileID = user.getID().toString();
+        } else {
+            if(activeStudent != null) {
+                out = activeStudent.getMajorMap();
+                fileID = activeStudent.getID().toString();
+            } else {
+                System.out.println("No chosen student!");
+                return "No chosen student!";
+            }
+        }
+        DataWriter.writeString(out, fileID);
+        return out;
     }
 
     public String  getAllCompletedCourses(Student student){

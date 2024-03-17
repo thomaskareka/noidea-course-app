@@ -234,4 +234,26 @@ public class Student extends User {
         }
 
     }
+
+    public String getMajorMap() {
+        DegreeList degreeList = DegreeList.getInstance();
+        Degree ma = degreeList.getMajor(major);
+        Degree majorMap = degreeList.getMajorMap(major);
+
+        ArrayList<String> courseStrings = degreeProgress.getCourses();
+        ArrayList<Course> courses = new ArrayList<Course>();
+        ArrayList<DegreeRequirement> majorMapReqs = majorMap.getRequirements();
+        ArrayList<DegreeRequirement> majorReqs = ma.getRequirements();
+        CourseList cl = CourseList.getInstance();
+
+        for(String s : courseStrings) {
+            courses.add(cl.getCourseByIdentifer(s));
+        }
+        String out = major + "\n";
+        for(DegreeRequirement degreeRequirement : majorMapReqs) {
+            out += degreeRequirement.calculateMajorMapSemester(majorReqs, courses, courseStrings);
+        }
+
+        return out;
+    }
 }
