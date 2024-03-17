@@ -20,6 +20,18 @@ public class Student extends User {
         super(firstName, lastName, email, password);
         this.major = major;
         this.degreeProgress = new DegreeTracker(new ArrayList<CourseProgress>());
+        //prevent null references
+        this.minor = "None";
+        this.applicationArea = "None";
+        this.majorGPA = 0;
+        this.overallGPA = 0;
+        this.classLevel = "Freshman";
+        this.advisor = new UUID(0L, 0L);
+        this.failureRisk = false;
+        this.notes = new ArrayList<String>();
+        this.hasScholarship = false;
+        this.degreeProgress = new DegreeTracker(new ArrayList<CourseProgress>());
+        this.studentID = "";
     }
 
     //loading from JSON files constructor
@@ -38,6 +50,7 @@ public class Student extends User {
         this.degreeProgress = degreeProgess;
         this.studentID = studentID;
         
+        classLevel = getClassLevel();
     }
 
     public String getTranscript(){
@@ -48,11 +61,9 @@ public class Student extends User {
         return degreeProgress.getAllCourses();
     }
 
-    /* 
     public String getEightSemesterPlan(){
         return "";
     }
-    */
 
     public void editFailureRisk(boolean bool){
         failureRisk = bool;
@@ -84,33 +95,46 @@ public class Student extends User {
         }
         return str;
     }
-
-    public void addCourse(Course course){
+    public void addCourse(String course){
         degreeProgress.addCourse(course);
     }
-
-    public void removeCourse(Course course){
-        degreeProgress.removeCourse(course.getName());
+    public void removeCourse(String course){
+        degreeProgress.removeCourse(course);
     }
-
     public String getCourseGrade(String name, String identifier){
        return degreeProgress.getCourseGrade(name, identifier);
     }
 
-    public void addCourseForStudent(Course course){
-        degreeProgress.addCourse(course);
+    public double getDegreePercentage(){
+       return degreeProgress.CalculateProgress();
     }
+    
 
-    public void removeCourseForStudent(Course course){
-        degreeProgress.removeCourse(course.getName());
-    }
-
-    public boolean addGrade(Course course, Grade grade){
-        return degreeProgress.addGrade(course, grade);
+    public boolean addGrade(String course, Grade grade){
+        boolean out = degreeProgress.addGrade(course, grade);
+        overallGPA = degreeProgress.CalculateGPA();
+        majorGPA = degreeProgress.CalculateMajorGPA();
+        return out;
     }
 
     public String getMajor() {
         return major;
+    }
+
+    public void setMajor(String major) {
+        if(DegreeList.getInstance().getMajor(major) != null) {
+            this.major = major;
+        } else {
+            System.out.println("Major does not exist!");
+        }
+    }
+
+    public void setApplicationArea(String appArea) {
+        if(DegreeList.getInstance().getMajor(appArea) != null) {
+            this.applicationArea = appArea;
+        } else {
+            System.out.println("Application Area does not exist!");
+        }
     }
 
     public String getMinor() {
@@ -133,6 +157,10 @@ public class Student extends User {
         return advisor;
     }
 
+    public void setAdvisor(UUID advisor) {
+        this.advisor = advisor;
+    }
+
     public void addNotes(String newNotes){
         notes.add(newNotes);
     }
@@ -153,15 +181,77 @@ public class Student extends User {
         return studentID;
     }
 
+    public void setStudentID(String id) {
+        studentID = id;
+    }
+
     public DegreeTracker getDegreeTracker() {
         return degreeProgress;
     }
     public String toString() {
-        String out = super.toString();
+        String out = super.toString() + "\n";
         out += String.format("Major: %s (%f), Minor: %s, Application Area: %s\n", major, majorGPA, minor, applicationArea);
-        out += "GPA: " + overallGPA + ", At risk: " + failureRisk + ", Has Scholarship: " + hasScholarship;
-        out += "Advisor: " + advisor + "\n";
+        out += "GPA: " + overallGPA + ", At risk: " + failureRisk + ", Has Scholarship: " + hasScholarship + "\n";
+        out += "Advisor: " + advisor + ", Student ID: " + studentID + "\n";
         out += "Notes: " + notes.toString();
         return out + "\n";
+    }
+
+    public void printAllRequirements() {
+        System.out.println(firstName + " " + lastName + " course progress:"); 
+        DegreeList degreeList = DegreeList.getInstance();
+        Degree ma = degreeList.getMajor(major);
+        Degree mi = degreeList.getMajor(minor);
+        Degree a = degreeList.getMajor(applicationArea);
+
+        ArrayList<String> courseStrings = degreeProgress.GetCompleteCourses();
+        ArrayList<Course> courses = new ArrayList<Course>();
+        ArrayList<DegreeRequirement> dr = new ArrayList<DegreeRequirement>();
+        CourseList cl = CourseList.getInstance();
+        for(String s : courseStrings) {
+            courses.add(cl.getCourseByIdentifer(s));
+        }
+        if(ma != null) {
+            dr = ma.getRequirements();
+            System.out.println(major);
+            for (DegreeRequirement degreeRequirement : dr) {
+                System.out.println(degreeRequirement.calculateRequirement(courses));
+            }
+        }  if(mi != null) {
+            dr = mi.getRequirements();
+            System.out.println(minor);
+            for (DegreeRequirement degreeRequirement : dr) {
+                System.out.println(degreeRequirement.calculateRequirement(courses));
+            }
+        } if(a != null) {
+            dr = a.getRequirements();
+            System.out.println(applicationArea);
+            for (DegreeRequirement degreeRequirement : dr) {
+                System.out.println(degreeRequirement.calculateRequirement(courses));
+            }
+        }
+
+    }
+
+    public String getMajorMap() {
+        DegreeList degreeList = DegreeList.getInstance();
+        Degree ma = degreeList.getMajor(major);
+        Degree majorMap = degreeList.getMajorMap(major);
+
+        ArrayList<String> courseStrings = degreeProgress.getCourses();
+        ArrayList<Course> courses = new ArrayList<Course>();
+        ArrayList<DegreeRequirement> majorMapReqs = majorMap.getRequirements();
+        ArrayList<DegreeRequirement> majorReqs = ma.getRequirements();
+        CourseList cl = CourseList.getInstance();
+
+        for(String s : courseStrings) {
+            courses.add(cl.getCourseByIdentifer(s));
+        }
+        String out = String.format("%s %s (%s)\n", firstName, lastName, major);
+        for(DegreeRequirement degreeRequirement : majorMapReqs) {
+            out += degreeRequirement.calculateMajorMapSemester(majorReqs, courses, courseStrings, major);
+        }
+
+        return out;
     }
 }

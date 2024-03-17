@@ -36,9 +36,11 @@ public class CourseProgress {
     
     public boolean editCourseGrade(Grade grade){
         gradeReceived = grade;
-        if(gradeReceived != null)
-            return true;
-
+        isComplete = !grade.equals(Grade.IN_PROGRESS);
+        if(gradeReceived != null) {
+            System.out.println("Grade successfully edited: " + this.toString());
+        }
+            
         return false;
     }
 

@@ -31,20 +31,19 @@ public class UserList {
         return null;
     }
     
-    public boolean signUp(boolean type, String firstName, String lastName, String email, String password){
+    public User signUp(boolean type, String firstName, String lastName, String email, String password){
         if(!containsUser(email)){
             // the boolean 'type' will be true if the user signing up is a student, and false if an advisor.
             // all information that is not held in the User class will have to be inputted later in, maybe, an update profile method.
             if(type){
-                addStudentUser(lastName, lastName, email, null, password);
-                return true;
+                return addStudentUser(firstName, lastName, email, new String(), password);
             }
             else{
-                addAdvisorUser(firstName, lastName, email, false, password);
-                return true;
+                return addAdvisorUser(firstName, lastName, email, false, password);
             }
         }
-        return false;
+        System.out.println("User already exists, attempting to sign in.");
+        return login(email, password);
     }
 
 
@@ -59,6 +58,15 @@ public class UserList {
     public Student getStudentFromID(UUID id) {
         for (Student student : students) {
             if(student.getID().equals(id)) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    public Student getStudentFromStudentID(String id) {
+        for (Student student : students) {
+            if(student.getStudentID().equals(id)) {
                 return student;
             }
         }
@@ -110,15 +118,15 @@ public class UserList {
         return false;
     }
 
-    public void addCourseForStudent(Student student, Course course){
-        student.addCourseForStudent(course);
+    public void addCourseForStudent(Student student, String course){
+        student.addCourse(course);
     }
 
-    public void removeCourseForStudent(Student student, Course course){
-        student.removeCourseForStudent(course);
+    public void removeCourseForStudent(Student student, String course){
+        student.removeCourse(course);
     }
 
-    public boolean addGrade(Student student, Course course, Grade grade){
+    public boolean addGrade(Student student, String course, Grade grade){
         return student.addGrade(course, grade);
     }
 
@@ -150,14 +158,20 @@ public class UserList {
         return student.getCourseGrade(name, identifier);
     }
 
-    public void addStudentUser(String fisrtName, String lastName, String email, String major, String password){       
-        Student student = new Student(fisrtName, lastName, email, major, password);
-        students.add(student);
+    public double calculateDegreeCompletionPercentage(Student student){
+        return student.getDegreePercentage();
     }
 
-    public void addAdvisorUser(String firstName, String lastName, String email, boolean isAdmin, String password){
+    public Student addStudentUser(String fisrtName, String lastName, String email, String major, String password){       
+        Student student = new Student(fisrtName, lastName, email, major, password);
+        students.add(student);
+        return student;
+    }
+
+    public Advisor  addAdvisorUser(String firstName, String lastName, String email, boolean isAdmin, String password){
         Advisor advisor = new Advisor(firstName, lastName, email, isAdmin, password);
         advisors.add(advisor);
+        return advisor;
     }
 
     public ArrayList<Student> getStudents() {
@@ -168,4 +182,21 @@ public class UserList {
         return advisors;
     }
     
+    public void saveUser(Student in) {
+        for(int i = 0; i < students.size(); i++) {
+            Student s = students.get(i);
+            if (s.getID().equals(in.getID())) {
+                students.set(i, in);
+            }
+        }
+    }
+
+        public void saveUser(Advisor in) {
+        for(int i = 0; i < advisors.size(); i++) {
+            Advisor s = advisors.get(i);
+            if (s.getID().equals(in.getID())) {
+                advisors.set(i, in);
+            }
+        }
+    }
 }
