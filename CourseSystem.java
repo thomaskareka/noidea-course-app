@@ -72,10 +72,10 @@ public class CourseSystem{
 
     }
     public boolean removeCourse(Advisor advisor, Course course){
-        return true;
+        return courseList.remove(advisor, new String(), course, new String(), new int(), new String(), new ArrayList<String>(), new ArrayList<Requisite>(), new String());
     }
     public boolean removeCourse(Advisor advisor, String name, int identifier){
-        return true;
+        return courseList.remove(advisor, name , identifier);
     }
     public boolean addGrade( Student student, Course course, Grade grade){
         if(user.getClass().toString().equals("Advisor")){
