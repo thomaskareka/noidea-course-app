@@ -195,7 +195,7 @@ public class DataWriter extends DataConstants {
     }
 
     public static void writeString(String out, String fileID) {
-        try(FileWriter file = new FileWriter("/txt/" + fileID + ".txt")) {
+        try(FileWriter file = new FileWriter("txt/" + fileID + ".txt")) {
             file.write(out);
             file.flush();
         } catch (IOException e) {

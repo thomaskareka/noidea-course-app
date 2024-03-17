@@ -114,22 +114,29 @@ public class DegreeRequirement {
         if(req.contains("+")) {
             String[] sp = req.split("\\+");
             if(courseList.contains(sp[0]) && courseList.contains(sp[1])) {
+                courseList.remove(sp[0]);
+                courseList.remove(sp[1]);
                 return true;
             }
         } else if (req.contains("/")) {
             String[] sp = req.split("\\/");
-            if(courseList.contains(sp[0]) || courseList.contains(sp[1])) {
+            if(courseList.contains(sp[0])) {
+                courseList.remove(sp[0]);
+                return true;
+            } else if (courseList.contains(sp[1])) {
+                courseList.remove(sp[1]);
                 return true;
             }
         } else {
             if(courseList.contains(req)) {
+                courseList.remove(req);
                 return true;
             }
         }
         return false;
     }
 
-    public String calculateMajorMapSemester(ArrayList<DegreeRequirement> majorReqs, ArrayList<Course> inCourses, ArrayList<String> courseIDs) {
+    public String calculateMajorMapSemester(ArrayList<DegreeRequirement> majorReqs, ArrayList<Course> inCourses, ArrayList<String> courseIDs, String major) {
         String out = String.format("  %s (%d credits)\n", category, requirementCredits);
         for(String course : courses) {
             if(course.startsWith("CC-")) {
@@ -150,7 +157,10 @@ public class DegreeRequirement {
                 out += "-- BIM Minor Elective\n";
             } else if (course.equals("MAJORELEC")) {
                 //TODO
-                out += "-- Major Elective\n";
+                out += calculateFromCategory(major, courseIDs, course);
+            } else if (course.equals("CSCEELEC")) {
+                //TODO
+                out += calculateFromCategory(major, courseIDs, course);
             } else if (course.equals("LIBELEC")) {
                 //TODO
                 out += "-- Liberal Arts Elective\n";
@@ -164,5 +174,36 @@ public class DegreeRequirement {
                 }
             }
         return out;
+    }
+
+    public String calculateFromCategory(String major, ArrayList<String> courseIDs, String type) {
+        String out = "";
+        Degree d = DegreeList.getInstance().getMajor(major);
+        ArrayList<DegreeRequirement> drList = d.getRequirements();
+        String searchString = "";
+        if(type.equals("CSCEELEC")) {
+            searchString = "CSCE Electives";
+        } else if (type.equals("MAJORELEC")) {
+            searchString = "Major Elective";
+        } else if (type.equals("LAB")) {
+            searchString = "Laboratory Science Elective";
+        }
+
+        for(DegreeRequirement dr : drList) {
+            if(dr.getCategory().equals(searchString)) {
+                for(String req : dr.getRequirements()) {
+                    if(calculateCourse(courseIDs, req)) {
+                        return String.format("+   %s (%s)\n", searchString, req);
+                    }
+                }
+                // for(String id : courseIDs) {
+                //     if(dr.getRequirements().contains(id)) {
+                //         courseIDs.remove(id);
+                //         return String.format("+   %s (%s)\n", searchString, id);
+                //     }
+                // }
+            }
+        }
+        return "-   " + searchString + "\n";
     }
 }
