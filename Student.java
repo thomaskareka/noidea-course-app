@@ -249,7 +249,7 @@ public class Student extends User {
         for(String s : courseStrings) {
             courses.add(cl.getCourseByIdentifer(s));
         }
-        String out = major + "\n";
+        String out = String.format("%s %s (%s)\n", firstName, lastName, major);
         for(DegreeRequirement degreeRequirement : majorMapReqs) {
             out += degreeRequirement.calculateMajorMapSemester(majorReqs, courses, courseStrings, major);
         }
