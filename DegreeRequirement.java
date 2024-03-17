@@ -136,7 +136,7 @@ public class DegreeRequirement {
         return false;
     }
 
-    public String calculateMajorMapSemester(ArrayList<DegreeRequirement> majorReqs, ArrayList<Course> inCourses, ArrayList<String> courseIDs, String major) {
+    public String calculateMajorMapSemester(ArrayList<DegreeRequirement> majorReqs, ArrayList<Course> inCourses, ArrayList<String> courseIDs, String major, String applicationArea) {
         String out = String.format("  %s (%d credits)\n", category, requirementCredits);
         for(String course : courses) {
             if(course.startsWith("CC-")) {
@@ -156,17 +156,14 @@ public class DegreeRequirement {
                 //TODO
                 out += "-- BIM Minor Elective\n";
             } else if (course.equals("MAJORELEC")) {
-                //TODO
                 out += calculateFromCategory(major, courseIDs, course);
             } else if (course.equals("CSCEELEC")) {
-                //TODO
                 out += calculateFromCategory(major, courseIDs, course);
             } else if (course.equals("LIBELEC")) {
                 //TODO
                 out += "-- Liberal Arts Elective\n";
             } else if (course.equals("APP")) {
-                //TODO
-                out += "--  Application Area Elective\n";
+                out += calculateFromCategory(applicationArea, courseIDs, course);
             } else if(calculateCourse(courseIDs, course)) {
                     out += "+   " + course + "\n";
                 } else {
@@ -187,6 +184,12 @@ public class DegreeRequirement {
             searchString = "Major Elective";
         } else if (type.equals("LAB")) {
             searchString = "Laboratory Science Elective";
+        } else if (type.equals("APP")) {
+            searchString = major;
+        }
+
+        if(major.equals("None")) {
+            return "-    APP";
         }
 
         for(DegreeRequirement dr : drList) {
