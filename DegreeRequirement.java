@@ -118,7 +118,7 @@ public class DegreeRequirement {
             }
         } else if (req.contains("/")) {
             String[] sp = req.split("\\/");
-            if(courseList.contains(sp[0]) && courseList.contains(sp[1])) {
+            if(courseList.contains(sp[0]) || courseList.contains(sp[1])) {
                 return true;
             }
         } else {
