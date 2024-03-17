@@ -61,11 +61,9 @@ public class Student extends User {
         return degreeProgress.getAllCourses();
     }
 
-    /* 
     public String getEightSemesterPlan(){
         return "";
     }
-    */
 
     public void editFailureRisk(boolean bool){
         failureRisk = bool;

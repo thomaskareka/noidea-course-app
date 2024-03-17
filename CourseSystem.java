@@ -104,13 +104,6 @@ public class CourseSystem{
        return courseList.addCourse(advisor, name, identifier, credits, new String(), new ArrayList<String>(), new ArrayList<Requisite>(), new String());
 
     }
-    public boolean removeCourse(Advisor advisor, Course course){
-        return true;
-    }
-    public boolean removeCourse(Advisor advisor, String name, int identifier){
-        return true;
-    }
-
     public boolean addGrade(String course, Grade grade){
         if(courseList.getCourseByIdentifer(course) == null) {
             System.out.println("Course doesn't exist: " + course);
@@ -248,13 +241,13 @@ public class CourseSystem{
         return out;
     }
 
-    public String  getAllCompletedCourses(Student student){
+    public String getAllCompletedCourses(Student student){
         return userList.getStudentCompleteCourses(student);
     }
     public String getAllUncompletedCourses(Student student){
         return userList.getStudentIncompleteCourses(student);
     }
-    public boolean checkIfStudentAtRisk(Advisor advisor, Student student){
+    public boolean checkIfStudentAtRisk(Student student){
         return userList.checkIfStudentIsAtRisk(student);
     }
 
