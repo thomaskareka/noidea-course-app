@@ -47,6 +47,6 @@ public abstract class User {
     }
 
     public String toString() {
-        return firstName + " " + lastName + ": " + email;
+        return firstName + " " + lastName + ": " + email + " (" + id + ")";
     }
 }

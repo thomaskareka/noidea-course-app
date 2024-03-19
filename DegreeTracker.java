@@ -7,39 +7,73 @@ public class DegreeTracker {
 
     public DegreeTracker(ArrayList<CourseProgress> studentCourses) {
         this.studentCourses = studentCourses;
+        CalculateGPA();
+        CalculateMajorGPA();
+    }
+
+    public String getGradeLevel() {
+        int credits = getCompletedCredits();
+        if(credits < 30) {
+            return "Freshman";
+        } else if (credits < 60) {
+            return "Sophomore";
+        } else if (credits < 90) {
+            return "Junior";
+        } else {
+            return "Senior";
+        }
+    }
+
+    public int getCompletedCredits() {
+        completedCredits = 0;
+        for(CourseProgress courseProgress : studentCourses) {
+            String grade = courseProgress.getCourseGrade();
+            if(grade.equals("IN_PROGRESS") || grade.equals("F")) {
+                continue;
+            }
+            completedCredits += courseProgress.getCourse().getCredits();
+        }
+        return completedCredits;
     }
 
     public double CalculateGPA() {
         double total = 0.0;
         double gpa = 0.0;
+        completedCredits = 0;
         int totalCredits = 0;
         for (CourseProgress courseProgress : studentCourses) {
             String grade = courseProgress.getCourseGrade();
+            if(grade.equals("IN_PROGRESS")) {
+                continue;
+            }
             int credits = courseProgress.getCourse().getCredits();
+            completedCredits += credits;
             totalCredits += credits;
-            if(grade == "A") 
+            if(grade.equals("A")) 
                 total += (4.00 * credits);
 
-            else if (grade == "B_PLUS")
+            else if(grade.equals("B+"))
                 total += (3.5 * credits);
             
-            else if (grade == "B") 
+            else if(grade.equals("B"))
                 total += (3.0 * credits);
 
-            else if (grade == "C_PLUS")
+            else if(grade.equals("C+"))
                 total += (2.5 * credits);
             
-            else if (grade == "C")
+            else if(grade.equals("C"))
                 total += (2.0 * credits);
 
-            else if (grade == "D_PLUS") 
+            else if(grade.equals("D+"))
                 total += (1.5 *credits);
 
-            else if (grade == "D")
+            else if(grade.equals("D"))
                 total += (1.0 * credits);
 
-            else if (grade == "F") 
+            else if(grade.equals("F")) {
                 total += (0.0 *credits);
+                completedCredits -= credits;
+            }
         }
         
         gpa = total/totalCredits;
@@ -52,38 +86,40 @@ public class DegreeTracker {
         double gpa = 0.0;
         int totalCredits = 0;
         for (CourseProgress courseProgress : studentCourses) {
-            String id = courseProgress.getCourse().getIdentifier().substring(0,3);
-            if(id == "CSCE") {
-                String grade = courseProgress.getCourseGrade();
-                int credits = courseProgress.getCourse().getCredits();
-                totalCredits += credits;
-                if(grade == "A") 
-                    total += (4.00 * credits);
-
-                else if (grade == "B_PLUS")
-                    total += (3.5 * credits);
-                
-                else if (grade == "B") 
-                    total += (3.0 * credits);
-
-                else if (grade == "C_PLUS")
-                    total += (2.5 * credits);
-                
-                else if (grade == "C")
-                    total += (2.0 * credits);
-
-                else if (grade == "D_PLUS") 
-                    total += (1.5 *credits);
-
-                else if (grade == "D")
-                    total += (1.0 * credits);
-
-                else if (grade == "F") 
-                    total += (0.0 *credits);
+            String grade = courseProgress.getCourseGrade();
+            if(grade.equals("IN_PROGRESS") || !courseProgress.getCourseID().startsWith("CSCE")) {
+                continue;
             }
+            int credits = courseProgress.getCourse().getCredits();
+            totalCredits += credits;
+            if(grade.equals("A")) 
+                total += (4.00 * credits);
+
+            else if(grade.equals("B+"))
+                total += (3.5 * credits);
             
-            gpa = total/totalCredits;
+            else if(grade.equals("B"))
+                total += (3.0 * credits);
+
+            else if(grade.equals("C+"))
+                total += (2.5 * credits);
+            
+            else if(grade.equals("C"))
+                total += (2.0 * credits);
+
+            else if(grade.equals("D+"))
+                total += (1.5 *credits);
+
+            else if(grade.equals("D"))
+                total += (1.0 * credits);
+
+            else if(grade.equals("F")) {
+                total += (0.0 *credits);
+                completedCredits -= credits;
+            }
         }
+        
+        gpa = total/totalCredits;
         
         return gpa;
     }
@@ -97,14 +133,19 @@ public class DegreeTracker {
         return holder.getCourseGrade();
     }
 
-    public boolean addGrade(Course course, Grade grade){
-        CourseProgress holder = getCourseProgress(course.getName());
+    public boolean addGrade(String course, Grade grade){
+        CourseProgress holder = getCourseProgress(course);
+        if(holder == null) {
+            System.out.println("User has not taken this course, adding before setting grade.");
+            addCourse(course);
+            holder = getCourseProgress(course);
+        }
         return holder.editCourseGrade(grade);
     }
 
     private CourseProgress getCourseProgress(String name){
         for (CourseProgress courseProgress : studentCourses) {
-            if(courseProgress.getCourseName().equalsIgnoreCase(name))
+            if(courseProgress.getCourseID().equals(name))
                 return courseProgress;
         }
         return null;
@@ -114,7 +155,7 @@ public class DegreeTracker {
         ArrayList<String> incompletedCourses = new ArrayList<String>();
         for (CourseProgress courseProgress : studentCourses) {
             if(!courseProgress.getCompletionStatus())
-                incompletedCourses.add(courseProgress.getCourseName());
+                incompletedCourses.add(courseProgress.getCourseID());
         }
         
         return incompletedCourses;
@@ -124,15 +165,29 @@ public class DegreeTracker {
         ArrayList<String> completedCourses = new ArrayList<String>();
         for (CourseProgress courseProgress : studentCourses) {
             if(courseProgress.getCompletionStatus())
-                completedCourses.add(courseProgress.getCourseName());
+                completedCourses.add(courseProgress.getCourseID());
         }
-        
         return completedCourses;
     }
 
-    public void addCourse(Course course){
-        CourseProgress newCourse = new CourseProgress(course.toString(), null, false);
+    public ArrayList<String> getCourses() {
+        ArrayList<String> courses = new ArrayList<String>();
+        for (CourseProgress courseProgress : studentCourses) {
+            courses.add(courseProgress.getCourseID());
+        }
+        return courses;
+    }
+
+    public void addCourse(String course){
+        CourseProgress newCourse = new CourseProgress(course, Grade.IN_PROGRESS, false);
+        if(getCourseProgress(course) != null) {
+            System.out.println("Student already has this course added!");
+            return;
+        }
         studentCourses.add(newCourse);
+        if(newCourse != null) {
+            System.out.println("Course successfully added: " + newCourse.toString());
+        }
     }
 
     public void removeCourse(String courseName){
@@ -179,7 +234,7 @@ public class DegreeTracker {
     }
 
     public String createTranscipt(){
-        String str = "";
+        String str = completedCredits + " credits completed.\n";
         for (CourseProgress courseProgress : studentCourses) {
             str += courseProgress.getCourseName() + " - " + courseProgress.getCourseGrade() + "\n";
         }

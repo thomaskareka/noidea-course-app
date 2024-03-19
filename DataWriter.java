@@ -193,4 +193,13 @@ public class DataWriter extends DataConstants {
 
         return userDetails;
     }
+
+    public static void writeString(String out, String fileID) {
+        try(FileWriter file = new FileWriter("txt/" + fileID + ".txt")) {
+            file.write(out);
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
