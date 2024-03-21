@@ -15,9 +15,9 @@ public class UI {
         // scenario5();
         // scenario6();
 
-        init_braxScenario();
-        braxScenario();
-        braxScenarioShowChanges();
+        //init_braxScenario();
+        //braxScenario();
+        //braxScenarioShowChanges();
 
         init_oddenScenario();
         oddenScenario();
