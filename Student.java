@@ -61,10 +61,6 @@ public class Student extends User {
         return degreeProgress.getAllCourses();
     }
 
-    public String getEightSemesterPlan(){
-        return "";
-    }
-
     public void editFailureRisk(boolean bool){
         failureRisk = bool;
     }
@@ -143,6 +139,12 @@ public class Student extends User {
 
     public double getMajorGPA() {
         return majorGPA;
+    }
+
+    public void setOverallGPA(double gpa){
+        if(gpa <= 4.0 && gpa >= 0){
+            overallGPA = gpa;
+        }
     }
 
     public double getOverallGPA() {
