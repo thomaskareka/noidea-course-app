@@ -27,5 +27,16 @@ public class CourseListTester {
 	public void tearDown() {
 		//runs after each test
 	}
+	
+
+	//Beginning of testing methods
+
+	@Test
+	public void testAddCourse(){
+
+	}
+	public void testContainsCourse(){
+
+	}
 }
 

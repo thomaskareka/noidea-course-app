@@ -27,5 +27,24 @@ public class CourseProgressTester {
 	public void tearDown() {
 		//runs after each test
 	}
+
+	//Beginning of testing methods
+
+	@Test 
+	public void testEditCourseGrade(){
+
+	}
+	public void testCourseProgress(){
+
+	}
+	public void testMakeCourseComplete(){
+
+	}
+	public void testMakeCourseInProgress(){
+
+	}
+	public void testMakeCourseUncomplete(){
+		
+	}
 }
 
