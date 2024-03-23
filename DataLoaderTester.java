@@ -17,6 +17,9 @@ public class DataLoaderTester {
 	private ArrayList<Advisor> advisors = userList.getAdvisors();
 	private ArrayList<Course> courses = courseList.getCourses();
 	private ArrayList<Degree> degrees = degreeList.getDegrees();
+
+	private ArrayList<Student> studentBackup = new ArrayList<Student>(students);
+	private ArrayList<Advisor> advisorBackup = new ArrayList<Advisor>(advisors);
 	
 	@BeforeClass
 	public void oneTimeSetup() {
@@ -40,8 +43,10 @@ public class DataLoaderTester {
 	
 	@AfterEach
 	public void tearDown() {
-		userList.getAdvisors().clear();
 		userList.getStudents().clear();
+		userList.getAdvisors().clear();
+		userList.setStudents(studentBackup);
+		userList.setAdvisors(advisorBackup);
 		DataWriter.saveStudents();
 		DataWriter.saveAdvisors();
 	}

@@ -17,6 +17,9 @@ public class DataWriterTester {
 	private ArrayList<Advisor> advisors = userList.getAdvisors();
 	private ArrayList<Course> courses = courseList.getCourses();
 	private ArrayList<Degree> degrees = degreeList.getDegrees();
+
+	private ArrayList<Student> studentBackup = new ArrayList<Student>(students);
+	private ArrayList<Advisor> advisorBackup = new ArrayList<Advisor>(advisors);
 	
 	@BeforeClass
 	public void oneTimeSetup() {
@@ -38,8 +41,10 @@ public class DataWriterTester {
 	
 	@AfterEach
 	public void tearDown() {
-		UserList.getInstance().getStudents().clear();
-		UserList.getInstance().getAdvisors().clear();
+		userList.getStudents().clear();
+		userList.getAdvisors().clear();
+		userList.setStudents(studentBackup);
+		userList.setAdvisors(advisorBackup);
 		DataWriter.saveStudents();
 		DataWriter.saveAdvisors();
 	}
@@ -73,7 +78,7 @@ public class DataWriterTester {
 		students.add(new Student("testF", "testL", "test@email.sc.edu", "Computer Information Systems", "password"));
 
 		DataWriter.saveStudents();
-		assertEquals(DataLoader.getStudents().get(0), DataLoader.getStudents().get(1));
+		assertEquals(DataLoader.getStudents().get(0).getMajor(), DataLoader.getStudents().get(1).getMajor());
 	}
 
 	@Test

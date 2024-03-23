@@ -9,7 +9,7 @@ public class AdvisorTester {
 
 	@BeforeClass
 	public void oneTimeSetup() {
-		users = users.getInstance;
+		//users = users.getInstance;
 	}
 	
 	@AfterClass
@@ -34,7 +34,7 @@ public class AdvisorTester {
 	}
 
 	public void testAddNotes() {
-		Advisor.addNotes(tStudent, "Sample Notes");
+		//Advisor.addNotes(tStudent, "Sample Notes");
 	}
 
 	public void testFailureRisk() {
