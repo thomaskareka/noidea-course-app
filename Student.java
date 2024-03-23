@@ -65,6 +65,10 @@ public class Student extends User {
         failureRisk = bool;
     }
 
+    public boolean getFailureRisk(){
+        return failureRisk;
+    }
+
     public boolean checkIfAtRisk(){
         if(overallGPA < 3.00)
             failureRisk = true;
@@ -91,11 +95,11 @@ public class Student extends User {
         }
         return str;
     }
-    public void addCourse(String course){
-        degreeProgress.addCourse(course);
+    public boolean addCourse(String course){
+        return degreeProgress.addCourse(course);
     }
-    public void removeCourse(String course){
-        degreeProgress.removeCourse(course);
+    public boolean removeCourse(String course){
+        return degreeProgress.removeCourse(course);
     }
     public String getCourseGrade(String name, String identifier){
        return degreeProgress.getCourseGrade(name, identifier);
@@ -163,8 +167,14 @@ public class Student extends User {
         this.advisor = advisor;
     }
 
-    public void addNotes(String newNotes){
-        notes.add(newNotes);
+    public boolean addNotes(String newNotes){
+        if(newNotes != null && !newNotes.equals("")){
+            notes.add(newNotes);
+            return true;
+        }
+        return false;
+        
+        
     }
 
     public ArrayList<String> getNotes() {
