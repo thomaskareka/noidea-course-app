@@ -8,6 +8,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+//Written by Alayna Wybranski
+
 public class StudentTester {
 	private UserList userList = UserList.getInstance();
 	private Student s;
