@@ -135,7 +135,7 @@ public class StudentTester {
 
 	@Test 
 	public void addNotesNull(){
-		assertNull(s.addNotes(null));
+		assertFalse(s.addNotes(null));
 	}
 
 	@Test 

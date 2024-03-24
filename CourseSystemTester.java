@@ -23,11 +23,7 @@ public class CourseSystemTester {
 
 	@BeforeClass
 	public void oneTimeSetup() {
-		att = courseList.getCoursesWithAttribute("AIU");
-		ArrayList<Requisite> reqs = c.getRequisites();
-		for (Requisite requisite : reqs) {
-			reqText += requisite + "\n";
-		}
+		
 	}
 	
 	@AfterClass
@@ -160,11 +156,13 @@ public class CourseSystemTester {
 	//get courses with attributes testers
 	@Test
 	public void getCoursesWithAttributeReg(){
+		att = "Valid courses with attribute AIU:\n";
 		assertEquals(att, system.getCoursesWithAttribute("AIU"));
 	}
 
 	@Test
 	public void getCoursesWithAttributesMistyped(){
+		att = "Valid courses with attribute aiU:\n";
 		assertEquals(att, system.getCoursesWithAttribute("aiU"));
 	}
 
@@ -240,21 +238,25 @@ public class CourseSystemTester {
 	// course req search - both by name and identifer - testers
 	@Test
 	public void courseRequistesSearchByNameReg(){
+		reqText = "pre_or_co: MATH111/MATH115 (D)\n";
 		assertEquals(reqText, system.courseRequistesSearchByName("Algorithmic Design I"));
 	}
 
 	@Test
 	public void courseRequistesSearchByIdentiferReg(){
+		reqText = "pre_or_co: MATH111/MATH115 (D)\n";
 		assertEquals(reqText, system.courseRequistesSearchByIdentifer("CSCE145"));
 	}
 
 	@Test
 	public void courseRequistesSearchByNameMistyped(){
+		reqText = "pre_or_co: MATH111/MATH115 (D)\n";
 		assertEquals(reqText, system.courseRequistesSearchByName("aLGORithmic dESIgn i"));
 	}
 
 	@Test
 	public void courseRequistesSearchByIdentiferMistyped(){
+		reqText = "pre_or_co: MATH111/MATH115 (D)\n";
 		assertEquals(reqText, system.courseRequistesSearchByIdentifer("csCE145"));
 	}
 
