@@ -27,5 +27,6 @@ public class DegreeTester {
 	public void tearDown() {
 		//runs after each test
 	}
+	
 }
 
