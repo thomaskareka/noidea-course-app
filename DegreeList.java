@@ -19,7 +19,7 @@ public class DegreeList {
 
     public Degree getMajor(String major){
         for (Degree degree : degrees) {
-            if(degree.getTitle().equals(major) && !degree.getType().equals("majorMap"))
+            if(degree.getTitle().equals(major) && !degree.getType().equals("major"))
                 return degree;
         }
         return null;
@@ -33,9 +33,6 @@ public class DegreeList {
         return null;
     }
 
-    public Degree getMinor(String minor){
-        return null;
-    }
 
     public String getAllApplicationAreas() {
         String out = "Application Areas:\n";
@@ -44,14 +41,6 @@ public class DegreeList {
                 out += degree.toString() + "\n";
         }
         return out;
-    }
-
-    public Degree getTitle(String title) {
-        return null;
-    }
-    
-    public Degree getRequiredCredits(int requiredCredits) {
-        return null;
     }
 
     public ArrayList<Degree> getDegrees() {
