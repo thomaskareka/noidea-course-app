@@ -104,4 +104,31 @@ public class DataWriterTester {
 		DataWriter.saveAdvisors();
 		assertEquals(0, DataLoader.getAdvisors().size());
 	}
+
+	@Test
+	void testWritingNewAdvisor() {
+		advisors = userList.getAdvisors();
+		advisors.add(new Advisor("f", "l", "t@t.com", false, "a"));
+		DataWriter.saveAdvisors();
+		assertEquals("f", DataLoader.getAdvisors().get(0).getFirstName());
+	}
+
+	@Test
+	void testDuplicateManuallyAddedAdvisors() {
+		advisors = userList.getAdvisors();
+		advisors.add(new Advisor("f", "l", "t@t.com", false, "a"));
+		advisors.add(new Advisor("f", "l", "t@t.com", false, "a"));
+		DataWriter.saveAdvisors();
+		assertNotEquals(DataLoader.getAdvisors().get(0).getID(), DataLoader.getAdvisors().get(1).getID());
+	}
+
+	@Test
+	void testWritingDuplicateAdvisorsFromSignup() {
+		advisors = userList.getAdvisors();
+		userList.signUp(false, "testF", "testL", "test@email.sc.edu", "password");
+		userList.signUp(false, "testF", "testL", "test@email.sc.edu", "password");
+		userList.signUp(false, "testF", "testL", "test@email.sc.edu", "password");
+		DataWriter.saveAdvisors();
+		assertEquals(1, DataLoader.getAdvisors().size());
+	}
 }

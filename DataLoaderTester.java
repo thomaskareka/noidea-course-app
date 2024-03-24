@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -56,9 +57,23 @@ public class DataLoaderTester {
 		assertEquals(userList.getStudents().size(), 0);
 	}
 
+	void testLoadingNullStudents() {
+		userList.getStudents().add(null);
+		DataWriter.saveStudents();
+
+		assertEquals(DataLoader.getStudents().size(), 0);
+	}
+
 	@Test
 	void testEmptyAdvisorList() {
 		assertEquals(userList.getAdvisors().size(), 0);
+	}
+
+	void testLoadingNullAdvisors() {
+		userList.getAdvisors().add(null);
+		DataWriter.saveAdvisors();
+
+		assertEquals(DataLoader.getAdvisors().size(), 0);
 	}
 
 	@Test
@@ -68,9 +83,55 @@ public class DataLoaderTester {
 	}
 
 	@Test
+	void testCoursesUnique() {
+		courses = DataLoader.getCourses();
+		assertNotEquals(courses.get(0), courses.get(1));
+	}
+
+	@Test
+	void testCourseLoadDescription() {
+		courses = DataLoader.getCourses();
+		assertNotNull(courses.get(0).getDescription());
+	}
+
+	@Test
+	void testCourseLoadName() {
+		courses = DataLoader.getCourses();
+		assertNotNull(courses.get(0).getName());
+	}
+
+	@Test
+	void testCourseExists() {
+		courses = DataLoader.getCourses();
+		for(Course c : courses) {
+			if(c.getIdentifier().equals("CSCE247")) {
+				assertEquals(c.getName(), "Software Engineering");
+			}
+		}
+	}
+
+	@Test
 	void testLoadingDegrees() {
 		degrees = DataLoader.getDegrees();
 		assertTrue(degrees.size() > 5);
+	}
+
+	@Test
+	void testDegreeRequirementsNotNull() {
+		degrees = DataLoader.getDegrees();
+		assertNotNull(degrees.get(0).getRequirements());
+	}
+
+	@Test
+	void testDegreeRequirementsLoading() {
+		degrees = DataLoader.getDegrees();
+		assertEquals(degrees.get(0).getRequirements().get(0).getCategory(), "CC Communication and Writing");
+	}
+
+	@Test
+	void testDegreeType() {
+		degrees = DataLoader.getDegrees();
+		assertEquals(degrees.get(0).getType(), "major");
 	}
 }
 
