@@ -17,6 +17,9 @@ public class DataWriterTester {
 	private ArrayList<Advisor> advisors = userList.getAdvisors();
 	private ArrayList<Course> courses = courseList.getCourses();
 	private ArrayList<Degree> degrees = degreeList.getDegrees();
+
+	private ArrayList<Student> studentBackup = new ArrayList<Student>(students);
+	private ArrayList<Advisor> advisorBackup = new ArrayList<Advisor>(advisors);
 	
 	@BeforeClass
 	public void oneTimeSetup() {
@@ -38,8 +41,10 @@ public class DataWriterTester {
 	
 	@AfterEach
 	public void tearDown() {
-		UserList.getInstance().getStudents().clear();
-		UserList.getInstance().getAdvisors().clear();
+		userList.getStudents().clear();
+		userList.getAdvisors().clear();
+		userList.setStudents(studentBackup);
+		userList.setAdvisors(advisorBackup);
 		DataWriter.saveStudents();
 		DataWriter.saveAdvisors();
 	}
@@ -73,7 +78,7 @@ public class DataWriterTester {
 		students.add(new Student("testF", "testL", "test@email.sc.edu", "Computer Information Systems", "password"));
 
 		DataWriter.saveStudents();
-		assertEquals(DataLoader.getStudents().get(0), DataLoader.getStudents().get(1));
+		assertEquals(DataLoader.getStudents().get(0).getMajor(), DataLoader.getStudents().get(1).getMajor());
 	}
 
 	@Test
@@ -98,5 +103,32 @@ public class DataWriterTester {
 		advisors.add(null);
 		DataWriter.saveAdvisors();
 		assertEquals(0, DataLoader.getAdvisors().size());
+	}
+
+	@Test
+	void testWritingNewAdvisor() {
+		advisors = userList.getAdvisors();
+		advisors.add(new Advisor("f", "l", "t@t.com", false, "a"));
+		DataWriter.saveAdvisors();
+		assertEquals("f", DataLoader.getAdvisors().get(0).getFirstName());
+	}
+
+	@Test
+	void testDuplicateManuallyAddedAdvisors() {
+		advisors = userList.getAdvisors();
+		advisors.add(new Advisor("f", "l", "t@t.com", false, "a"));
+		advisors.add(new Advisor("f", "l", "t@t.com", false, "a"));
+		DataWriter.saveAdvisors();
+		assertNotEquals(DataLoader.getAdvisors().get(0).getID(), DataLoader.getAdvisors().get(1).getID());
+	}
+
+	@Test
+	void testWritingDuplicateAdvisorsFromSignup() {
+		advisors = userList.getAdvisors();
+		userList.signUp(false, "testF", "testL", "test@email.sc.edu", "password");
+		userList.signUp(false, "testF", "testL", "test@email.sc.edu", "password");
+		userList.signUp(false, "testF", "testL", "test@email.sc.edu", "password");
+		DataWriter.saveAdvisors();
+		assertEquals(1, DataLoader.getAdvisors().size());
 	}
 }

@@ -32,7 +32,7 @@ public class CourseSystem{
         }
     }
     public boolean signUp(boolean type, String firstName, String lastName, String email, String password){
-        /* the boolean 'type' will be true if the user signing up is a student, and false if an advisor.
+        /* the boolean 'type' will be true if the user signing up as a student, and false if an advisor.
          All information that is not held in the User class will have to be inputted later in, maybe, an update profile method.*/
         user = userList.signUp(type, firstName, lastName, email, password);
         return (user != null);

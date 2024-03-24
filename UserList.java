@@ -199,4 +199,12 @@ public class UserList {
             }
         }
     }
+    //only for test cases, do not use
+    public void setStudents(ArrayList<Student> students) {
+        this.students = students;
+    }
+
+    public void setAdvisors(ArrayList<Advisor> advisors) {
+        this.advisors = advisors;
+    }
 }

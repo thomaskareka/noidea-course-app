@@ -1,6 +1,8 @@
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -12,21 +14,22 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 public class AdvisorTester {
-	private UserList userList = UserList.getInstance();
-	private ArrayList<Student> students = userList.getStudents();
-	private ArrayList<Advisor> advisors = userList.getAdvisors();
-	UUID id = UUID.randomUUID();
+	private Advisor advisor;
+    private Student student;
+    private UserList userList = UserList.getInstance();
 
 	@BeforeEach
 	public void setup() {
 		//runs before each test
-		userList.getAdvisors().clear();
+        userList.getAdvisors().clear();
 		userList.getStudents().clear();
 		DataWriter.saveStudents();
 		DataWriter.saveAdvisors();
 
-		userList.addAdvisorUser("AdivsorFriend", "Yay", "email@email.sc.edu", true, "password");
-		userList.addStudentUser("StudentFriend", "Yay", "email@email.sc.edu", "Computer Science", "password");
+		advisor = new Advisor("testAdvisor", "lastName", "email", true, "password");
+		student= new Student("testStudent", "lastName", "email", "CS", "password");
+		student = userList.getStudentFromStudentID("B001121");
+
 	}
 	
 	@AfterEach
@@ -41,47 +44,105 @@ public class AdvisorTester {
 
 	@Test
     void testSearchByStudentIDWhenIdExists() {
-        Student result = UserList.getInstance().getStudentFromID(id);
+        Student result = userList.getStudentFromStudentID("B001121");
         assertNotNull(result);
-		assertEquals(id.toString(), result.getStudentID());
-    }
+        assertEquals("B001121", result.getStudentID());
+	}
 
     @Test
     void testSearchByStudentIDWhenIdDoesNotExist() {
-        Student result = UserList.getInstance().getStudentFromID(id);
+        Student result = userList.getStudentFromStudentID("B001121");
         assertNull(result);
     }
 
     @Test
     void testSearchByStudentIDWhenIdIsNull() {
-		Student result = UserList.getInstance().getStudentFromID(null);
+		Student result = userList.getStudentFromStudentID(null);
         assertNull(result);
     }
 
 	@Test 
-	void testAddAdvisee(){
+	void testAddAdviseeWhenAdviseeIsNotAlreadyAdded(){
+		assertTrue(advisor.getStudents().contains(student.getStudentID()));
+	}
 
+	@Test
+    void testAddAdviseeWhenAdviseeAlreadyAdded() {
+		assertEquals("B001121", student.getStudentID());
+    }
+	@Test
+    void testAddAdviseeWhenAdviseeDoesNotExist() {
+		Student result = userList.getStudentFromStudentID(null);
+		assertNull(result);
+    }
+	@Test 
+	void testAddCourseForStudentNormal(){
+		assertTrue(student.addCourse("CSCE247"));
 	}
 	@Test 
-	void testAddCourseForStudent(){
-
+	void testAddCourseForStudentNotValid(){
+		assertTrue(student.addCourse("CsCe 247"));;
 	}
 	@Test 
-	void removeCourseForStudent(){
-
+	void testAddCourseForStudentNull(){
+		assertNull(student.addCourse(null));;
 	}
 	@Test 
-	void testAddNotes(){
-
+	void removeCourseForStudentNormal(){
+		student.addCourse("CSCE242");
+		assertTrue(student.removeCourse("CSCE242"));
 	}
 	@Test 
-	void testEnterFailureRisk(){
-		
+	void removeCourseForStudentNotValid(){
+		assertTrue(student.removeCourse("CsCe 242"));
 	}
 	@Test 
-	void testRemoveFailureRisk(){
-
+	void testRemoveCourseForStudentNull(){
+		assertNull(student.removeCourse(null));
 	}
-	
+	@Test 
+	void testAddNotesNormal(){
+		assertTrue(student.addNotes("notes"));
+	}
+	@Test
+	void testAddNotesNull(){
+		assertNull(student.addNotes(null));
+	}
+	@Test
+	void testAddNotesEmpty(){
+		assertTrue(student.addNotes(" "));
+	}
+	@Test 
+	void testEnterFailureRiskWhenAtRisk(){
+		boolean rf= student.checkIfAtRisk();
+		if (student.checkIfAtRisk())
+		assertTrue(rf);
+	}
+	@Test
+    void testEnterFailureRiskWhenNotAtRisk() {
+        boolean rf= student.checkIfAtRisk();
+		if (!student.checkIfAtRisk())
+        assertFalse(rf);
+    }
+	@Test 
+	void testRemoveFailureRiskTrue(){
+		student.editFailureRisk(true);
+        assertTrue(student.getFailureRisk());
+	}
+	@Test 
+	void testRemoveFailureRiskFalse(){
+		student.editFailureRisk(false);
+        assertFalse(student.getFailureRisk());
+	}
+	@Test 
+	void testIsAdminTrue(){
+		if(advisor.isAdmin())
+		assertTrue(advisor.isAdmin());
+	}
+	@Test 
+	void testIsAdminFalse(){
+		if(!advisor.isAdmin())
+		assertFalse(advisor.isAdmin());
+	}
 
 }

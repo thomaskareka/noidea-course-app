@@ -178,23 +178,28 @@ public class DegreeTracker {
         return courses;
     }
 
-    public void addCourse(String course){
+    public boolean addCourse(String course){
         CourseProgress newCourse = new CourseProgress(course, Grade.IN_PROGRESS, false);
         if(getCourseProgress(course) != null) {
             System.out.println("Student already has this course added!");
-            return;
+            return false;
         }
         studentCourses.add(newCourse);
         if(newCourse != null) {
             System.out.println("Course successfully added: " + newCourse.toString());
+            return true;
         }
+        return false;
     }
 
-    public void removeCourse(String courseName){
+    public boolean removeCourse(String courseName){
         for (CourseProgress courseProgress : studentCourses) {
-            if(courseProgress.getCourseName().equalsIgnoreCase(courseName))
+            if(courseProgress.getCourseName().equalsIgnoreCase(courseName)){
                 studentCourses.remove(courseProgress);
+                return true;
+            }
         }
+        return false;
     }
 
     public String generateEightSememsterPlan() {

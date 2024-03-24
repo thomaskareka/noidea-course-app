@@ -15,7 +15,9 @@ public class DataWriter extends DataConstants {
         JSONArray jsonUsers = new JSONArray();
 
         for(int i = 0; i < studentList.size(); i++) {
-            jsonUsers.add(getStudentJSON(studentList.get(i)));
+            if(studentList.get(i) != null) {
+                jsonUsers.add(getStudentJSON(studentList.get(i)));
+            }
         }
 
         try(FileWriter file = new FileWriter(STUDENT_FILE_NAME)) {
@@ -32,7 +34,9 @@ public class DataWriter extends DataConstants {
         JSONArray jsonUsers = new JSONArray();
 
         for(int i = 0; i < advisorList.size(); i++) {
-            jsonUsers.add(getAdvisorJSON(advisorList.get(i)));
+            if(advisorList.get(i) != null) {
+                jsonUsers.add(getAdvisorJSON(advisorList.get(i)));
+            }
         }
 
         try(FileWriter file = new FileWriter(ADVISOR_FILE_NAME)) {
@@ -49,7 +53,9 @@ public class DataWriter extends DataConstants {
         JSONArray jsonCourses = new JSONArray();
 
         for(Course c : courses) {
+            if(c != null) {
             jsonCourses.add(getCourseJSON(c));
+            }
         }
 
         try(FileWriter file = new FileWriter(COURSE_FILE_NAME)) {
@@ -66,12 +72,14 @@ public class DataWriter extends DataConstants {
         JSONArray jsonDegrees = new JSONArray();
 
         for(Degree d : degrees) {
+            if(d != null) {
             JSONObject dJson = new JSONObject();
             dJson.put(DEGREE_TYPE, d.getType());
             dJson.put(DEGREE_NAME, d.getTitle());
             dJson.put(DEGREE_CREDITS, d.getCredits());
             dJson.put(DEGREE_REQUIREMENTS, getDegreeReqJSON(d.getRequirements()));
             jsonDegrees.add(dJson);
+            }
         }
 
         try(FileWriter file = new FileWriter(DEGREE_FILE_NAME)) {
