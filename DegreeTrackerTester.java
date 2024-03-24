@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -27,5 +28,6 @@ public class DegreeTrackerTester {
 	public void tearDown() {
 		//runs after each test
 	}
+
 }
 
