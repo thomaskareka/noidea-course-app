@@ -1,6 +1,8 @@
 import static org.junit.Assert.assertSame;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.AfterEach;
@@ -11,33 +13,40 @@ import org.junit.jupiter.api.Test;
 
 public class CourseSystemTester {
 	
-	private UserList userList = UserList.getInstance();
-	private CourseList courseList = CourseList.getInstance();
+	private UserList userList;
+	private CourseList courseList;
 	private CourseSystem system = new CourseSystem();
 	private Student s;
 	private Course c;
 	private String att;
+	private String reqText;
 
 	@BeforeClass
 	public void oneTimeSetup() {
-		s = userList.getStudentFromStudentID("B001120");
-		c = courseList.getCourseByIdentifer("CSCE145");
 		att = courseList.getCoursesWithAttribute("AIU");
+		ArrayList<Requisite> reqs = c.getRequisites();
+		for (Requisite requisite : reqs) {
+			reqText += requisite + "\n";
+		}
 	}
 	
 	@AfterClass
 	public void oneTimeTearDown() {
-		
+		userList=null;
 	}
 	
 	@BeforeEach
 	public void setup() {
-		
+		userList = UserList.getInstance();
+		courseList= CourseList.getInstance();
+		s = userList.getStudentFromStudentID("B001120");
+		c = courseList.getCourseByIdentifer("CSCE145");
+		system.login(s.getEmail(), s.getPassword());
 	}
 	
 	@AfterEach
 	public void tearDown() {
-		//runs after each test
+		
 	}
 
 	//login testers
@@ -89,7 +98,7 @@ public class CourseSystemTester {
 
 	@Test
 	public void signUpNullPassowrd(){
-		assertFalse(system.signUp(false, "lucy", "wick", "lwick@g.com", null));
+		assertFalse(system.signUp(true, "lucy", "wick", "lwick@g.com", null));
 	}
 
 	@Test
@@ -228,11 +237,92 @@ public class CourseSystemTester {
 		assertNull(system.courseDescriptionSearchByIdentifier("dogs101"));
 	}
 
-	//add Course testers
+	// course req search - both by name and identifer - testers
+	@Test
+	public void courseRequistesSearchByNameReg(){
+		assertEquals(reqText, system.courseRequistesSearchByName("Algorithmic Design I"));
+	}
 
-	//add grade testers
+	@Test
+	public void courseRequistesSearchByIdentiferReg(){
+		assertEquals(reqText, system.courseRequistesSearchByIdentifer("CSCE145"));
+	}
 
-	//search by student ids testers
+	@Test
+	public void courseRequistesSearchByNameMistyped(){
+		assertEquals(reqText, system.courseRequistesSearchByName("aLGORithmic dESIgn i"));
+	}
+
+	@Test
+	public void courseRequistesSearchByIdentiferMistyped(){
+		assertEquals(reqText, system.courseRequistesSearchByIdentifer("csCE145"));
+	}
+
+	@Test
+	public void courseRequistesSearchByNameNull(){
+		assertNull(system.courseRequistesSearchByName(null));
+	}
+
+	@Test
+	public void courseRequistesSearchByIdentiferNull(){
+		assertNull(system.courseRequistesSearchByIdentifer(null));
+	}
+
+	@Test
+	public void courseRequistesSearchByNameEmptyString(){
+		assertNull(system.courseRequistesSearchByName(""));
+	}
+
+	@Test
+	public void courseRequistesSearchByIdentiferEmptyString(){
+		assertNull(system.courseRequistesSearchByIdentifer(""));
+	}
+
+	@Test
+	public void courseRequistesSearchByNameNotACourse(){
+		assertNull(system.courseRequistesSearchByName("dog"));
+	}
+
+	@Test
+	public void courseRequistesSearchByIdentiferNotACOurse(){
+		assertNull(system.courseRequistesSearchByIdentifer("bear"));
+	}
+
+	// add grade testers
+	@Test
+	public void addGradeReg(){
+		system.login(s.getEmail(), s.getPassword());
+		s.addCourse("STAT509");
+		assertTrue(system.addGrade("STAT509", Grade.A));
+	}
+
+	@Test
+	public void addGradeMistyped(){
+		s.addCourse("CHEM111L");
+		assertTrue(system.addGrade("CheM111l", Grade.B));
+	}
+
+	@Test
+	public void addgradeNotACourse(){
+		assertFalse(system.addGrade("horse", Grade.C));
+	}
+
+	@Test
+	public void addGradeEmptyString(){
+		assertFalse(system.addGrade("", Grade.D));
+	}
+
+	@Test
+	public void addGradeNull(){
+		assertFalse(system.addGrade(null, Grade.C));
+	}
+
+	@Test
+	public void addGradeNullGrade(){
+		system.login(s.getEmail(), s.getPassword());
+		assert(system.addGrade("CSCE145", null));
+	}
+
 	
     
 }

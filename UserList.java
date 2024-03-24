@@ -19,13 +19,13 @@ public class UserList {
     }
     
     public User login(String email, String password){
-        for (Advisor advisor : advisors) {
-            if(advisor.getEmail().equals(email) && advisor.getPassword().equals(password))
-                return advisor;
-        }
         for (Student student : students) {
             if(student.getEmail().equals(email) && student.getPassword().equals(password))
                 return student;
+        }
+        for (Advisor advisor : advisors) {
+            if(advisor.getEmail().equals(email) && advisor.getPassword().equals(password))
+                return advisor;
         }
         
         return null;
