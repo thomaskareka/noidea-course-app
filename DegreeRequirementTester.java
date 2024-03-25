@@ -73,6 +73,27 @@ public class DegreeRequirementTester {
 		assertTrue(calculationResult.contains("4 credits completed"), "Credits calculation did not match");
 	}
 
+	@Test
+    void testRequirementWithNoCourses() {
+        ArrayList<String> requiredCourses = new ArrayList<>(Arrays.asList("MATH121", "CSCE145"));
+        DegreeRequirement degreeRequirement = new DegreeRequirement("Empty Requirement", requiredCourses, 6);
+        ArrayList<Course> studentCourses = new ArrayList<>();
+
+        String result = degreeRequirement.calculateRequirement(studentCourses);
+        assertFalse(result.contains("COMPLETE"), "Requirement should not be marked as complete with no courses taken.");
+    }
+
+	@Test
+    void testRequirementWithExactCredits() {
+        ArrayList<String> requiredCourses = new ArrayList<>(Arrays.asList("CSCE145"));
+        DegreeRequirement degreeRequirement = new DegreeRequirement("Exact Credits Requirement", requiredCourses, 3);
+
+        ArrayList<Course> studentCourses = new ArrayList<>();
+        studentCourses.add(courseList.getCourseByIdentifer("CSCE145"));
+
+        String calculationResult = degreeRequirement.calculateRequirement(studentCourses);
+        assertTrue(calculationResult.contains("COMPLETE"), "Requirement should be marked as complete with exact required credits.");
+    }
 
 }
 
