@@ -374,10 +374,14 @@ public class UserListTester {
 
     @Test
     public void testGetCourseGrade_NonExistingCourse() {
+        assertNull(userList.getCourseGrade(student, "Database", "CSCE"));
+
     }
 
     @Test
     public void testGetCourseGrade_NullCourse() {
+        assertNull(userList.getCourseGrade(student, null, null));
+
     }
 
     //calculate progress in DegreeTracker needs to be fixed
