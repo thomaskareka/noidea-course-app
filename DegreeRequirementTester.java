@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 public class DegreeRequirementTester {
 	private CourseList courseList;
 
+
 	@BeforeEach
 	public void setup() {
 		courseList = CourseList.getInstance();
@@ -54,5 +55,10 @@ public class DegreeRequirementTester {
         String calculationResult = degreeRequirement.calculateRequirement(studentCourses);
         assertTrue(calculationResult.contains("COMPLETE"), "Requirement should be marked as complete.");
     }
+
+	void test() {
+		
+	}
+
 }
 
