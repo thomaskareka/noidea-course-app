@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import org.junit.AfterClass;
@@ -69,12 +70,15 @@ public class UserListTester {
 
     @Test
     public void testSignUp_UserAlreadyExists() {
-        assertNotNull(userList.signUp(true, "Jane", "Doe", "janedoe@example.com", "f46fab9f9f91073a4262a6bce61dc3d05ad0a077"));
+        assertEquals(expected, userList.signUp(true, "Jane", "Doe", "janedoe@example.com", "f46fab9f9f91073a4262a6bce61dc3d05ad0a077"));
     }
 
     @Test
-    public void testSignUp_UserAlreadyExistsThenSignIn() {
-        assertEquals(expected, userList.signUp(true, "Jane", "Doe", "janedoe@example.com", "f46fab9f9f91073a4262a6bce61dc3d05ad0a077"));
+    public void testSignUp_Valid() {
+        Student newStudent = new Student("Alice", "Smith", "alice@example.com", "", "password");
+        userList.signUp(true, "Alice", "Smith", "alice@example.com", "password");
+        newStudent = userList.getStudentByEmail("alice@example.com");
+        assertEquals(newStudent, userList.signUp(true, "Alice", "Smith", "alice@example.com", "password"));
     }
 
     //ask about these 4 how to handle improper log in
@@ -97,8 +101,6 @@ public class UserListTester {
     public void testSignUp_EmptyPassword() {
         assertNull(userList.signUp(true, "John", "Doe", "john@example.com", ""));
     }
-
-
 
 	@Test
     public void testGetStudentByEmail_ValidEmailFound() {
@@ -301,6 +303,175 @@ public class UserListTester {
         assertEquals(expected, userList.getStudentCompleteCourses(student));
     }
     
+    @Test
+    public void testCheckIfStudentIsAtRisk_AtRisk() {
+        student.setOverallGPA(2.0);
+        assertTrue(userList.checkIfStudentIsAtRisk(student));
+    }
 
+    @Test
+    public void testCheckIfStudentIsAtRisk_NotAtRisk() {
+        student.setOverallGPA(3.0);
+        assertFalse(userList.checkIfStudentIsAtRisk(student));
+    }
+
+    @Test
+    public void testCheckIfStudentIsAtRisk_Zero() {
+        student.setOverallGPA(0.0);
+        assertTrue(userList.checkIfStudentIsAtRisk(student));
+    }
+
+    @Test
+    public void testCheckIfStudentIsAtRisk_Boundary() {
+        student.setOverallGPA(2.5);
+        assertTrue(userList.checkIfStudentIsAtRisk(student));
+    }
+
+    //unsure about this
+    @Test
+    public void testStudentOverallGPA_NoGrades() {
+        userList.addGrade(student, "CSCE520", Grade.IN_PROGRESS);
+        userList.addGrade(student, "ENGL101", Grade.IN_PROGRESS);
+        assertEquals(0.0, userList.studentOverallGPA(student));
+    }
+
+    @Test
+    public void testStudentOverallGPA_SingleGrade() {
+        userList.addGrade(student, "CSCE520", Grade.IN_PROGRESS);
+        assertEquals(3.0, userList.studentOverallGPA(student));
+    }
+
+    @Test
+    public void testStudentOverallGPA_MultipleGrades() {
+        assertEquals(3.45, userList.studentOverallGPA(student));
+    }
+
+    //unsure as with overall
+    @Test
+    public void testStudentMajorGPA_NoMajorGrades() {
+        userList.addGrade(student, "CSCE520", Grade.IN_PROGRESS);
+        userList.addGrade(student, "CSCE247", Grade.IN_PROGRESS);
+        assertEquals(0.0, userList.studentMajorGPA(student));
+    }
+
+    @Test
+    public void testStudentMajorGPA_SingleMajorGrade() {
+        userList.addGrade(student, "CSCE520", Grade.A);
+        userList.addGrade(student, "CSCE247", Grade.IN_PROGRESS);
+        assertEquals(4.0, userList.studentMajorGPA(student));
+    }
+
+    @Test
+    public void testStudentMajorGPA_MultipleMajorGrades() {
+        userList.addGrade(student, "CSCE247", Grade.C);
+        assertEquals(3.0, userList.studentMajorGPA(student));
+    }
+
+    @Test
+    public void testGetCourseGrade_ExistingCourse() {
+        assertEquals("A", userList.getCourseGrade(student, "Database System Design", "CSCE520"));
+    }
+
+    @Test
+    public void testGetCourseGrade_NonExistingCourse() {
+    }
+
+    @Test
+    public void testGetCourseGrade_NullCourse() {
+    }
+
+    //calculate progress in DegreeTracker needs to be fixed
+    @Test
+    public void testCalculateDegreeCompletionPercentage_NoCourses() {
+        userList.addGrade(student, "CSCE520", Grade.IN_PROGRESS);
+        userList.addGrade(student, "ENGL102", Grade.IN_PROGRESS);
+        assertEquals(0.0, userList.calculateDegreeCompletionPercentage(student));
+    }
+
+    @Test
+    public void testCalculateDegreeCompletionPercentage_SomeCourses() {
+        userList.addGrade(student, "CSCE520", Grade.A);
+        userList.addGrade(student, "ENGL102", Grade.B);
+        userList.addGrade(student, "CSCE247", Grade.IN_PROGRESS);
+        assertEquals(4.80, userList.calculateDegreeCompletionPercentage(student));
+    }
+
+    @Test
+    public void testCalculateDegreeCompletionPercentage_AllCoursesCompleted() {
+        userList.addGrade(student, "CSCE520", Grade.A);
+        userList.addGrade(student, "ENGL102", Grade.B);
+        userList.addGrade(student, "CSCE247", Grade.A);
+        assertEquals(100, userList.calculateDegreeCompletionPercentage(student));
+    }
+
+    @Test
+    public void testAddStudentUser() {
+        Student student = userList.addStudentUser("Example", "Case", "examplecase@example.com", "CSCE", "password");
+        assertTrue(userList.getStudents().contains(student));
+    }
+
+    //failed -- added dupilcate 
+    @Test
+    public void testAddStudentUser_DuplicateEmail() {
+        Student student = userList.addStudentUser("Example", "Case", "examplecase@example.com", "CSCE", "password");
+        Student studentDuplicate = userList.addStudentUser("Example2", "Case2", "examplecase@example.com", "CSCE", "password2");
+        assertNull(studentDuplicate);
+        assertEquals(1, userList.getStudents().size()); // Ensure only one student is in the list
+    }
+
+    //not sure what im doing wrong but saveUser has no effect on either of these methods
+    @Test
+    public void testSaveUser_UpdateExistingStudent() {
+        ArrayList<Student> students = userList.getStudents();
+        ArrayList<Student> expected = new ArrayList<>();
+        expected.add(student);
+        expected.add(userList.getStudentFromStudentID("B001121"));
+        expected.add(userList.getStudentFromStudentID("B001122"));
+        expected.add(userList.getStudentFromStudentID("B001123"));
+        expected.add(userList.getStudentFromStudentID("B001132"));
+
+        String expec = "";
+        for(int i=0; i<expected.size(); i++)
+            expec += expected.get(i);
+
+        Student newStudent = userList.getStudentByEmail("janedoe@example.com");
+        newStudent.setMajor("Computer Information Systems");
+
+        userList.saveUser(newStudent);
+
+        String studs = "";
+        for(int i=0; i<students.size(); i++)
+            studs += students.get(i);
+            
+        assertNotEquals(expec, studs);
+    }
+
+    @Test
+    public void testSaveUser_NonExistingStudent() {
+        ArrayList<Student> students = userList.getStudents();
+        ArrayList<Student> expected = new ArrayList<>();
+        expected.add(student);
+        expected.add(userList.getStudentFromStudentID("B001121"));
+        expected.add(userList.getStudentFromStudentID("B001122"));
+        expected.add(userList.getStudentFromStudentID("B001123"));
+        expected.add(userList.getStudentFromStudentID("B001132"));
+
+        Student newStudent = new Student("Alice", "Smith", "alice@example.com", "", "password");
+        userList.signUp(true, "Alice", "Smith", "alice@example.com", "password");
+        newStudent = userList.getStudentByEmail("alice@example.com");
+
+        userList.saveUser(newStudent);
+        expected.add(newStudent);
+
+        String expec = "";
+        for(int i=0; i<expected.size(); i++)
+            expec += expected.get(i);
+
+        String studs = "";
+        for(int i=0; i<students.size(); i++)
+            studs += students.get(i);
+            
+        assertEquals(expec, studs);
+    }
 }
 

@@ -129,7 +129,7 @@ public class DegreeTracker {
     }
 
     public String getCourseGrade(String name, String identifer){
-        CourseProgress holder = getCourseProgress(name);
+        CourseProgress holder = getCourseProgress(identifer);
         return holder.getCourseGrade();
     }
 
