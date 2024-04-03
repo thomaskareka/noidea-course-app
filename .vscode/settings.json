@@ -2,6 +2,7 @@
     "java.test.config": {
         "workingDirectory": "${workspaceFolder}"
     },
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
 
