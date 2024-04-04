@@ -18,7 +18,7 @@ public class CourseList {
 
     public Course getCourseByIdentifer(String identifier) {
         for( int i=0; i<courses.size(); i++ ){
-            if(courses.get(i).getIdentifier().equals(identifier))
+            if(courses.get(i).getIdentifier().toUpperCase().equals(identifier.toUpperCase()))
                 return courses.get(i);
         }     
         return null;
@@ -43,6 +43,9 @@ public class CourseList {
     }
 
     public String getReqsByName(String name){
+        if(name.equals("") || name == null)
+            return null;
+        
         Course course = getCourseByName(name);
         ArrayList<Requisite> holder = course.getRequisites();
         String str = "";
@@ -53,6 +56,9 @@ public class CourseList {
     }
 
     public String getReqsByIdentifer(String identifer){
+        if(identifer.equals("") || identifer == null)
+            return null;
+        
         Course course = getCourseByIdentifer(identifer);
         ArrayList<Requisite> holder = course.getRequisites();
         String str = "";
