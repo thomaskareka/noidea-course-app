@@ -125,6 +125,9 @@ public class DegreeTracker {
     }
 
     public double CalculateProgress() {
+        Degree d = DegreeList.getInstance().getMajor(major);
+        requiredCredits = d.getCredits();
+        completedCredits = getCompletedCredits();
         return (completedCredits/requiredCredits)*100;
     }
 
