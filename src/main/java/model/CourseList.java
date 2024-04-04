@@ -26,7 +26,7 @@ public class CourseList {
 
     public Course getCourseByName(String name) {
         for( int i=0; i<courses.size(); i++ ){
-            if(courses.get(i).getName().equals(name))
+            if(courses.get(i).getName().toUpperCase().equals(name.toUpperCase()))
                 return courses.get(i);
         }  
         return null;
