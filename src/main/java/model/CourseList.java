@@ -33,11 +33,17 @@ public class CourseList {
     }
 
     public String getCourseDescriptionByName(String name){
+        if(name.equals("") || name == null)
+            return null;
+        
         Course course = getCourseByName(name);
         return course.getDescription();
     }
 
     public String getCourseDescriptionByIdentifer(String identfier){
+        if(identfier.equals("") || identfier == null)
+            return null;
+        
         Course course = getCourseByIdentifer(identfier);
         return course.getDescription();
     }
