@@ -37,6 +37,9 @@ public class CourseList {
             return null;
         
         Course course = getCourseByName(name);
+        if(course == null){
+            return null;
+        }
         return course.getDescription();
     }
 
@@ -45,6 +48,10 @@ public class CourseList {
             return null;
         
         Course course = getCourseByIdentifer(identfier);
+        if(course == null){
+            return null;
+        }
+        
         return course.getDescription();
     }
 
