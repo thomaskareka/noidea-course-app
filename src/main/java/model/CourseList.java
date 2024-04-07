@@ -60,12 +60,15 @@ public class CourseList {
             return null;
         
         Course course = getCourseByName(name);
-        ArrayList<Requisite> holder = course.getRequisites();
-        String str = "";
-        for (Requisite requisite : holder) {
-            str += requisite + "\n";
+        if(course != null){
+            ArrayList<Requisite> holder = course.getRequisites();
+            String str = "";
+            for (Requisite requisite : holder) {
+               str += requisite + "\n";
+             }
+            return str;
         }
-        return str;
+        return null;
     }
 
     public String getReqsByIdentifer(String identifer){
@@ -73,12 +76,15 @@ public class CourseList {
             return null;
         
         Course course = getCourseByIdentifer(identifer);
-        ArrayList<Requisite> holder = course.getRequisites();
-        String str = "";
-        for (Requisite requisite : holder) {
-            str += requisite + "\n";
+        if(course != null){
+            ArrayList<Requisite> holder = course.getRequisites();
+            String str = "";
+            for (Requisite requisite : holder) {
+                str += requisite + "\n";
+            }
+            return str;
         }
-        return str;
+        return null;
     }
 
     public boolean addCourse(Advisor advisor, String name, String identifier, int credits, String description, ArrayList<String> attributes, ArrayList<Requisite> requisite, String reqText){
