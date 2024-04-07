@@ -50,7 +50,10 @@ public class CourseSystem{
         }
     }
     public String showCourseByCode(String identifier){
-        return courseList.getCourseByIdentifer(identifier).toString();
+        Course courseInfo = courseList.getCourseByIdentifer(identifier);
+        if(courseInfo == null)
+            return null;
+        return courseInfo.toString();
     } 
     public String showAllCourses(){
        return courseList.getAllCourses();

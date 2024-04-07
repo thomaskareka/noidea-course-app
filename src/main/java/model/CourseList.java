@@ -17,6 +17,9 @@ public class CourseList {
     }
 
     public Course getCourseByIdentifer(String identifier) {
+        if(identifier == null || identifier.equals("")){
+            return null;
+        }
         for( int i=0; i<courses.size(); i++ ){
             if(courses.get(i).getIdentifier().toUpperCase().equals(identifier.toUpperCase()))
                 return courses.get(i);
