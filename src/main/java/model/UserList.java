@@ -33,7 +33,7 @@ public class UserList {
     }
     
     public User signUp(boolean type, String firstName, String lastName, String email, String password){
-        if(firstName == null || lastName == null || email == null || password == null){
+        if(firstName == null || lastName == null || email == null || password == null || firstName.equals("") || lastName.equals("") || email.equals("") || password.equals("")){
             System.out.println("Input was invalid. Please re-enter information.");
             return null;
         }
