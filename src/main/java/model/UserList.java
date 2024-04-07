@@ -113,11 +113,11 @@ public class UserList {
 
     private boolean containsUser(String email){
         for (Student student : students) {
-            if(student.getEmail().equals(email))
+            if(student.getEmail().toUpperCase().equals(email.toUpperCase()))
                 return true;
         }
         for (Advisor advisor : advisors) {
-            if(advisor.getEmail().equals(email))
+            if(advisor.getEmail().toUpperCase().equals(email.toUpperCase()))
                 return true;
         }
         return false;
