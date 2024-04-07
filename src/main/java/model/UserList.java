@@ -33,7 +33,11 @@ public class UserList {
     }
     
     public User signUp(boolean type, String firstName, String lastName, String email, String password){
-        if(!containsUser(email)){
+        if(firstName == null || lastName == null || email == null || password == null){
+            System.out.println("Input was invalid. Please re-enter information.");
+            return null;
+        }
+        else if(!containsUser(email)){
             // the boolean 'type' will be true if the user signing up is a student, and false if an advisor.
             // all information that is not held in the User class will have to be inputted later in, maybe, an update profile method.
             if(type){
