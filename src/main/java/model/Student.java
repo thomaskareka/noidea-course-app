@@ -112,6 +112,10 @@ public class Student extends User {
     
 
     public boolean addGrade(String course, Grade grade){
+        if(grade == null){
+            System.out.println("No grade was inputted.");
+            return false;
+        }
         boolean out = degreeProgress.addGrade(course, grade);
         overallGPA = degreeProgress.CalculateGPA();
         majorGPA = degreeProgress.CalculateMajorGPA();
