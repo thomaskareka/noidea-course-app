@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,13 +30,23 @@ public class LoginController {
     private Button menuSignupButton;
 
     @FXML
-    void doLogin(ActionEvent event) {
-        System.out.println("Login");
+    void doLogin(ActionEvent event) { // TODO, error handlers, scene transition
+        CourseSystem system = CourseSystem.getInstance();
+        String email = menuEmailField.getText();
+        String password = menuPasswordField.getText();
+
+        if(system.login(email, password)) {
+            System.out.println("succesfully signed in");
+            system.printActiveUser();
+        } else {
+            System.out.println("signin failed");
+        }
     }
 
     @FXML
-    void switchToSignup(ActionEvent event) {
-        System.out.println("Signup");
+    void switchToSignup(ActionEvent event) throws IOException {
+        System.out.println("Switching to Signup");
+        App.setRoot("signup");
     }
 
 }
