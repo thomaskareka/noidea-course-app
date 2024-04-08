@@ -6,7 +6,7 @@ public class UI {
     private CourseSystem system;
     
     public UI(){
-        system = new CourseSystem();
+        system = CourseSystem.getInstance();
     }
 
     public void run(){

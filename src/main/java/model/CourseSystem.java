@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class CourseSystem{
+    private static CourseSystem system;
+
     private UserList userList;
     private CourseList courseList;
     private DegreeList degreeList;
@@ -14,6 +16,14 @@ public class CourseSystem{
         courseList = CourseList.getInstance();
         degreeList = DegreeList.getInstance();
     }
+
+    public static CourseSystem getInstance() {
+        if(system == null) {
+            system = new CourseSystem();
+        }
+        return system;
+    }
+
     public boolean login (String email, String password){
        /* This method will call userList's login method and update the current user to be the person who logged in.
         If user is not null then the person successfully logged in */
