@@ -4,11 +4,12 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
+import javafx.scene.control.Alert.AlertType;
 import noidea.App;
 import model.*;
 
@@ -31,15 +32,18 @@ public class LoginController {
 
     @FXML
     void doLogin(ActionEvent event) { // TODO, error handlers, scene transition
-        CourseSystem system = CourseSystem.getInstance();
+        CourseSystem system = App.system;
         String email = menuEmailField.getText();
         String password = menuPasswordField.getText();
+        Alert a = new Alert(AlertType.ERROR);
 
         if(system.login(email, password)) {
             System.out.println("succesfully signed in");
             system.printActiveUser();
         } else {
-            System.out.println("signin failed");
+           a.setHeaderText("Signin failed!");
+           a.setContentText("Check your email and password again.");
+           a.show(); 
         }
     }
 

@@ -4,11 +4,12 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
+import javafx.scene.control.Alert.AlertType;
 import noidea.App;
 import model.*;
 
@@ -40,23 +41,28 @@ public class SignupController {
 
     @FXML
     void doSignup(ActionEvent event) {  // TODO: make error handlers show text, transition scene
-        CourseSystem system = CourseSystem.getInstance();
+        CourseSystem system = App.system;
         String email = menuEmailField.getText();
         String firstName = menuFirstField.getText();
         String lastName = menuLastField.getText();
         String password = menuPasswordField.getText();
         boolean type = !menuAdvisorCheckbox.isSelected();
 
-        if(!password.equals(menuConfirmField.getText())) {
-            System.out.println("passwords must match");
-            return;
-        } else if(password.length() < 8) {
-            System.out.println("passwords must be 8 characters or longer");
-            return;
-        }
+        Alert a = new Alert(AlertType.ERROR);
 
         if(email.equals("") || firstName.equals("") || lastName.equals("")) {
-            System.out.println("fields can not be blank");
+            a.setHeaderText("All fields must be filled.");
+            a.show();
+            return;
+        }
+        
+        if(!password.equals(menuConfirmField.getText())) {
+            a.setHeaderText("Passwords must match!");
+            a.show();
+            return;
+        } else if(password.length() < 8) {
+            a.setHeaderText("Passwords must be 8 characters or longer!");
+            a.show();
             return;
         }
 
@@ -64,7 +70,8 @@ public class SignupController {
             System.out.println("Successfully signed up. Current user:");
             system.printActiveUser();
         } else {
-            System.out.println("Signup failed!");
+            a.setHeaderText("Signup failed...");
+            a.show();
             return;
         }
     }
