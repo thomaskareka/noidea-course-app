@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class CourseSystem{
@@ -22,6 +23,14 @@ public class CourseSystem{
             system = new CourseSystem();
         }
         return system;
+    }
+
+    public void exit() {
+        logout();
+        DataWriter.saveAdvisors();
+        DataWriter.saveStudents();
+        DataWriter.saveCourses();
+        DataWriter.saveMajors();
     }
 
     public boolean login (String email, String password){
@@ -302,5 +311,9 @@ public class CourseSystem{
         } else {
             System.out.println("No student selected!");
         }
+    }
+
+    public List<Course> getCoursesFromSearch(int page, String search) {
+        return courseList.getCoursesFromSearch(page, search);
     }
 }

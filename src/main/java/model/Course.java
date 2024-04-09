@@ -61,4 +61,17 @@ public class Course {
         String str = identifier + ": " + name + "\nCredits: " + credits + "\nDescription: " + description;
         return str;
     }
+
+    public String toStringDetailed(){
+        String str = identifier + ": " + name + "\nCredits: " + credits + "\nDescription: " + description;
+        if(!reqText.equals("")) {
+            str += "\n" + reqText;
+        }
+        if(!attributes.isEmpty()) {
+            for(String s: attributes) {
+                str += "\n" + s;
+            }
+        }
+        return str;
+    }
 }
