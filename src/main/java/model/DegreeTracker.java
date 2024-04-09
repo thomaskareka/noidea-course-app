@@ -1,4 +1,5 @@
 package model;
+
 import java.util.ArrayList;
 
 public class DegreeTracker {
@@ -126,6 +127,8 @@ public class DegreeTracker {
     }
 
     public double CalculateProgress() {
+        
+        completedCredits = getCompletedCredits();
         return (completedCredits/requiredCredits)*100;
     }
 
