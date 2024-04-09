@@ -19,16 +19,19 @@
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin></PasswordField>
-      <Button fx:id="menuLoginButton" mnemonicParsing="false" onAction="#doLogin" prefHeight="45.0" prefWidth="103.0" text="Login">
-         <VBox.margin>
-            <Insets top="20.0" />
-         </VBox.margin>
-      </Button>
-      <Button fx:id="menuSignupButton" mnemonicParsing="false" onAction="#switchToSignup" text="Sign Up">
-         <VBox.margin>
-            <Insets top="20.0" />
-         </VBox.margin>
-      </Button>
-      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="menuSignupButton" mnemonicParsing="false" onAction="#switchToSignup" prefHeight="45.0" prefWidth="103.0" text="Sign Up">
+               <HBox.margin>
+                  <Insets right="15.0" top="15.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="menuLoginButton" mnemonicParsing="false" onAction="#doLogin" prefHeight="45.0" prefWidth="103.0" text="Login">
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </VBox>
