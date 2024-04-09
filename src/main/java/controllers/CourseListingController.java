@@ -49,7 +49,7 @@ public class CourseListingController implements Initializable {
         courseBox.getChildren().clear();
         List<Course> foundCourses = App.system.getCoursesFromSearch(page - 1, search);
         for(Course c : foundCourses) {
-            Text t = new Text(c.toString());
+            Text t = new Text(c.toStringDetailed());
             t.setWrappingWidth(1200);
             t.setTextAlignment(TextAlignment.LEFT);
             TitledPane pane = new TitledPane(c.getIdentifier() + " - " + c.getName(), t);
