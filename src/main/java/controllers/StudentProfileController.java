@@ -1,4 +1,4 @@
-    package controllers;
+package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
-import model.Student;
+import model.*;
 import noidea.App;
 
 public class StudentProfileController implements Initializable {
@@ -33,7 +33,7 @@ public class StudentProfileController implements Initializable {
 
         @FXML @Override
         public void initialize(URL location, ResourceBundle resources) {
-            Student student  = App.system.getStudent();
+            Student student = App.system.getStudent();
             if (student != null) {
                 populateStudentProfile(student);
             }

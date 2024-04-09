@@ -326,9 +326,9 @@ public class CourseSystem{
     }
 
     public Student getStudent() {
-        if (this.user instanceof Student) {
-            return (Student) this.user;
+        if (user instanceof Student) {
+            return (Student) user;
         }
-        return null;
+        return activeStudent;
     }
 }
