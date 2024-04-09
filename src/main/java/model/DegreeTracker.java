@@ -126,8 +126,8 @@ public class DegreeTracker {
         return gpa;
     }
 
-    public double CalculateProgress() {
-        
+    public double CalculateProgress(Degree degree) {
+        requiredCredits = degree.getCredits() + getCompletedCredits();
         completedCredits = getCompletedCredits();
         return (completedCredits/requiredCredits)*100;
     }
@@ -211,7 +211,7 @@ public class DegreeTracker {
     }
 
     public boolean checkIfDegreeRequirementsMet(Degree degree) {
-        if(CalculateProgress() != 100)
+        if(CalculateProgress(degree) != 100)
             return false;
 
         return true;
