@@ -31,15 +31,19 @@ public class LoginController {
     private Button menuSignupButton;
 
     @FXML
-    void doLogin(ActionEvent event) { // TODO, error handlers, scene transition
+    void doLogin(ActionEvent event) throws IOException { // TODO, error handlers, scene transition
         CourseSystem system = App.system;
         String email = menuEmailField.getText();
         String password = menuPasswordField.getText();
         Alert a = new Alert(AlertType.ERROR);
 
         if(system.login(email, password)) {
-            System.out.println("succesfully signed in");
-            system.printActiveUser();
+            if(system.getUserType().contains("Student")) {
+                App.setRoot("courseListing");
+            } else {
+                System.out.println(system.getUserType());
+                System.out.println("logged in as an advisor"); //TODO
+            }
         } else {
            a.setHeaderText("Signin failed!");
            a.setContentText("Check your email and password again.");
