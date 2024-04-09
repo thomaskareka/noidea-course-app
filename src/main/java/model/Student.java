@@ -106,8 +106,8 @@ public class Student extends User {
        return degreeProgress.getCourseGrade(name, identifier);
     }
 
-    public double getDegreePercentage(){
-       return degreeProgress.CalculateProgress();
+    public double getDegreePercentage(Degree degree){
+       return degreeProgress.CalculateProgress(degree);
     }
     
 
