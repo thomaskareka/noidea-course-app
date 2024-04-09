@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
@@ -9,10 +10,11 @@
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CourseListingController">
    <children>
       <fx:include source="navigationBar.fxml" />
-      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1280.0">
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1280.0" spacing="10.0">
          <children>
             <Spinner fx:id="pageSpinner" />
             <TextField fx:id="courseField" promptText="Course Name" />
+            <Button mnemonicParsing="false" onAction="#courseSearchButtonPressed" text="🔍" />
          </children>
       </HBox>
       <ScrollPane fx:id="coursePane" hbarPolicy="NEVER" prefHeight="600.0" prefWidth="1280.0" vbarPolicy="ALWAYS">

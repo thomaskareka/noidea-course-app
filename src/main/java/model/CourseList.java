@@ -142,7 +142,20 @@ public class CourseList {
         return null;
     }
 
-    public List<Course> getCoursesFromSearch(int page) {
-        return courses.subList(page * 25, page * 25 + 24);
+    public ArrayList<Course> searchCoursesByName(String search) {
+        ArrayList<Course> valid = new ArrayList<>();
+        for(Course c : courses) {
+            if(c.getName().toLowerCase().contains(search.toLowerCase()) || c.getIdentifier().toLowerCase().contains(search.toLowerCase()))
+                valid.add(c);
+        }
+        return valid;
+    }
+
+    public List<Course> getCoursesFromSearch(int page, String search) {
+        if(search.equals("")) {
+            return courses.subList(Math.min(page * 25, courses.size()), Math.min(page * 25 + 24, courses.size()));
+        }
+        ArrayList<Course> valid = searchCoursesByName(search);
+        return valid.subList(Math.min(page * 25, valid.size()), Math.min(page * 25 + 24, valid.size()));
     }
 }
