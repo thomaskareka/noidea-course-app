@@ -25,6 +25,14 @@ public class CourseSystem{
         return system;
     }
 
+    public void exit() {
+        logout();
+        DataWriter.saveAdvisors();
+        DataWriter.saveStudents();
+        DataWriter.saveCourses();
+        DataWriter.saveMajors();
+    }
+
     public boolean login (String email, String password){
        /* This method will call userList's login method and update the current user to be the person who logged in.
         If user is not null then the person successfully logged in */
