@@ -164,7 +164,8 @@ public class UserList {
     }
 
     public double calculateDegreeCompletionPercentage(Student student){
-        return student.getDegreePercentage();
+        Degree d = DegreeList.getInstance().getMajor(student.getMajor());
+        return student.getDegreePercentage(d);
     }
 
     public Student addStudentUser(String fisrtName, String lastName, String email, String major, String password){       
