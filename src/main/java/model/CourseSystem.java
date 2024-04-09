@@ -316,4 +316,8 @@ public class CourseSystem{
     public List<Course> getCoursesFromSearch(int page, String search) {
         return courseList.getCoursesFromSearch(page, search);
     }
+
+    public String getUserType() {
+        return user.getClass().toString();
+    }
 }
