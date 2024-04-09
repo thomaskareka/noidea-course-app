@@ -320,4 +320,8 @@ public class CourseSystem{
     public String getUserType() {
         return user.getClass().toString();
     }
+
+    public User getCurrentUser() {
+        return this.user;
+    }
 }
