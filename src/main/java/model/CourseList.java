@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CourseList {
     private static CourseList courseList;
@@ -139,5 +140,9 @@ public class CourseList {
     //not sure what goes here
     public ArrayList<Course> getDegreeCourses(String degree) {
         return null;
+    }
+
+    public List<Course> getCoursesFromSearch(int page) {
+        return courses.subList(page * 25, page * 25 + 24);
     }
 }

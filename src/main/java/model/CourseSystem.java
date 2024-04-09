@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class CourseSystem{
@@ -302,5 +303,9 @@ public class CourseSystem{
         } else {
             System.out.println("No student selected!");
         }
+    }
+
+    public List<Course> getCoursesFromSearch(int page) {
+        return courseList.getCoursesFromSearch(page);
     }
 }
