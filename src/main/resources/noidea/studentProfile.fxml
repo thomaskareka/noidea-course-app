@@ -1,5 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
+
+<VBox fx:controller="controllers.StudentProfileController" xmlns:fx="http://javafx.com/fxml" spacing="10" padding="10">
+    <Label text="First Name"/>
+    <TextField fx:id="firstNameField" />
+
+    <Label text="Last Name"/>
+    <TextField fx:id="lastNameField" />
+
+    <Label text="Email"/>
+    <TextField fx:id="emailField" />
+
+    <Label text="Student ID"/>
+    <TextField fx:id="studentIdField" />
+
+    <Label text="Major"/>
+    <TextField fx:id="majorField" />
+
+    <Label text="Minor"/>
+    <TextField fx:id="minorField" />
+
+    <Label text="Class Level"/>
+    <TextField fx:id="classLevelField" />
+
+    <Label text="Application Area"/>
+    <TextField fx:id="applicationAreaField" />
+
+    <Label text="Major GPA"/>
+    <TextField fx:id="majorGPAField" />
+
+    <Label text="Overall GPA"/>
+    <TextField fx:id="overallGPAField" />
+</VBox>
