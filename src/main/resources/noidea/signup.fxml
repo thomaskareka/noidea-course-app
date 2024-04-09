@@ -11,11 +11,11 @@
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="618.0" text="Sign Up" />
-      <TextField fx:id="menuFirstField" alignment="CENTER" prefWidth="0.0" promptText="First Name" />
-      <TextField fx:id="menuLastField" alignment="CENTER" prefWidth="0.0" promptText="Last Name" />
-      <TextField fx:id="menuEmailField" alignment="CENTER" prefWidth="0.0" promptText="Email" />
-      <PasswordField fx:id="menuPasswordField" alignment="CENTER" promptText="Password" />
-      <PasswordField fx:id="menuConfirmField" alignment="CENTER" promptText="Confirm Password" />
+      <TextField fx:id="menuFirstField" alignment="CENTER" maxHeight="16.0" maxWidth="462.0" prefWidth="0.0" promptText="First Name" />
+      <TextField fx:id="menuLastField" alignment="CENTER" maxHeight="16.0" maxWidth="462.0" prefWidth="0.0" promptText="Last Name" />
+      <TextField fx:id="menuEmailField" alignment="CENTER" maxHeight="16.0" maxWidth="462.0" prefWidth="0.0" promptText="Email" />
+      <PasswordField fx:id="menuPasswordField" alignment="CENTER" maxHeight="16.0" maxWidth="462.0" promptText="Password" />
+      <PasswordField fx:id="menuConfirmField" alignment="CENTER" maxHeight="16.0" maxWidth="462.0" promptText="Confirm Password" />
       <CheckBox fx:id="menuAdvisorCheckbox" mnemonicParsing="false" text="Advisor?" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
