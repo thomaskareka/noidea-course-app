@@ -321,7 +321,14 @@ public class CourseSystem{
         return user.getClass().toString();
     }
 
-    public User getCurrentUser() {
+    public User getCurrentStudent() {
         return this.user;
+    }
+
+    public Student getStudent() {
+        if (this.user instanceof Student) {
+            return (Student) this.user;
+        }
+        return null;
     }
 }
