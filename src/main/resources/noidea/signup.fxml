@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -14,46 +14,53 @@
    <children>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="585.0" style="-fx-background-radius: 25;" styleClass="singin_box">
          <children>
-            <Label id="login_label" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="618.0" style="-fx-background-image: src\main\resources\noidea\imgs\banner_horseshoe_gates.jpg;" styleClass="white-box" text="CREATE NEW ACCOUNT" textFill="#73000a">
+            <Label id="login_label" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="618.0" style="-fx-background-image: src\main\resources\noidea\imgs\banner_horseshoe_gates.jpg;" text="CREATE NEW ACCOUNT" textFill="#73000a">
                <font>
                   <Font name="Times New Roman Bold" size="25.0" />
                </font>
+               <styleClass>
+                  <String fx:value="white-box" />
+                  <String fx:value="button2" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets bottom="25.0" />
+               </VBox.margin>
             </Label>
-            <TextField fx:id="menuFirstField" alignment="CENTER" maxHeight="16.0" maxWidth="462.0" prefWidth="0.0" promptText="Enter First Name">
+            <TextField fx:id="menuFirstField" alignment="CENTER" maxWidth="-Infinity" prefHeight="40.0" prefWidth="460.0" promptText="Enter First Name">
                <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
+                  <Insets bottom="5.0" top="20.0" />
                </VBox.margin>
                <font>
                   <Font name="Times New Roman" size="15.0" />
                </font>
             </TextField>
-            <TextField fx:id="menuLastField" alignment="CENTER" maxHeight="16.0" maxWidth="462.0" prefWidth="0.0" promptText="Enter Last Name">
+            <TextField fx:id="menuLastField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="460.0" promptText="Enter Last Name">
                <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
+                  <Insets bottom="5.0" top="20.0" />
                </VBox.margin>
                <font>
                   <Font name="Times New Roman" size="15.0" />
                </font>
             </TextField>
-            <TextField fx:id="menuEmailField" alignment="CENTER" maxHeight="16.0" maxWidth="462.0" prefWidth="0.0" promptText="Enter Email">
+            <TextField fx:id="menuEmailField" alignment="CENTER" maxHeight="49.0" maxWidth="462.0" prefHeight="40.0" prefWidth="460.0" promptText="Enter Email">
                <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
+                  <Insets bottom="5.0" top="20.0" />
                </VBox.margin>
                <font>
                   <Font name="Times New Roman" size="15.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="menuPasswordField" alignment="CENTER" maxHeight="16.0" maxWidth="462.0" promptText="Enter Password">
+            <PasswordField fx:id="menuPasswordField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="460.0" promptText="Enter Password">
                <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
+                  <Insets bottom="5.0" top="20.0" />
                </VBox.margin>
                <font>
                   <Font name="Times New Roman" size="15.0" />
                </font>
             </PasswordField>
-            <PasswordField fx:id="menuConfirmField" alignment="CENTER" maxHeight="16.0" maxWidth="462.0" promptText="Confirm Password">
+            <PasswordField fx:id="menuConfirmField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="460.0" promptText="Confirm Password">
                <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
+                  <Insets bottom="5.0" top="20.0" />
                </VBox.margin>
                <font>
                   <Font name="Times New Roman" size="15.0" />
@@ -62,19 +69,27 @@
             <CheckBox fx:id="menuAdvisorCheckbox" mnemonicParsing="false" text="Advisor?">
                <font>
                   <Font name="Times New Roman" size="15.0" />
-               </font></CheckBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-               <children>
-                  <Button fx:id="menuBackButton" mnemonicParsing="false" onAction="#switchToLogin" style="-fx-background-radius: 15px;" text="Back to Login">
-                     <font>
-                        <Font name="Times New Roman Bold" size="12.0" />
-                     </font></Button>
-                  <Button fx:id="menuSignupButton" mnemonicParsing="false" onAction="#doSignup" style="-fx-background-radius: 15px;" text="SIGN UP">
-                     <font>
-                        <Font name="Times New Roman Bold" size="18.0" />
-                     </font></Button>
-               </children>
-            </HBox>
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </CheckBox>
+            <Button fx:id="menuSignupButton" mnemonicParsing="false" onAction="#doSignup" style="-fx-background-radius: 5;" text="SIGN UP">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="menuBackButton" mnemonicParsing="false" onAction="#switchToLogin" style="-fx-background-radius: 15px;" styleClass="button2" text="Return to Login">
+               <font>
+                  <Font name="Times New Roman Bold" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </children>

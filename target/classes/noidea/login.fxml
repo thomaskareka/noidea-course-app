@@ -15,8 +15,11 @@
             <Label id="login_label" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="618.0" style="-fx-background-image: src\main\resources\noidea\imgs\banner_horseshoe_gates.jpg;" styleClass="button2" text="SIGN IN" textFill="#73000a">
                <font>
                   <Font name="Times New Roman Bold" size="25.0" />
-               </font></Label>
-            <TextField fx:id="menuEmailField" alignment="CENTER" maxWidth="-Infinity" prefHeight="46.0" prefWidth="462.0" promptText="Enter Email">
+               </font>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin></Label>
+            <TextField fx:id="menuEmailField" alignment="CENTER" maxWidth="-Infinity" prefHeight="45.0" prefWidth="460.0" promptText="Enter Email">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -24,7 +27,7 @@
                   <Font name="Times New Roman" size="15.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="menuPasswordField" alignment="CENTER" maxWidth="-Infinity" prefHeight="46.0" prefWidth="462.0" promptText="Enter Password">
+            <PasswordField fx:id="menuPasswordField" alignment="CENTER" maxWidth="-Infinity" prefHeight="45.0" prefWidth="460.0" promptText="Enter Password">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
