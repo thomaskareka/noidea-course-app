@@ -9,8 +9,9 @@
     -fx-text-fill: white;
 }
 .signin_page{
-    -fx-background-image:url("imgs/banner_horseshoe_gates.jpg");
-    
+    -fx-background-image:url("imgs/horseshoeImage.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
 }
 .signup_page{
     -fx-background-image:url("imgs/banner_horseshoe_gates.jpg");
