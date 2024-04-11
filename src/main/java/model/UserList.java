@@ -123,8 +123,8 @@ public class UserList {
         return false;
     }
 
-    public void addCourseForStudent(Student student, String course){
-        student.addCourse(course);
+    public boolean addCourseForStudent(Student student, String course){
+        return student.addCourse(course);
     }
 
     public void removeCourseForStudent(Student student, String course){
