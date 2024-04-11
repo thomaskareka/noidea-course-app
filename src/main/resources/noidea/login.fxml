@@ -21,12 +21,12 @@
          </VBox.margin></PasswordField>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="menuSignupButton" mnemonicParsing="false" onAction="#switchToSignup" prefHeight="45.0" prefWidth="103.0" text="Sign Up">
+            <Button fx:id="menuSignupButton" mnemonicParsing="false" onAction="#switchToSignup" prefHeight="45.0" prefWidth="103.0" style="-fx-background-radius: 15px;" text="Sign Up">
                <HBox.margin>
                   <Insets right="15.0" top="15.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="menuLoginButton" mnemonicParsing="false" onAction="#doLogin" prefHeight="45.0" prefWidth="103.0" text="Login">
+            <Button fx:id="menuLoginButton" mnemonicParsing="false" onAction="#doLogin" prefHeight="45.0" prefWidth="103.0" style="-fx-background-radius: 15px;" text="Login">
                <HBox.margin>
                   <Insets top="15.0" />
                </HBox.margin>
