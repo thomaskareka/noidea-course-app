@@ -10,4 +10,13 @@
 }
 .signin_page{
     -fx-background-image:url("imgs/banner_horseshoe_gates.jpg");
+    
+}
+.signup_page{
+    -fx-background-image:url("imgs/banner_horseshoe_gates.jpg");
+    
+}
+
+#login-label {
+    -fx-text-fill: #73000A;
 }
