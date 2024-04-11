@@ -8,6 +8,10 @@
     -fx-background-color: #73000A;
     -fx-text-fill: white;
 }
+.button2 {
+    -fx-background-color: white;
+    -fx-text-fill: #73000A;
+}
 .signin_page{
     -fx-background-image:url("imgs/horseshoeImage.jpg");
     -fx-background-repeat: no-repeat;

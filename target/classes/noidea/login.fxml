@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -13,7 +12,7 @@
    <children>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="356.0" prefWidth="532.0" style="-fx-background-radius: 26;" styleClass="singin_box">
          <children>
-            <Label id="login_label" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="618.0" style="-fx-background-image: src\main\resources\noidea\imgs\banner_horseshoe_gates.jpg;" styleClass="white-box" text="SIGN IN" textFill="#73000a">
+            <Label id="login_label" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="618.0" style="-fx-background-image: src\main\resources\noidea\imgs\banner_horseshoe_gates.jpg;" styleClass="button2" text="SIGN IN" textFill="#73000a">
                <font>
                   <Font name="Times New Roman Bold" size="25.0" />
                </font></Label>
@@ -33,26 +32,22 @@
                   <Font name="Times New Roman" size="15.0" />
                </font>
             </PasswordField>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="menuSignupButton" mnemonicParsing="false" onAction="#switchToSignup" prefHeight="45.0" prefWidth="103.0" text="SIGN UP">
-                     <HBox.margin>
-                        <Insets right="15.0" top="15.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="Times New Roman Bold" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="menuLoginButton" mnemonicParsing="false" onAction="#doLogin" prefHeight="45.0" prefWidth="103.0" text="LOGIN">
-                     <HBox.margin>
-                        <Insets top="15.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="Times New Roman Bold" size="17.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
+            <Button fx:id="menuLoginButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#doLogin" prefHeight="29.0" prefWidth="176.0" text="LOGIN">
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="menuSignupButton" mnemonicParsing="false" onAction="#switchToSignup" prefHeight="31.0" prefWidth="148.0" styleClass="button2" text="Create New Account">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </children>
