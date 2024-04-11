@@ -17,7 +17,7 @@
                   <Font name="Times New Roman Bold" size="25.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="30.0" />
+                  <Insets bottom="15.0" />
                </VBox.margin></Label>
             <TextField fx:id="menuEmailField" alignment="CENTER" maxWidth="-Infinity" prefHeight="45.0" prefWidth="460.0" promptText="Enter Email">
                <VBox.margin>

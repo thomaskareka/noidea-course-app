@@ -23,7 +23,7 @@
                   <String fx:value="button2" />
                </styleClass>
                <VBox.margin>
-                  <Insets bottom="25.0" />
+                  <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
             <TextField fx:id="menuFirstField" alignment="CENTER" maxWidth="-Infinity" prefHeight="40.0" prefWidth="460.0" promptText="Enter First Name">
@@ -84,7 +84,7 @@
             </Button>
             <Button fx:id="menuBackButton" mnemonicParsing="false" onAction="#switchToLogin" style="-fx-background-radius: 15px;" styleClass="button2" text="Return to Login">
                <font>
-                  <Font name="Times New Roman Bold" size="15.0" />
+                  <Font name="Times New Roman" size="15.0" />
                </font>
                <VBox.margin>
                   <Insets top="5.0" />
