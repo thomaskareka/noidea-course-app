@@ -13,12 +13,9 @@
     -fx-background-repeat: no-repeat;
     -fx-background-size: contain;
 }
+
 .signup_page{
     -fx-background-image:url("imgs/horseshoeImage.jpg");
     -fx-background-repeat: no-repeat;
     -fx-background-size: contain;
-}
-
-#login-label {
-    -fx-text-fill: #73000A;
 }

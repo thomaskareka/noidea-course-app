@@ -159,16 +159,17 @@ public class CourseSystem{
             System.out.println("Only advisors can do this!");
         }
     }
-    public void addCourseForStudent(String id) {
+    public boolean addCourseForStudent(String id) {
         Course course = courseList.getCourseByIdentifer(id);
         if(course == null) {
             System.out.println("Course not found.");
+            return false;
         }
         System.out.println("Attempting to add course: " + id);
         if(user instanceof Advisor) {
-            userList.addCourseForStudent(activeStudent, id);
+            return userList.addCourseForStudent(activeStudent, id);
         } else {
-            userList.addCourseForStudent((Student) user, id);
+            return userList.addCourseForStudent((Student) user, id);
         }
     }
 
