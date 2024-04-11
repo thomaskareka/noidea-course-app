@@ -63,13 +63,15 @@ public class NavigationBarController implements Initializable {
         MenuItem mapItem = makeButton("Major Map", "majorMap");
         MenuItem progressItem = makeButton("Degree Progress", "degreeProgress");
         MenuItem catalogItem = makeButton("Course Catalog", "courseListing");
+        MenuItem transcriptItem = makeButton("Student Transcript", "studentTranscript");
+
         
         MenuItem profileItem = makeButton("Profile", "studentProfile");
         MenuItem editItem = makeButton("Edit Profile", "editStudentProfile");
 
         MenuItem logoutButton = makeLogoutButton();
 
-        menuGoTo.getItems().addAll(noteItem, mapItem, progressItem, catalogItem);
+        menuGoTo.getItems().addAll(noteItem, mapItem, progressItem, catalogItem, transcriptItem);
         menuAccount.getItems().addAll(profileItem, editItem, logoutButton);
     }
 
