@@ -74,12 +74,12 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </CheckBox>
-            <Button fx:id="menuSignupButton" mnemonicParsing="false" onAction="#doSignup" style="-fx-background-radius: 5;" text="SIGN UP">
+            <Button fx:id="menuSignupButton" mnemonicParsing="false" onAction="#doSignup" prefHeight="28.0" prefWidth="155.0" style="-fx-background-radius: 5;" text="SIGN UP">
                <font>
-                  <Font name="Times New Roman Bold" size="18.0" />
+                  <Font name="Times New Roman Bold" size="17.0" />
                </font>
                <VBox.margin>
-                  <Insets top="25.0" />
+                  <Insets top="20.0" />
                </VBox.margin>
             </Button>
             <Button fx:id="menuBackButton" mnemonicParsing="false" onAction="#switchToLogin" style="-fx-background-radius: 15px;" styleClass="button2" text="Return to Login">

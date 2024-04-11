@@ -35,7 +35,7 @@
                   <Font name="Times New Roman" size="15.0" />
                </font>
             </PasswordField>
-            <Button fx:id="menuLoginButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#doLogin" prefHeight="29.0" prefWidth="176.0" text="LOGIN">
+            <Button fx:id="menuLoginButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#doLogin" prefHeight="28.0" prefWidth="155.0" text="LOGIN">
                <font>
                   <Font name="Times New Roman Bold" size="17.0" />
                </font>
