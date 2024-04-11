@@ -21,3 +21,7 @@
     -fx-background-repeat: no-repeat;
     -fx-background-size: contain;
 }
+
+.singin_box {
+    -fx-background-color: white;
+}
