@@ -42,7 +42,7 @@ public class LoginController {
                 App.setRoot("courseListing");
             } else {
                 System.out.println(system.getUserType());
-                System.out.println("logged in as an advisor"); //TODO
+                App.setRoot("advisorHome");
             }
         } else {
            a.setHeaderText("Signin failed!");

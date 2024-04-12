@@ -42,6 +42,9 @@ public class CourseSystem{
        return false;
     }
     public void logout() {
+        if(user == null) {
+            return;
+        }
         if(user instanceof Student) {
             userList.saveUser((Student) user);
         } else {
