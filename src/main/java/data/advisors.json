@@ -1,1 +1,1 @@
-[{"firstName":"a","lastName":"a","password":"password","admin":false,"students":[],"uuid":"d9d36552-5392-483a-96f8-8007dc6540cf","email":"a"}]
+[{"firstName":"a","lastName":"a","password":"password","admin":false,"students":["e183c3ee-c5db-4425-99b6-383022cd3df5","c37de4e2-24b0-47da-989d-8dc2daf51f8d"],"uuid":"d9d36552-5392-483a-96f8-8007dc6540cf","email":"a"}]

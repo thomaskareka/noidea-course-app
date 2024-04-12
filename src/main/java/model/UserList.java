@@ -1,6 +1,7 @@
 package model;
 //#21
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class UserList {
@@ -205,6 +206,24 @@ public class UserList {
             }
         }
     }
+
+    public ArrayList<Student> searchStudentsByName(String search) {
+        ArrayList<Student> valid = new ArrayList<>();
+        for(Student s: students) {
+            if((s.getFirstName().toLowerCase() + " " + s.getLastName().toLowerCase()).contains(search) || s.getStudentID().toLowerCase().contains(search))
+                valid.add(s);
+        }
+        return valid;
+    }
+
+    public List<Student> getStudentsFromSearch(int page, String search) {
+        if(search.equals("")) {
+            return students.subList(Math.min(page * 25, students.size()), Math.min(page * 25 + 24, students.size()));
+        }
+        ArrayList<Student> valid = searchStudentsByName(search);
+        return valid.subList(Math.min(page * 25, valid.size()), Math.min(page * 25 + 24, valid.size()));
+    }
+
     //only for test cases, do not use
     public void setStudents(ArrayList<Student> students) {
         this.students = students;

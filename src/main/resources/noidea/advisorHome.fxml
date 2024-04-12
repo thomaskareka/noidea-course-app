@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
@@ -15,11 +16,12 @@
             <Spinner fx:id="pageSpinner" />
             <TextField fx:id="studentField" promptText="Search for Student" />
             <Button mnemonicParsing="false" onAction="#studentSearchButtonPressed" text="🔍" />
+            <CheckBox fx:id="allStudentButton" mnemonicParsing="false" text="All Students" />
          </children>
       </HBox>
       <ScrollPane fx:id="studentPane" hbarPolicy="NEVER" prefHeight="600.0" prefWidth="1280.0" vbarPolicy="ALWAYS">
          <content>
-            <VBox fx:id="courseBox" prefHeight="600.0" prefWidth="1280.0" />
+            <VBox fx:id="studentBox" prefHeight="600.0" prefWidth="1280.0" />
          </content>
       </ScrollPane>
    </children>

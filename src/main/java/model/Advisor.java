@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Advisor extends User {
@@ -29,12 +30,32 @@ public class Advisor extends User {
         return null;
     }
 
-    public void addAdvisee(UUID id) {
+    public boolean addAdvisee(UUID id) {
         if(students.contains(id)) {
             System.out.println("Student already added!");
+            return false;
         } else {
             students.add(id);
+            return true;
         }
+    }
+
+    private ArrayList<Student> searchStudentsByName(String search, ArrayList<Student> st) {
+        ArrayList<Student> valid = new ArrayList<>();
+        for(Student s : st) {
+            if ((s.getFirstName().toLowerCase() + " " + s.getLastName().toLowerCase()).contains(search) || s.getStudentID().toLowerCase().contains(search))
+                valid.add(s);
+        }
+        return valid;
+    }
+
+    public List<Student> searchStudents(int page, String search) {
+        ArrayList<Student> st = getStudentObjects();
+        if(search.equals("")) {
+            return st.subList(Math.min(page * 25, st.size()), Math.min(page * 25 + 24, st.size()));
+        }
+        ArrayList<Student> valid = searchStudentsByName(search, st);
+        return valid.subList(Math.min(page * 25, valid.size()), Math.min(page * 25 + 24, valid.size()));
     }
 
     public void addCourseForStudent(Student student, String course) {
@@ -63,6 +84,14 @@ public class Advisor extends User {
 
     public ArrayList<UUID> getStudents() {
         return students;
+    }
+
+    public ArrayList<Student> getStudentObjects() {
+        ArrayList<Student> out = new ArrayList<>();
+        for(UUID u : students) {
+            out.add(UserList.getInstance().getStudentFromID(u));
+        }
+        return out;
     }
 
     public String toString() {

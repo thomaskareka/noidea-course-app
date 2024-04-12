@@ -76,6 +76,16 @@ public class NavigationBarController implements Initializable {
     }
 
     private void initAdvisorMenu() {
-        //TODO
+        MenuItem homeItem = makeButton("Home", "advisorHome");
+        MenuItem courseItem = makeButton("Course Listing", "courseListing");
+        
+
+        MenuItem profileItem = makeButton("Profile", "advisorProfile");
+        MenuItem editItem = makeButton("Edit Profile", "editAdvisorProfile");
+
+        MenuItem logoutButton = makeLogoutButton();
+        
+        menuGoTo.getItems().addAll(homeItem);
+        menuAccount.getItems().addAll(profileItem, editItem, logoutButton);
     }
 }

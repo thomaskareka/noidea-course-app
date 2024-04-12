@@ -231,6 +231,22 @@ public class CourseSystem{
         }
     }
 
+    public boolean addAdvisee(Student advisee) {
+        System.out.println("Attempting to add student with ID " + advisee.getID());
+        if (!(user instanceof Advisor)) {
+            System.out.println("Only advisors can do this!");
+            return false;
+        } else {
+            if(((Advisor) user).addAdvisee(advisee.getID())) {
+            advisee.setAdvisor(user.getID());
+            activeStudent = advisee;
+            System.out.println(String.format("%s %s successfully added as %s %s's advisor!", user.getFirstName(), user.getLastName(), advisee.getFirstName(), advisee.getLastName()));
+            return true;
+            }
+            return false;
+        }
+    }
+
     public boolean chooseActiveStudent(String id) {
         if (!(user instanceof Advisor)) {
             System.out.println("Only advisors can do this!");
@@ -319,6 +335,18 @@ public class CourseSystem{
 
     public List<Course> getCoursesFromSearch(int page, String search) {
         return courseList.getCoursesFromSearch(page, search);
+    }
+
+    public List<Student> getStudentsFromSearch(int page, String search) {
+        return userList.getStudentsFromSearch(page, search);
+    }
+
+    public List<Student> getAdvisorsStudentsFromSearch(int page, String search) {
+        if(user instanceof Advisor) {
+            return ((Advisor) user).searchStudents(page, search);
+        } else {
+            return null;
+        }
     }
 
     public String getUserType() {
