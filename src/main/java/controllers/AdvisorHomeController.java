@@ -3,6 +3,7 @@ package controllers;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -73,7 +74,6 @@ public class AdvisorHomeController implements Initializable {
             }
         } else {  // only students that you can view and modify
             List<Student> foundStudents = App.system.getAdvisorsStudentsFromSearch(page - 1, search);
-            System.out.println(foundStudents);
             for(Student s : foundStudents) {
                 String studentLabelText = "";
                 if(s.getFailureRisk()) {
@@ -85,7 +85,10 @@ public class AdvisorHomeController implements Initializable {
                 t.setWrappingWidth(1200);
                 t.setTextAlignment(TextAlignment.LEFT);
 
-                VBox studentV = new VBox(t);
+                Button chooseButton = new Button("Choose as active student");
+                chooseButton.setOnAction(event -> chooseActiveStudentButton(s.getID()));
+
+                VBox studentV = new VBox(t, chooseButton);
                 TitledPane pane = new TitledPane(studentLabelText, studentV);
                 pane.setExpanded(false);
                 studentBox.getChildren().add(pane);
@@ -103,6 +106,20 @@ public class AdvisorHomeController implements Initializable {
             Alert a = new Alert(AlertType.ERROR);
             a.setHeaderText("Error");
             a.setContentText(s.getFirstName() + " " + s.getLastName() + " could not be added to your student list.");
+            a.show();
+        }
+    }
+
+    private void chooseActiveStudentButton(UUID s) {
+        if(App.system.chooseActiveStudent(s)) {
+            Alert a = new Alert(AlertType.INFORMATION);
+            a.setHeaderText("Student succesfully chosen!");
+            a.setContentText(App.system.getStudent().getFirstName());
+            a.show();
+        } else {
+            Alert a = new Alert(AlertType.ERROR);
+            a.setHeaderText("Choosing student failed!");
+            a.setContentText("An unknown error occured.");
             a.show();
         }
     }

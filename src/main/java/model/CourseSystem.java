@@ -265,6 +265,24 @@ public class CourseSystem{
         return false;
     }
 
+    public boolean chooseActiveStudent(UUID id) {
+        if (!(user instanceof Advisor)) {
+            System.out.println("Only advisors can do this!");
+            return false;
+        }
+        Advisor a = (Advisor) user;
+        for(UUID uuid : a.getStudents()) {
+            Student s = userList.getStudentFromID(id);
+            if(uuid.equals(id) && s != null) {
+                activeStudent = s;
+                System.out.println(String.format("%s %s successfully loaded!", s.getFirstName(), s.getLastName()));
+                return true;
+            }
+        }
+        System.out.println("Student not found!");
+        return false;
+    }
+
     public String getEightSemesterPlan() {
         String out = "";
         String fileID = "";

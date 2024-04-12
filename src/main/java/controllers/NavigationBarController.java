@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import noidea.App;
 import model.*;
@@ -19,6 +20,10 @@ public class NavigationBarController implements Initializable {
 
     @FXML
     private Menu menuGoTo;
+
+    @FXML
+    private MenuBar navBar;
+
 
     @FXML @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -85,7 +90,13 @@ public class NavigationBarController implements Initializable {
 
         MenuItem logoutButton = makeLogoutButton();
         
-        menuGoTo.getItems().addAll(homeItem);
+        menuGoTo.getItems().addAll(homeItem, courseItem);
         menuAccount.getItems().addAll(profileItem, editItem, logoutButton);
+
+        Student s = App.system.getStudent();
+        if(s != null) {
+            Menu studentMenu = new Menu(s.getFirstName() + " " + s.getLastName());
+            navBar.getMenus().add(studentMenu);
+        }
     }
 }
