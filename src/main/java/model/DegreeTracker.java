@@ -127,9 +127,14 @@ public class DegreeTracker {
     }
 
     public double CalculateProgress(Degree degree) {
-        requiredCredits = degree.getCredits() + getCompletedCredits();
+        if(degree == null) {
+            return 0;
+        }
+        requiredCredits = degree.getCredits();
         completedCredits = getCompletedCredits();
-        return (completedCredits/requiredCredits)*100;
+        double out = (double) completedCredits/requiredCredits;
+        System.out.println(out);
+        return (out);
     }
 
     public String getCourseGrade(String name, String identifer){

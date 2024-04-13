@@ -109,6 +109,10 @@ public class Student extends User {
     public double getDegreePercentage(Degree degree){
        return degreeProgress.CalculateProgress(degree);
     }
+
+    public double getDegreePercentage(){
+        return degreeProgress.CalculateProgress(DegreeList.getInstance().getMajor(major));
+     }
     
 
     public boolean addGrade(String course, Grade grade){

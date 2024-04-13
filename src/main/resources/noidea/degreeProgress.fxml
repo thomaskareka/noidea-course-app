@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,7 +15,7 @@
       <fx:include source="navigationBar.fxml" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <ProgressIndicator minHeight="120.0" minWidth="120.0" progress="0.0" />
+            <ProgressIndicator fx:id="progressDisplay" minHeight="120.0" minWidth="120.0" progress="0.54" style="-fx-progress-color: #73000A;" />
             <GridPane alignment="CENTER" hgap="20.0" HBox.hgrow="ALWAYS">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -34,5 +35,10 @@
             <Pane prefHeight="200.0" prefWidth="200.0" />
          </children>
       </HBox>
+      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox fx:id="progressBox" prefHeight="550.0" prefWidth="1280.0" />
+         </content>
+      </ScrollPane>
    </children>
 </VBox>

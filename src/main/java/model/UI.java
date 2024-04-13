@@ -84,7 +84,6 @@ public class UI {
         system.addGrade("CSCE145", Grade.A);
         system.addGrade("POLI201", Grade.B);
         system.addGrade("MATH141", Grade.B_PLUS);
-        system.addGrade("CSCE145", Grade.A);
         system.addGrade("CSCE146", Grade.A);
         system.addGrade("CSCE190", Grade.B_PLUS);
         system.addGrade("ENGL101", Grade.A);
