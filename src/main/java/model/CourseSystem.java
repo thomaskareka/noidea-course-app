@@ -54,6 +54,14 @@ public class CourseSystem{
             }
         }
     }
+
+    public void removeActiveStudent() {
+        if(activeStudent == null) {
+            return;
+        }
+        userList.saveUser(activeStudent);
+        activeStudent = null;
+    }
     public boolean signUp(boolean type, String firstName, String lastName, String email, String password){
         /* the boolean 'type' will be true if the user signing up as a student, and false if an advisor.
          All information that is not held in the User class will have to be inputted later in, maybe, an update profile method.*/
@@ -256,6 +264,9 @@ public class CourseSystem{
         for(UUID uuid : a.getStudents()) {
             Student s = (userList.getStudentFromID(uuid));
             if(s != null && s.getStudentID().equals(id)) {
+                if(activeStudent != null) {
+                    removeActiveStudent();
+                }
                 activeStudent = s;
                 System.out.println(String.format("%s %s successfully loaded!", s.getFirstName(), s.getLastName()));
                 return true;

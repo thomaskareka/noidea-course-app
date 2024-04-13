@@ -8,9 +8,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Alert.AlertType;
 import noidea.App;
 import model.*;
 
@@ -20,6 +22,9 @@ public class NavigationBarController implements Initializable {
 
     @FXML
     private Menu menuGoTo;
+
+    @FXML
+    private Menu studentMenu;
 
     @FXML
     private MenuBar navBar;
@@ -95,12 +100,36 @@ public class NavigationBarController implements Initializable {
 
         Student s = App.system.getStudent();
         if(s != null) {
-            Menu studentMenu = new Menu(s.getFirstName() + " " + s.getLastName());
+            studentMenu = new Menu(s.getFirstName() + " " + s.getLastName());
+
+            MenuItem deselectItem = makeDeselectStudentButton();
+
+            studentMenu.getItems().addAll(deselectItem);
+
             navBar.getMenus().add(studentMenu);
         }
     }
 
     public void refresh() {
+        menuAccount.getItems().clear();
+        menuGoTo.getItems().clear();
         initAdvisorMenu();
+    }
+
+    private MenuItem makeDeselectStudentButton() {
+        MenuItem button = new MenuItem("Deselect");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent a) {
+                navBar.getMenus().remove(studentMenu);
+                App.system.removeActiveStudent();
+                refresh();
+                
+                Alert al = new Alert(AlertType.INFORMATION);
+                al.setHeaderText("Student succesfully deselected.");
+                al.setContentText("Their information has been saved.");
+                al.show();
+            }
+        });
+        return button;
     }
 }

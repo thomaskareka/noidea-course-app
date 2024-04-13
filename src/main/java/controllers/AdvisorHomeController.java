@@ -43,9 +43,6 @@ public class AdvisorHomeController implements Initializable {
     private CheckBox allStudentButton;
 
     @FXML
-    private Parent NavigationBar;
-
-    @FXML
     private NavigationBarController NavigationBarController;
 
     @FXML @Override
