@@ -103,10 +103,11 @@ public class NavigationBarController implements Initializable {
             studentMenu = new Menu(s.getFirstName() + " " + s.getLastName());
 
             MenuItem progressItem = makeButton("Degree Progress", "degreeProgress");
+            MenuItem transcriptItem = makeButton("Student Transcript", "studentTranscript");
             
             MenuItem deselectItem = makeDeselectStudentButton();
 
-            studentMenu.getItems().addAll(progressItem, deselectItem);
+            studentMenu.getItems().addAll(progressItem, transcriptItem, deselectItem);
 
             navBar.getMenus().add(studentMenu);
         }

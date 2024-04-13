@@ -102,8 +102,8 @@ public class Student extends User {
     public boolean removeCourse(String course){
         return degreeProgress.removeCourse(course);
     }
-    public String getCourseGrade(String name, String identifier){
-       return degreeProgress.getCourseGrade(name, identifier);
+    public String getCourseGrade(String identifier){
+       return degreeProgress.getCourseGrade(identifier);
     }
 
     public double getDegreePercentage(Degree degree){

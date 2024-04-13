@@ -346,8 +346,8 @@ public class CourseSystem{
     public String getCourseGrade(Student student, Course course){
         return userList.getCourseGrade(student, course);
     }
-    public String getCourseGrade(Student student, String name, String identifier){
-        return userList.getCourseGrade(student, name, identifier);
+    public String getCourseGrade(Student student, String identifier){
+        return userList.getCourseGrade(student, identifier);
     }
     // debug functions
     public void printActiveUser() {
@@ -391,5 +391,13 @@ public class CourseSystem{
             return (Student) user;
         }
         return activeStudent;
+    }
+
+    public boolean isStudent() {
+        return (user instanceof Student);
+    }
+
+    public boolean hasActiveStudent() {
+        return activeStudent != null;
     }
 }

@@ -157,11 +157,11 @@ public class UserList {
     }
 
     public String getCourseGrade(Student student, Course course){
-        return student.getCourseGrade(course.getName(), course.getIdentifier());
+        return student.getCourseGrade(course.getIdentifier());
     }
 
-    public String getCourseGrade(Student student, String name, String identifier){
-        return student.getCourseGrade(name, identifier);
+    public String getCourseGrade(Student student, String identifier){
+        return student.getCourseGrade(identifier);
     }
 
     public double calculateDegreeCompletionPercentage(Student student){

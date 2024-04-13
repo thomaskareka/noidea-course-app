@@ -137,8 +137,11 @@ public class DegreeTracker {
         return (out);
     }
 
-    public String getCourseGrade(String name, String identifer){
+    public String getCourseGrade(String identifer){
         CourseProgress holder = getCourseProgress(identifer);
+        if (holder == null) {
+            return "Not Taken";
+        }
         return holder.getCourseGrade();
     }
 
