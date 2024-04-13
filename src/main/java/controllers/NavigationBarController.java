@@ -99,4 +99,8 @@ public class NavigationBarController implements Initializable {
             navBar.getMenus().add(studentMenu);
         }
     }
+
+    public void refresh() {
+        initAdvisorMenu();
+    }
 }

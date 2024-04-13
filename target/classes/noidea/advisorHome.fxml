@@ -10,7 +10,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdvisorHomeController">
    <children>
-      <fx:include source="navigationBar.fxml" />
+      <fx:include fx:id="NavigationBar" source="navigationBar.fxml" />
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1280.0" spacing="10.0">
          <children>
             <Spinner fx:id="pageSpinner" />

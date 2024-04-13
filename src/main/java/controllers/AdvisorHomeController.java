@@ -8,6 +8,7 @@ import java.util.UUID;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -40,6 +41,12 @@ public class AdvisorHomeController implements Initializable {
 
     @FXML
     private CheckBox allStudentButton;
+
+    @FXML
+    private Parent NavigationBar;
+
+    @FXML
+    private NavigationBarController NavigationBarController;
 
     @FXML @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -116,6 +123,7 @@ public class AdvisorHomeController implements Initializable {
             a.setHeaderText("Student succesfully chosen!");
             a.setContentText(App.system.getStudent().getFirstName());
             a.show();
+            NavigationBarController.refresh();
         } else {
             Alert a = new Alert(AlertType.ERROR);
             a.setHeaderText("Choosing student failed!");
