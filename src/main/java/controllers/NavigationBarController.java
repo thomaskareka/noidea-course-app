@@ -130,6 +130,11 @@ public class NavigationBarController implements Initializable {
                 al.setHeaderText("Student succesfully deselected.");
                 al.setContentText("Their information has been saved.");
                 al.show();
+                try {
+                    App.setRoot("advisorHome");
+                } catch(IOException e) {
+                    e.printStackTrace();;
+                }
             }
         });
         return button;
