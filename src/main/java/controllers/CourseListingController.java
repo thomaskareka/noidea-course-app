@@ -72,6 +72,7 @@ public class CourseListingController implements Initializable {
                 for(Grade g : Grade.values()) {
                     gradeButton.getItems().add(makeGradeItem(c.getIdentifier(), g, gradeButton));
                 }
+                gradeButton.getItems().add(makeRemoveGradeButton(c, gradeButton));
                 courseV.getChildren().add(gradeButton);
             }
 
@@ -105,6 +106,27 @@ public class CourseListingController implements Initializable {
                     al.setContentText("Grade has successfully been updated to " + grade.toString());
                     al.show();
                     b.setText(String.format("Set Grade (Current: %s)", grade.toString()));
+                } else {
+                    Alert al = new Alert(AlertType.ERROR);
+                    al.setHeaderText("Error");
+                    al.setContentText("Grade could not be changed.");
+                    al.show();
+                }
+            }
+        });
+        return item;
+    }
+
+    private MenuItem makeRemoveGradeButton(Course c, SplitMenuButton b) {
+        MenuItem item = new MenuItem("Remove Course");
+        item.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                if(App.system.removeCourseForStudent(c)) {
+                    Alert al = new Alert(AlertType.INFORMATION);
+                    al.setHeaderText("Grade updated!");
+                    al.setContentText("Course has successfully been removed!");
+                    al.show();
+                    b.setText("Set Grade (Current: Not Taken)");
                 } else {
                     Alert al = new Alert(AlertType.ERROR);
                     al.setHeaderText("Error");

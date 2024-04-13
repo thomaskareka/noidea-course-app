@@ -62,7 +62,7 @@ public class Advisor extends User {
         student.addCourse(course);
     }
 
-    public void removeCourseForStudent(Student student, String course) {
+    public void removeCourseForStudent(Student student, Course course) {
         student.removeCourse(course);
     }
 

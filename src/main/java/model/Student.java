@@ -99,7 +99,7 @@ public class Student extends User {
     public boolean addCourse(String course){
         return degreeProgress.addCourse(course);
     }
-    public boolean removeCourse(String course){
+    public boolean removeCourse(Course course){
         return degreeProgress.removeCourse(course);
     }
     public String getCourseGrade(String identifier){

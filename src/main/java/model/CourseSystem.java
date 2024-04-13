@@ -201,10 +201,11 @@ public class CourseSystem{
             activeStudent.setApplicationArea(appArea);
         }
     }
-    public void removeCourseForStudent(Course course){
+    public boolean removeCourseForStudent(Course course){
         if(user instanceof Advisor) {
-            //userList.removeCourseForStudent(student, course);
+            return userList.removeCourseForStudent(activeStudent, course);
         }
+        return false;
     }
     public void enterFailureRisk(Student student, boolean failureRisk){
         if(user instanceof Advisor) {

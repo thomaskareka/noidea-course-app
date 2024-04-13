@@ -128,8 +128,8 @@ public class UserList {
         return student.addCourse(course);
     }
 
-    public void removeCourseForStudent(Student student, String course){
-        student.removeCourse(course);
+    public boolean removeCourseForStudent(Student student, Course course){
+        return student.removeCourse(course);
     }
 
     public boolean addGrade(Student student, String course, Grade grade){

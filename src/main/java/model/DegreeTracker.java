@@ -204,10 +204,12 @@ public class DegreeTracker {
         return false;
     }
 
-    public boolean removeCourse(String courseName){
+    public boolean removeCourse(Course c){
         for (CourseProgress courseProgress : studentCourses) {
-            if(courseProgress.getCourseName().equalsIgnoreCase(courseName)){
+            if(courseProgress.getCourseID().equalsIgnoreCase(c.getIdentifier())){
                 studentCourses.remove(courseProgress);
+                CalculateGPA();
+                CalculateMajorGPA();
                 return true;
             }
         }
