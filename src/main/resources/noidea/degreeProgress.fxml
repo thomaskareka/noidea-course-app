@@ -35,9 +35,9 @@
             <Pane prefHeight="200.0" prefWidth="200.0" />
          </children>
       </HBox>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <ScrollPane fx:id="progressPane" hbarPolicy="NEVER" prefHeight="600.0" prefWidth="1280.0" vbarPolicy="ALWAYS">
          <content>
-            <VBox fx:id="progressBox" prefHeight="550.0" prefWidth="1280.0" />
+            <VBox fx:id="progressBox" prefHeight="600.0" prefWidth="1280.0" />
          </content>
       </ScrollPane>
    </children>

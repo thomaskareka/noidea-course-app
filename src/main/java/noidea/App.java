@@ -24,6 +24,7 @@ public class App extends Application {
 
         // system.login("bwest@email.sc.edu", "password");
         // setRoot("degreeProgress");
+        // system.getStudent().printAllRequirements();
 
         stage.show();
     }

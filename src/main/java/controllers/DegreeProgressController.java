@@ -6,11 +6,13 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-
+import javafx.scene.text.TextAlignment;
 import noidea.App;
 import model.*;
 
@@ -33,6 +35,9 @@ public class DegreeProgressController implements Initializable {
 
     @FXML
     private ProgressIndicator progressDisplay;
+
+    @FXML
+    private ScrollPane progressPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,9 +79,13 @@ public class DegreeProgressController implements Initializable {
         }
 
         VBox internalBox = new VBox();
-        
+
         for(DegreeRequirement dr : drList) {
-            TitledPane internalPane = new TitledPane(dr.getCategory(), null);
+            Text t = new Text(dr.calculateRequirement(courses));
+            t.setWrappingWidth(1200);
+            t.setTextAlignment(TextAlignment.LEFT);
+            TitledPane internalPane = new TitledPane(dr.getCategory(), t);
+            internalPane.setExpanded(false);
             internalBox.getChildren().add(internalPane);
         }
         pane.setContent(internalBox);
