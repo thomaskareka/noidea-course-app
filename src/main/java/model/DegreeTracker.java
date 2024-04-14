@@ -190,6 +190,14 @@ public class DegreeTracker {
         return courses;
     }
 
+    public ArrayList<Course> getCourseObjects() {
+        ArrayList<Course> courses = new ArrayList<Course>();
+        for (CourseProgress courseProgress : studentCourses) {
+            courses.add(courseProgress.getCourse());
+        }
+        return courses;
+    }
+
     public boolean addCourse(String course){
         CourseProgress newCourse = new CourseProgress(course, Grade.IN_PROGRESS, false);
         if(getCourseProgress(course) != null) {

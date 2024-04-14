@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
@@ -19,6 +20,7 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -39,8 +41,15 @@ public class CourseListingController implements Initializable {
     @FXML
     private Spinner<Integer> pageSpinner;
 
+    @FXML
+    private HBox searchHBox;
+
+    @FXML
+    private CheckBox studentCourseBox;
+
     @FXML @Override
     public void initialize(URL location, ResourceBundle resources) {
+        initCheckbox();
         loadCourses(1, "");
         pageSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000));
         pageSpinner.valueProperty().addListener((o, oldPage, newPage) -> loadCourses(newPage, courseField.getText()));
@@ -52,16 +61,30 @@ public class CourseListingController implements Initializable {
         loadCourses(1, courseField.getText());
     }
 
+    private void initCheckbox() {
+        if(App.system.getStudent() != null) {
+            studentCourseBox = new CheckBox("Registered Courses");
+            System.out.println("a");
+            searchHBox.getChildren().add(studentCourseBox);
+        }
+    }
+
     private void loadCourses(int page, String search) {
         courseBox.getChildren().clear();
-        List<Course> foundCourses = App.system.getCoursesFromSearch(page - 1, search);
+        List<Course> foundCourses;
+        if(studentCourseBox != null && studentCourseBox.isSelected()) {
+            foundCourses = App.system.getStudentCoursesFromSearch(page-1, search);
+        } else {
+            foundCourses = App.system.getCoursesFromSearch(page - 1, search);
+        }
+
         for(Course c : foundCourses) {
             Text t = new Text(c.toStringDetailed());
             t.setWrappingWidth(1200);
             t.setTextAlignment(TextAlignment.LEFT);
             VBox courseV = new VBox(t);
             
-            if(App.system.isStudent()) {
+            if(App.system.isStudent() && !studentCourseBox.isSelected()) {
                 Button registerButton = new Button("Register for course");
                 registerButton.setOnAction(event -> signupButton(c));
                 courseV.getChildren().add(registerButton);

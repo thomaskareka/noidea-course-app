@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Student extends User {
@@ -275,5 +276,23 @@ public class Student extends User {
         }
 
         return out;
+    }
+
+    public ArrayList<Course> searchCoursesByName(String search) {
+        ArrayList<Course> valid = new ArrayList<>();
+        for(Course c : degreeProgress.getCourseObjects()) {
+            if(c.getName().toLowerCase().contains(search.toLowerCase()) || c.getIdentifier().toLowerCase().contains(search.toLowerCase()))
+                valid.add(c);
+        }
+        return valid;
+    }
+
+    public List<Course> getCoursesFromSearch(int page, String search) {
+        ArrayList<Course> courses = degreeProgress.getCourseObjects();
+        if(search.equals("")) {
+            return courses.subList(Math.min(page * 25, courses.size()), Math.min(page * 25 + 24, courses.size()));
+        }
+        ArrayList<Course> valid = searchCoursesByName(search);
+        return valid.subList(Math.min(page * 25, valid.size()), Math.min(page * 25 + 24, valid.size()));
     }
 }

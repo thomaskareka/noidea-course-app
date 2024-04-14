@@ -367,6 +367,10 @@ public class CourseSystem{
         return courseList.getCoursesFromSearch(page, search);
     }
 
+    public List<Course> getStudentCoursesFromSearch(int page, String search) {
+        return getStudent().getCoursesFromSearch(page, search);
+    }
+
     public List<Student> getStudentsFromSearch(int page, String search) {
         return userList.getStudentsFromSearch(page, search);
     }
