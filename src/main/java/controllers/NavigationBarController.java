@@ -72,6 +72,7 @@ public class NavigationBarController implements Initializable {
         MenuItem noteItem = makeButton("Notes", "notes");
         MenuItem mapItem = makeButton("Major Map", "majorMap");
         MenuItem progressItem = makeButton("Degree Progress", "degreeProgress");
+        MenuItem degreeItem = makeButton("Degree List", "degreeList");
         MenuItem catalogItem = makeButton("Course Catalog", "courseListing");
         MenuItem transcriptItem = makeButton("Student Transcript", "studentTranscript");
 
@@ -81,13 +82,14 @@ public class NavigationBarController implements Initializable {
 
         MenuItem logoutButton = makeLogoutButton();
 
-        menuGoTo.getItems().addAll(noteItem, mapItem, progressItem, catalogItem, transcriptItem);
+        menuGoTo.getItems().addAll(noteItem, mapItem, progressItem, degreeItem, catalogItem, transcriptItem);
         menuAccount.getItems().addAll(profileItem, editItem, logoutButton);
     }
 
     private void initAdvisorMenu() {
         MenuItem homeItem = makeButton("Home", "advisorHome");
         MenuItem courseItem = makeButton("Course Listing", "courseListing");
+        MenuItem degreeItem = makeButton("Degree List", "degreeList");
         
 
         MenuItem profileItem = makeButton("Profile", "advisorProfile");
@@ -95,7 +97,7 @@ public class NavigationBarController implements Initializable {
 
         MenuItem logoutButton = makeLogoutButton();
         
-        menuGoTo.getItems().addAll(homeItem, courseItem);
+        menuGoTo.getItems().addAll(homeItem, courseItem, degreeItem);
         menuAccount.getItems().addAll(profileItem, editItem, logoutButton);
 
         Student s = App.system.getStudent();

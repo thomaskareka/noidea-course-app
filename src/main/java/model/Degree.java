@@ -31,7 +31,8 @@ public class Degree {
     }
 
     public String toString() {
-        String out = "title:" + title + ", " + requiredCredits + " credits, type: " + type + "\n";
+        // String out = "title:" + title + ", " + requiredCredits + " credits, type: " + type + "\n";
+        String out = "";
         for (DegreeRequirement i : requirements) {
             out += "  " + i.toStringDetailed() + "\n";
         }
