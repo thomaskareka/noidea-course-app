@@ -79,6 +79,7 @@ public class CourseListingController implements Initializable {
         }
 
         for(Course c : foundCourses) {
+            String paneText = c.getIdentifier() + " - " + c.getName();
             Text t = new Text(c.toStringDetailed());
             t.setWrappingWidth(1200);
             t.setTextAlignment(TextAlignment.LEFT);
@@ -88,7 +89,11 @@ public class CourseListingController implements Initializable {
                 Button registerButton = new Button("Register for course");
                 registerButton.setOnAction(event -> signupButton(c));
                 courseV.getChildren().add(registerButton);
-            } else if (App.system.hasActiveStudent()) {
+            } else if (App.system.isStudent()) {
+                paneText += " (" + App.system.getStudent().getCourseGrade(c.getIdentifier()) + ")";
+                Text tg = new Text("Grade: " + App.system.getStudent().getCourseGrade(c.getIdentifier()));
+                courseV.getChildren().add(tg);
+            }else if (App.system.hasActiveStudent()) {  // inefficient, but only runs a max of 25 times
                 SplitMenuButton gradeButton = new SplitMenuButton();
                 gradeButton.setText(String.format("Set Grade (Current: %s)", App.system.getStudent().getCourseGrade(c.getIdentifier())));
                 gradeButton.setMinWidth(300);
@@ -99,7 +104,7 @@ public class CourseListingController implements Initializable {
                 courseV.getChildren().add(gradeButton);
             }
 
-            TitledPane pane = new TitledPane(c.getIdentifier() + " - " + c.getName(), courseV);
+            TitledPane pane = new TitledPane(paneText, courseV);
             pane.setExpanded(false);
             courseBox.getChildren().add(pane);
         }
