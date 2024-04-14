@@ -12,12 +12,12 @@
       <fx:include source="navigationBar.fxml" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="150.0">
          <children>
-            <Label contentDisplay="RIGHT" graphicTextGap="80.0" text="First Name">
+            <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="First Name              ">
                <graphic>
                   <TextField fx:id="firstNameField" />
                </graphic>
             </Label>
-            <Label contentDisplay="RIGHT" graphicTextGap="80.0" text="Last Name">
+            <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Last Name                ">
                <graphic>
                   <TextField fx:id="lastNameField" />
                </graphic>
@@ -29,12 +29,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="150.0">
          <children>
-            <Label contentDisplay="RIGHT" graphicTextGap="110.0" text="Email">
+            <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Email                      ">
                <graphic>
                   <TextField fx:id="emailField" />
                </graphic>
             </Label>
-            <Label contentDisplay="RIGHT" graphicTextGap="80.0" text="Student ID">
+            <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Student ID               ">
                <graphic>
                   <TextField fx:id="studentIDField" />
                </graphic>
@@ -43,12 +43,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="150.0">
          <children>
-            <Label contentDisplay="RIGHT" graphicTextGap="80.0" text="Class Level">
+            <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Class Level            ">
                <graphic>
                   <TextField fx:id="classLevelField" />
                </graphic>
             </Label>
-            <Label contentDisplay="RIGHT" graphicTextGap="50.0" text="Application Area">
+            <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Application Area      ">
                <graphic>
                   <TextField fx:id="applicationAreaField" />
                </graphic>
@@ -57,12 +57,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="150.0">
          <children>
-            <Label contentDisplay="RIGHT" graphicTextGap="110.0" text="Major">
+            <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Major                      ">
                <graphic>
                   <TextField fx:id="majorField" />
                </graphic>
             </Label>
-            <Label contentDisplay="RIGHT" graphicTextGap="110.0" text="Minor">
+            <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Minor                       ">
                <graphic>
                   <TextField fx:id="minorField" />
                </graphic>
@@ -71,8 +71,9 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" text="Save" />
+            <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveBtnPressed" text="Save" />
          </children>
       </HBox>
    </children>
 </VBox>
+
