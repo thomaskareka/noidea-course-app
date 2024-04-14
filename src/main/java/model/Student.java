@@ -253,7 +253,32 @@ public class Student extends User {
                 System.out.println(degreeRequirement.calculateRequirement(courses));
             }
         }
+    }
 
+    public ArrayList<DegreeRequirement> getCategoryRequirements(String category) {
+        DegreeList degreeList = DegreeList.getInstance();
+        Degree d;
+
+        if(category.equals("major")) {
+            d = degreeList.getMajor(major);
+        } else if (category.equals("minor")) {
+            d = degreeList.getMajor(minor);
+        } else if (category.equals("app")) {
+            d = degreeList.getMajor(applicationArea);
+        } else {
+            return null;
+        }
+
+        ArrayList<DegreeRequirement> dr = new ArrayList<DegreeRequirement>();
+        if(d != null) {
+            dr = d.getRequirements();
+        }
+
+        return dr;
+    }
+
+    public ArrayList<String> getCompleteCourses() {
+        return degreeProgress.GetCompleteCourses();
     }
 
     public String getMajorMap() {

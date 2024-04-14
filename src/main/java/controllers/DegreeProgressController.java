@@ -1,11 +1,13 @@
 package controllers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -35,6 +37,50 @@ public class DegreeProgressController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setupLabels();
+        setupProgress();
+    }
+
+    private void setupProgress() {
+        setupCategory("major");
+        setupCategory("minor");
+        setupCategory("app");
+    }
+
+    private void setupCategory(String category) {
+        Student student = App.system.getStudent();
+        ArrayList<DegreeRequirement> drList = App.system.getCategoryRequirements(category);
+
+        if (drList.isEmpty())
+            return;
+        
+        String paneTitle = category;
+        
+        if(category.equals("major")) {
+            paneTitle = student.getMajor();
+        } else if(category.equals("minor")) {
+            paneTitle = student.getMinor();
+        } else {
+            paneTitle = student.getApplicationArea();
+        }
+
+        TitledPane pane = new TitledPane(paneTitle, null);
+        pane.setExpanded(false);
+
+        ArrayList<String> courseStrings = student.getCompleteCourses();
+        ArrayList<Course> courses = new ArrayList<Course>();
+        CourseList cl = CourseList.getInstance();
+        for(String s : courseStrings) {
+            courses.add(cl.getCourseByIdentifer(s));
+        }
+
+        VBox internalBox = new VBox();
+        
+        for(DegreeRequirement dr : drList) {
+            TitledPane internalPane = new TitledPane(dr.getCategory(), null);
+            internalBox.getChildren().add(internalPane);
+        }
+        pane.setContent(internalBox);
+        progressBox.getChildren().add(pane);
     }
 
     private void setupLabels() {

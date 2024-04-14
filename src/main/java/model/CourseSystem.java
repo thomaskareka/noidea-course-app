@@ -108,6 +108,11 @@ public class CourseSystem{
             return userList.createUserTranscript(activeStudent.getID());
         }
     }
+
+    public ArrayList<DegreeRequirement> getCategoryRequirements(String category) {
+        return getStudent().getCategoryRequirements(category);
+    }
+    
     public void printAllRequirements() {
         if(user instanceof Student) {
             ((Student) user).printAllRequirements();
@@ -310,7 +315,7 @@ public class CourseSystem{
                 return "No chosen student!";
             }
         }
-        DataWriter.writeString(out, fileID);
+        //DataWriter.writeString(out, fileID);
         return out;
     }
 
