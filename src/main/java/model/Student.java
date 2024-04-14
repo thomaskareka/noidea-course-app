@@ -165,6 +165,7 @@ public class Student extends User {
     }
 
     public String getClassLevel() {
+        this.classLevel = degreeProgress.getGradeLevel();
         return classLevel;
     }
 
