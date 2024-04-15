@@ -319,6 +319,15 @@ public class CourseSystem{
         return out;
     }
 
+    public ArrayList<String> getEightSemesterPlanList() {
+        ArrayList<String> out = new ArrayList<>();
+        if(getStudent() == null)
+            return out;
+        
+        out = getStudent().getMajorMapList();
+        return out;
+    }
+
     public String getAllCompletedCourses(Student student){
         return userList.getStudentCompleteCourses(student);
     }

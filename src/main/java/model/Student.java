@@ -303,6 +303,30 @@ public class Student extends User {
         return out;
     }
 
+    public ArrayList<String> getMajorMapList() {
+        ArrayList<String> out = new ArrayList<>();
+
+        DegreeList degreeList = DegreeList.getInstance();
+        Degree ma = degreeList.getMajor(major);
+        Degree majorMap = degreeList.getMajorMap(major);
+
+        ArrayList<String> courseStrings = degreeProgress.getCourses();
+        ArrayList<Course> courses = new ArrayList<Course>();
+        ArrayList<DegreeRequirement> majorMapReqs = majorMap.getRequirements();
+        ArrayList<DegreeRequirement> majorReqs = ma.getRequirements();
+        CourseList cl = CourseList.getInstance();
+
+        for(String s : courseStrings) {
+            courses.add(cl.getCourseByIdentifer(s));
+        }
+
+        for(DegreeRequirement degreeRequirement : majorMapReqs) {
+            out.add(degreeRequirement.calculateMajorMapSemester(majorReqs, courses, courseStrings, major, applicationArea));
+        }
+
+        return out;
+    }
+
     public ArrayList<Course> searchCoursesByName(String search) {
         ArrayList<Course> valid = new ArrayList<>();
         for(Course c : degreeProgress.getCourseObjects()) {
