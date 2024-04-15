@@ -78,7 +78,7 @@ public class NavigationBarController implements Initializable {
 
         
         MenuItem profileItem = makeButton("Profile", "studentProfile");
-        MenuItem editItem = makeButton("Edit Profile", "editStudentProfile");
+        MenuItem editItem = makeButton("Edit Profile", "studentProfileEdit");
 
         MenuItem logoutButton = makeLogoutButton();
 
@@ -93,7 +93,7 @@ public class NavigationBarController implements Initializable {
         
 
         MenuItem profileItem = makeButton("Profile", "advisorProfile");
-        MenuItem editItem = makeButton("Edit Profile", "editAdvisorProfile");
+        MenuItem editItem = makeButton("Edit Profile", "advisorProfileEdit");
 
         MenuItem logoutButton = makeLogoutButton();
         
