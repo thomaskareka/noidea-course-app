@@ -105,7 +105,7 @@ public class DegreeRequirement {
             String[] sp = req.split("\\+");
             return courseList.getCourseByIdentifer(sp[0]).getCredits() + courseList.getCourseByIdentifer(sp[1]).getCredits();
         } else if(req.contains("/")) {
-            String[] sp = req.split("\\+");
+            String[] sp = req.split("\\/");
             return courseList.getCourseByIdentifer(sp[0]).getCredits(); //both should have the same amount of credits
         } else {
             return courseList.getCourseByIdentifer(req).getCredits();

@@ -40,7 +40,7 @@ public class SignupController {
     private Button menuSignupButton;
 
     @FXML
-    void doSignup(ActionEvent event) {  // TODO: make error handlers show text, transition scene
+    void doSignup(ActionEvent event) throws IOException {
         CourseSystem system = App.system;
         String email = menuEmailField.getText();
         String firstName = menuFirstField.getText();
@@ -69,6 +69,11 @@ public class SignupController {
         if(system.signUp(type, firstName, lastName, email, password)) {
             System.out.println("Successfully signed up. Current user:");
             system.printActiveUser();
+            if(type) {  // signed up as student
+                App.setRoot("degreeProgress");
+            } else {  // signed up as advisor
+                App.setRoot("advisorHome");
+            }
         } else {
             a.setHeaderText("Signup failed...");
             a.show();

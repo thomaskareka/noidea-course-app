@@ -39,10 +39,10 @@ public class LoginController {
 
         if(system.login(email, password)) {
             if(system.getUserType().contains("Student")) {
-                App.setRoot("courseListing");
+                App.setRoot("degreeProgress");
             } else {
                 System.out.println(system.getUserType());
-                System.out.println("logged in as an advisor"); //TODO
+                App.setRoot("advisorHome");
             }
         } else {
            a.setHeaderText("Signin failed!");

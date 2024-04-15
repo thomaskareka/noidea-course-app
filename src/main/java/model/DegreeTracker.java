@@ -127,13 +127,21 @@ public class DegreeTracker {
     }
 
     public double CalculateProgress(Degree degree) {
-        requiredCredits = degree.getCredits() + getCompletedCredits();
+        if(degree == null) {
+            return 0;
+        }
+        requiredCredits = degree.getCredits();
         completedCredits = getCompletedCredits();
-        return (completedCredits/requiredCredits)*100;
+        double out = (double) completedCredits/requiredCredits;
+        System.out.println(out);
+        return (out);
     }
 
-    public String getCourseGrade(String name, String identifer){
+    public String getCourseGrade(String identifer){
         CourseProgress holder = getCourseProgress(identifer);
+        if (holder == null) {
+            return "Not Taken";
+        }
         return holder.getCourseGrade();
     }
 
@@ -182,6 +190,14 @@ public class DegreeTracker {
         return courses;
     }
 
+    public ArrayList<Course> getCourseObjects() {
+        ArrayList<Course> courses = new ArrayList<Course>();
+        for (CourseProgress courseProgress : studentCourses) {
+            courses.add(courseProgress.getCourse());
+        }
+        return courses;
+    }
+
     public boolean addCourse(String course){
         CourseProgress newCourse = new CourseProgress(course, Grade.IN_PROGRESS, false);
         if(getCourseProgress(course) != null) {
@@ -196,10 +212,12 @@ public class DegreeTracker {
         return false;
     }
 
-    public boolean removeCourse(String courseName){
+    public boolean removeCourse(Course c){
         for (CourseProgress courseProgress : studentCourses) {
-            if(courseProgress.getCourseName().equalsIgnoreCase(courseName)){
+            if(courseProgress.getCourseID().equalsIgnoreCase(c.getIdentifier())){
                 studentCourses.remove(courseProgress);
+                CalculateGPA();
+                CalculateMajorGPA();
                 return true;
             }
         }

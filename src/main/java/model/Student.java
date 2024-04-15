@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Student extends User {
@@ -99,16 +100,20 @@ public class Student extends User {
     public boolean addCourse(String course){
         return degreeProgress.addCourse(course);
     }
-    public boolean removeCourse(String course){
+    public boolean removeCourse(Course course){
         return degreeProgress.removeCourse(course);
     }
-    public String getCourseGrade(String name, String identifier){
-       return degreeProgress.getCourseGrade(name, identifier);
+    public String getCourseGrade(String identifier){
+       return degreeProgress.getCourseGrade(identifier);
     }
 
     public double getDegreePercentage(Degree degree){
        return degreeProgress.CalculateProgress(degree);
     }
+
+    public double getDegreePercentage(){
+        return degreeProgress.CalculateProgress(DegreeList.getInstance().getMajor(major));
+     }
     
 
     public boolean addGrade(String course, Grade grade){
@@ -161,6 +166,7 @@ public class Student extends User {
     }
 
     public String getClassLevel() {
+        this.classLevel = degreeProgress.getGradeLevel();
         return classLevel;
     }
 
@@ -247,7 +253,32 @@ public class Student extends User {
                 System.out.println(degreeRequirement.calculateRequirement(courses));
             }
         }
+    }
 
+    public ArrayList<DegreeRequirement> getCategoryRequirements(String category) {
+        DegreeList degreeList = DegreeList.getInstance();
+        Degree d;
+
+        if(category.equals("major")) {
+            d = degreeList.getMajor(major);
+        } else if (category.equals("minor")) {
+            d = degreeList.getMajor(minor);
+        } else if (category.equals("app")) {
+            d = degreeList.getMajor(applicationArea);
+        } else {
+            return null;
+        }
+
+        ArrayList<DegreeRequirement> dr = new ArrayList<DegreeRequirement>();
+        if(d != null) {
+            dr = d.getRequirements();
+        }
+
+        return dr;
+    }
+
+    public ArrayList<String> getCompleteCourses() {
+        return degreeProgress.GetCompleteCourses();
     }
 
     public String getMajorMap() {
@@ -270,5 +301,47 @@ public class Student extends User {
         }
 
         return out;
+    }
+
+    public ArrayList<String> getMajorMapList() {
+        ArrayList<String> out = new ArrayList<>();
+
+        DegreeList degreeList = DegreeList.getInstance();
+        Degree ma = degreeList.getMajor(major);
+        Degree majorMap = degreeList.getMajorMap(major);
+
+        ArrayList<String> courseStrings = degreeProgress.getCourses();
+        ArrayList<Course> courses = new ArrayList<Course>();
+        ArrayList<DegreeRequirement> majorMapReqs = majorMap.getRequirements();
+        ArrayList<DegreeRequirement> majorReqs = ma.getRequirements();
+        CourseList cl = CourseList.getInstance();
+
+        for(String s : courseStrings) {
+            courses.add(cl.getCourseByIdentifer(s));
+        }
+
+        for(DegreeRequirement degreeRequirement : majorMapReqs) {
+            out.add(degreeRequirement.calculateMajorMapSemester(majorReqs, courses, courseStrings, major, applicationArea));
+        }
+
+        return out;
+    }
+
+    public ArrayList<Course> searchCoursesByName(String search) {
+        ArrayList<Course> valid = new ArrayList<>();
+        for(Course c : degreeProgress.getCourseObjects()) {
+            if(c.getName().toLowerCase().contains(search.toLowerCase()) || c.getIdentifier().toLowerCase().contains(search.toLowerCase()))
+                valid.add(c);
+        }
+        return valid;
+    }
+
+    public List<Course> getCoursesFromSearch(int page, String search) {
+        ArrayList<Course> courses = degreeProgress.getCourseObjects();
+        if(search.equals("")) {
+            return courses.subList(Math.min(page * 25, courses.size()), Math.min(page * 25 + 24, courses.size()));
+        }
+        ArrayList<Course> valid = searchCoursesByName(search);
+        return valid.subList(Math.min(page * 25, valid.size()), Math.min(page * 25 + 24, valid.size()));
     }
 }

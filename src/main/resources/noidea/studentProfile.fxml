@@ -1,48 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentProfileController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentProfileController">
    <children>
       <fx:include source="navigationBar.fxml" />
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <Label text="First Name"/>
-            <TextField fx:id="firstNameField" disable="true" alignment="CENTER" maxWidth="-Infinity" prefHeight="46.0" prefWidth="462.0"/>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="First Name           ">
+            <graphic>
+                  <TextField fx:id="firstNameField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+            </graphic></Label>
 
-            <Label text="Last Name"/>
-            <TextField fx:id="lastNameField" disable="true" alignment="CENTER" maxWidth="-Infinity" prefHeight="46.0" prefWidth="462.0"/>
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Last Name              ">
+            <graphic>
+                  <TextField fx:id="lastNameField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+            </graphic></Label>
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
          </HBox>
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <Label text="Email"/>
-            <TextField fx:id="emailField" disable="true" alignment="CENTER" maxWidth="-Infinity" prefHeight="46.0" prefWidth="462.0"/>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+            <Label contentDisplay="RIGHT" text="Email                  ">
+            <graphic>
+                  <TextField fx:id="emailField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+            </graphic></Label>
          
-            <Label text="Student ID"/>
-            <TextField fx:id="studentIdField" disable="true" alignment="CENTER" maxWidth="-Infinity" prefHeight="46.0" prefWidth="462.0"/>
+               <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Student ID               ">
+            <graphic>
+                  <TextField fx:id="studentIdField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+            </graphic></Label>
          </HBox>
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <Label text="Major"/>
-            <TextField fx:id="majorField" disable="true" alignment="CENTER" maxWidth="-Infinity" prefHeight="46.0" prefWidth="462.0"/>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Major                    ">
+            <graphic>
+                  <TextField fx:id="majorField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+            </graphic></Label>
 
-            <Label text="Minor"/>
-            <TextField fx:id="minorField" disable="true" alignment="CENTER" maxWidth="-Infinity" prefHeight="46.0" prefWidth="462.0"/>
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Minor                       ">
+            <graphic>
+                  <TextField fx:id="minorField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+            </graphic></Label>
          </HBox>
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <Label text="Class Level"/>
-            <TextField fx:id="classLevelField" disable="true" alignment="CENTER" maxWidth="-Infinity" prefHeight="46.0" prefWidth="462.0"/>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Class Level           ">
+            <graphic>
+                  <TextField fx:id="classLevelField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+            </graphic></Label>
 
-            <Label text="Application Area"/>
-            <TextField fx:id="applicationAreaField" disable="true" alignment="CENTER" maxWidth="-Infinity" prefHeight="46.0" prefWidth="462.0"/>
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Application Area      ">
+            <graphic>
+                  <TextField fx:id="applicationAreaField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+            </graphic></Label>
          </HBox>
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <Label text="Major GPA"/>
-            <TextField fx:id="majorGPAField" disable="true" alignment="CENTER" maxWidth="-Infinity" prefHeight="46.0" prefWidth="462.0"/>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Major GPA           ">
+            <graphic>
+                  <TextField fx:id="majorGPAField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+            </graphic></Label>
 
-            <Label text="Overall GPA"/>
-            <TextField fx:id="overallGPAField" disable="true" alignment="CENTER" maxWidth="-Infinity" prefHeight="46.0" prefWidth="462.0"/>
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Overall GPA           ">
+            <graphic>
+                  <TextField fx:id="overallGPAField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+            </graphic></Label>
          </HBox>
    </children>
 </VBox>

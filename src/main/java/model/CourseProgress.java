@@ -40,6 +40,7 @@ public class CourseProgress {
         isComplete = !grade.equals(Grade.IN_PROGRESS);
         if(gradeReceived != null) {
             System.out.println("Grade successfully edited: " + this.toString());
+            return true;
         }
             
         return false;

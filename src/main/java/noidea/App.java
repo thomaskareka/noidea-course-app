@@ -21,6 +21,11 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"), 1280, 720);
         stage.setScene(scene);
+
+        system.login("bwest@email.sc.edu", "password");
+        setRoot("degreeProgress");
+        system.getStudent().printAllRequirements();
+
         stage.show();
     }
 

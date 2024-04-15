@@ -42,6 +42,9 @@ public class CourseSystem{
        return false;
     }
     public void logout() {
+        if(user == null) {
+            return;
+        }
         if(user instanceof Student) {
             userList.saveUser((Student) user);
         } else {
@@ -50,6 +53,14 @@ public class CourseSystem{
                 userList.saveUser(activeStudent);
             }
         }
+    }
+
+    public void removeActiveStudent() {
+        if(activeStudent == null) {
+            return;
+        }
+        userList.saveUser(activeStudent);
+        activeStudent = null;
     }
     public boolean signUp(boolean type, String firstName, String lastName, String email, String password){
         /* the boolean 'type' will be true if the user signing up as a student, and false if an advisor.
@@ -97,6 +108,11 @@ public class CourseSystem{
             return userList.createUserTranscript(activeStudent.getID());
         }
     }
+
+    public ArrayList<DegreeRequirement> getCategoryRequirements(String category) {
+        return getStudent().getCategoryRequirements(category);
+    }
+    
     public void printAllRequirements() {
         if(user instanceof Student) {
             ((Student) user).printAllRequirements();
@@ -190,10 +206,11 @@ public class CourseSystem{
             activeStudent.setApplicationArea(appArea);
         }
     }
-    public void removeCourseForStudent(Course course){
+    public boolean removeCourseForStudent(Course course){
         if(user instanceof Advisor) {
-            //userList.removeCourseForStudent(student, course);
+            return userList.removeCourseForStudent(activeStudent, course);
         }
+        return false;
     }
     public void enterFailureRisk(Student student, boolean failureRisk){
         if(user instanceof Advisor) {
@@ -228,6 +245,22 @@ public class CourseSystem{
         }
     }
 
+    public boolean addAdvisee(Student advisee) {
+        System.out.println("Attempting to add student with ID " + advisee.getID());
+        if (!(user instanceof Advisor)) {
+            System.out.println("Only advisors can do this!");
+            return false;
+        } else {
+            if(((Advisor) user).addAdvisee(advisee.getID())) {
+            advisee.setAdvisor(user.getID());
+            activeStudent = advisee;
+            System.out.println(String.format("%s %s successfully added as %s %s's advisor!", user.getFirstName(), user.getLastName(), advisee.getFirstName(), advisee.getLastName()));
+            return true;
+            }
+            return false;
+        }
+    }
+
     public boolean chooseActiveStudent(String id) {
         if (!(user instanceof Advisor)) {
             System.out.println("Only advisors can do this!");
@@ -237,6 +270,27 @@ public class CourseSystem{
         for(UUID uuid : a.getStudents()) {
             Student s = (userList.getStudentFromID(uuid));
             if(s != null && s.getStudentID().equals(id)) {
+                if(activeStudent != null) {
+                    removeActiveStudent();
+                }
+                activeStudent = s;
+                System.out.println(String.format("%s %s successfully loaded!", s.getFirstName(), s.getLastName()));
+                return true;
+            }
+        }
+        System.out.println("Student not found!");
+        return false;
+    }
+
+    public boolean chooseActiveStudent(UUID id) {
+        if (!(user instanceof Advisor)) {
+            System.out.println("Only advisors can do this!");
+            return false;
+        }
+        Advisor a = (Advisor) user;
+        for(UUID uuid : a.getStudents()) {
+            Student s = userList.getStudentFromID(id);
+            if(uuid.equals(id) && s != null) {
                 activeStudent = s;
                 System.out.println(String.format("%s %s successfully loaded!", s.getFirstName(), s.getLastName()));
                 return true;
@@ -261,7 +315,16 @@ public class CourseSystem{
                 return "No chosen student!";
             }
         }
-        DataWriter.writeString(out, fileID);
+        //DataWriter.writeString(out, fileID);
+        return out;
+    }
+
+    public ArrayList<String> getEightSemesterPlanList() {
+        ArrayList<String> out = new ArrayList<>();
+        if(getStudent() == null)
+            return out;
+        
+        out = getStudent().getMajorMapList();
         return out;
     }
 
@@ -298,8 +361,8 @@ public class CourseSystem{
     public String getCourseGrade(Student student, Course course){
         return userList.getCourseGrade(student, course);
     }
-    public String getCourseGrade(Student student, String name, String identifier){
-        return userList.getCourseGrade(student, name, identifier);
+    public String getCourseGrade(Student student, String identifier){
+        return userList.getCourseGrade(student, identifier);
     }
     // debug functions
     public void printActiveUser() {
@@ -318,6 +381,22 @@ public class CourseSystem{
         return courseList.getCoursesFromSearch(page, search);
     }
 
+    public List<Course> getStudentCoursesFromSearch(int page, String search) {
+        return getStudent().getCoursesFromSearch(page, search);
+    }
+
+    public List<Student> getStudentsFromSearch(int page, String search) {
+        return userList.getStudentsFromSearch(page, search);
+    }
+
+    public List<Student> getAdvisorsStudentsFromSearch(int page, String search) {
+        if(user instanceof Advisor) {
+            return ((Advisor) user).searchStudents(page, search);
+        } else {
+            return null;
+        }
+    }
+
     public String getUserType() {
         return user.getClass().toString();
     }
@@ -331,5 +410,13 @@ public class CourseSystem{
             return (Student) user;
         }
         return activeStudent;
+    }
+
+    public boolean isStudent() {
+        return (user instanceof Student);
+    }
+
+    public boolean hasActiveStudent() {
+        return activeStudent != null;
     }
 }

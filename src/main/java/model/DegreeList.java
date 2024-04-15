@@ -20,7 +20,7 @@ public class DegreeList {
 
     public Degree getMajor(String major){
         for (Degree degree : degrees) {
-            if(degree.getTitle().equals(major) && !degree.getType().equals("major"))
+            if(degree.getTitle().equals(major) && !degree.getType().equals("majorMap"))
                 return degree;
         }
         return null;
@@ -46,5 +46,15 @@ public class DegreeList {
 
     public ArrayList<Degree> getDegrees() {
         return degrees;
+    }
+
+    public ArrayList<Degree> getCategory(String category) {
+        ArrayList<Degree> out = new ArrayList<>();
+        for(Degree degree : degrees) {
+            if(degree.getType().equalsIgnoreCase(category)) {
+                out.add(degree);
+            }
+        }
+        return out;
     }
 }
