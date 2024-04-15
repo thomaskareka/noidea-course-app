@@ -43,20 +43,6 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="200.0">
          <children>
-            <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Class Level         ">
-               <graphic>
-                  <TextField fx:id="classLevelField" />
-               </graphic>
-            </Label>
-            <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Application Area   ">
-               <graphic>
-                  <TextField fx:id="applicationAreaField" />
-               </graphic>
-            </Label>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="200.0">
-         <children>
             <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Major                   ">
                <graphic>
                   <TextField fx:id="majorField" />
@@ -65,6 +51,20 @@
             <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Minor                    ">
                <graphic>
                   <TextField fx:id="minorField" />
+               </graphic>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="200.0">
+         <children>
+            <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Class Level         ">
+               <graphic>
+                  <TextField fx:id="classLevelField" />
+               </graphic>
+            </Label>
+            <Label contentDisplay="RIGHT" graphicTextGap="20.0" text="Application Area   ">
+               <graphic>
+                  <TextField fx:id="applicationAreaField" />
                </graphic>
             </Label>
          </children>
