@@ -55,6 +55,21 @@ public class Student extends User {
         classLevel = getClassLevel();
     }
 
+    public void setFirstName(String name) {
+        if(name != null && !(name.isEmpty()))
+            this.firstName = name;
+    }
+
+    public void setLastName(String name) {
+        if(name != null && !(name.isEmpty()))
+            this.lastName = name;
+    }
+
+    public void setEmail(String email) {
+        if(email != null && !(email.isEmpty()))
+            this.email = email;
+    }
+
     public String getTranscript(){
         return degreeProgress.createTranscipt();
     }
