@@ -95,7 +95,7 @@ public class DegreeProgressController implements Initializable {
     private void setupLabels() {
         Student s = App.system.getStudent();
         applicationAreaText.setText("Application Area: " + s.getApplicationArea());
-        gpaText.setText(String.format("GPA: %s (%s)", s.getOverallGPA(), s.getMajorGPA()));
+        gpaText.setText(String.format("GPA: %.3f (%.3f Major GPA)", s.getOverallGPA(), s.getMajorGPA()));
         majorText.setText("Major: " + s.getMajor());
         minorText.setText("Minor: " + s.getMinor());
         progressDisplay.setProgress(s.getDegreePercentage());
