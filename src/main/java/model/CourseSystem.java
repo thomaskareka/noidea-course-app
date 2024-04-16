@@ -198,6 +198,15 @@ public class CourseSystem{
         }
     }
 
+    public void setStudentMinor(String minor) {
+        if(user instanceof Student) {
+            Student s = (Student) user;
+            s.setMinor(minor);
+        } else {
+            activeStudent.setMinor(minor);
+        }
+    }
+
     public void setStudentApplicationArea(String appArea) {
         if(user instanceof Student) {
             Student s = (Student) user;

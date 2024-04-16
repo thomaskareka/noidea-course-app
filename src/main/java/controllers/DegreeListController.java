@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitMenuButton;
@@ -53,11 +54,12 @@ public class DegreeListController implements Initializable {
             degrees.addAll(DegreeList.getInstance().getCategory("applicationArea"));
         
         for(Degree d : degrees) {
+            Button b = makeChooseButton(d, d.getType());
             Text t = new Text(d.toString());
             t.setTextAlignment(TextAlignment.LEFT);
             t.setWrappingWidth(1200);
             String title = String.format("%s - %s (%s credits)", d.getType(), d.getTitle(), d.getCredits());
-            TitledPane pane = new TitledPane(title, t);
+            TitledPane pane = new TitledPane(title, new VBox(b, t));
             pane.setExpanded(false);
             
             courseBox.getChildren().add(pane);
@@ -72,6 +74,33 @@ public class DegreeListController implements Initializable {
             }
         });
         return item;
+    }
+
+    private Button makeChooseButton(Degree m, String type) {
+        Button b = new Button();
+        if(type.equals("major")) {
+            b.setText("Set as Major");
+            b.setOnAction(new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent e) {
+                    App.system.setStudentMajor(m.getTitle());
+                }
+            });
+        } else if (type.equals("minor")) {
+            b.setText("Set as Minor");
+            b.setOnAction(new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent e) {
+                    App.system.setStudentMinor(m.getTitle());
+                }
+            });
+        } else {
+            b.setText("Set as Application Area");
+            b.setOnAction(new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent e) {
+                    App.system.setStudentApplicationArea(m.getTitle());
+                }
+            });
+        }
+        return b;
     }
 
 }
