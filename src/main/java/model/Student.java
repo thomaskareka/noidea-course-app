@@ -154,6 +154,14 @@ public class Student extends User {
         }
     }
 
+    public void setMinor(String minor) {
+        if(DegreeList.getInstance().getMajor(minor) != null) {
+            this.minor = minor;
+        } else {
+            System.out.println("Major does not exist!");
+        }
+    }
+
     public void setApplicationArea(String appArea) {
         if(DegreeList.getInstance().getMajor(appArea) != null) {
             this.applicationArea = appArea;

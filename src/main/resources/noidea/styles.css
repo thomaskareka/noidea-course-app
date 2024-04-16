@@ -16,16 +16,13 @@
     -fx-background-image:url("imgs/horseshoeImage.jpg");
     -fx-background-repeat: no-repeat;
     -fx-background-size: contain;
-
-
 }
-
 .signup_page{
     -fx-background-image:url("imgs/horseshoeImage.jpg");
     -fx-background-repeat: no-repeat;
     -fx-background-size: contain;
 }
-
 .singin_box {
-    -fx-background-color: white;
+    -fx-background-color: white; 
 }
+
