@@ -33,6 +33,7 @@ public class MajorMapController implements Initializable {
             Text t = new Text(plan.get(i));
             t.setWrappingWidth(1200);
             TitledPane pane = new TitledPane("Semester " + (i + 1), t);
+            pane.setStyle("-fx-text-fill: #FFFFFF;");
             majorBox.getChildren().add(pane);
         }
 
