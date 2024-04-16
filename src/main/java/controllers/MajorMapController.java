@@ -34,6 +34,7 @@ public class MajorMapController implements Initializable {
             t.setWrappingWidth(1200);
             TitledPane pane = new TitledPane("Semester " + (i + 1), t);
             pane.setStyle("-fx-text-fill: #FFFFFF;");
+            pane.setStyle("-fx-color: #73000A;");
             majorBox.getChildren().add(pane);
         }
 
