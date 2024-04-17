@@ -36,6 +36,10 @@ public class Advisor extends User {
             this.email = email;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public Student searchByStudentID(UUID id) {
         for (UUID uuid : students) {
             if(uuid.equals(id)) {

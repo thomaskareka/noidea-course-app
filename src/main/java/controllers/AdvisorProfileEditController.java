@@ -8,6 +8,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 
 import noidea.App;
 import model.*;
@@ -38,10 +41,26 @@ public class AdvisorProfileEditController implements Initializable{
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
         String email = emailField.getText();
+        String password = passwordField.getText();
+        String conPassword = conPasswordField.getText();
 
         a.setFirstName(firstName);
         a.setLastName(lastName);
         a.setEmail(email);
+
+        Alert alert = new Alert(AlertType.ERROR);
+
+        if(!password.equals(conPassword)) {
+            alert.setHeaderText("Passwords must match!");
+            alert.show();
+            return;
+        } else if(password.length() < 8) {
+            alert.setHeaderText("Passwords must be 8 characters or longer!");
+            alert.show();
+            return;
+        }
+
+        a.setPassword(password);
     }
 
     @Override
