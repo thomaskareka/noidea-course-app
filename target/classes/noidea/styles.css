@@ -28,4 +28,13 @@
 .text_Color {
     -fx-text-fill: #73000A;
 }
-
+.menu-bar {
+    -fx-background-color: #73000A;
+}
+.menu-bar .menu .label {
+    -fx-text-fill: white;
+}
+.menu-item {
+    -fx-background-color: #73000A;
+    -fx-text-fill: white;
+}
