@@ -26,8 +26,18 @@ public class AdvisorProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initialize'");
+        Advisor advisor = App.system.getAdvisor();
+        if (advisor != null) {
+            populateAdvisorProfile(advisor);
+        }
+    }
+
+    private void populateAdvisorProfile(Advisor advisor) {
+        firstNameField.setText(advisor.getFirstName());
+        lastNameField.setText(advisor.getLastName());
+        emailField.setText(advisor.getEmail());
+        passwordField.setText(advisor.getPassword());
+        
     }
 
 }
