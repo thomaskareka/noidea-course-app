@@ -5,67 +5,106 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentProfileController">
    <children>
       <fx:include source="navigationBar.fxml" />
+      <Label styleClass="text_Color" text="PROFILE" textAlignment="CENTER">
+         <font>
+            <Font name="Times New Roman Bold" size="27.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="40.0" />
+         </VBox.margin>
+      </Label>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="First Name           ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="First Name           ">
             <graphic>
                   <TextField fx:id="firstNameField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic></Label>
+            </graphic>
+            <font>
+               <Font name="Times New Roman Bold" size="20.0" />
+            </font></Label>
 
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Last Name              ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Last Name              ">
             <graphic>
                   <TextField fx:id="lastNameField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic></Label>
+            </graphic>
+            <font>
+               <Font name="Times New Roman Bold" size="20.0" />
+            </font></Label>
          <VBox.margin>
-            <Insets top="50.0" />
+            <Insets top="25.0" />
          </VBox.margin>
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-            <Label contentDisplay="RIGHT" text="Email                  ">
+            <Label contentDisplay="RIGHT" styleClass="text_Color" text="Email                  ">
             <graphic>
                   <TextField fx:id="emailField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic></Label>
+            </graphic>
+            <font>
+               <Font name="Times New Roman Bold" size="20.0" />
+            </font></Label>
          
-               <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Student ID               ">
+               <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Student ID               ">
             <graphic>
                   <TextField fx:id="studentIdField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic></Label>
+            </graphic>
+            <font>
+               <Font name="Times New Roman Bold" size="20.0" />
+            </font></Label>
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Major                    ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Major                    ">
             <graphic>
                   <TextField fx:id="majorField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic></Label>
+            </graphic>
+            <font>
+               <Font name="Times New Roman Bold" size="20.0" />
+            </font></Label>
 
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Minor                       ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Minor                       ">
             <graphic>
                   <TextField fx:id="minorField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic></Label>
+            </graphic>
+            <font>
+               <Font name="Times New Roman Bold" size="20.0" />
+            </font></Label>
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Class Level           ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Class Level           ">
             <graphic>
                   <TextField fx:id="classLevelField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic></Label>
+            </graphic>
+            <font>
+               <Font name="Times New Roman Bold" size="20.0" />
+            </font></Label>
 
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Application Area      ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Application Area      ">
             <graphic>
                   <TextField fx:id="applicationAreaField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic></Label>
+            </graphic>
+            <font>
+               <Font name="Times New Roman Bold" size="20.0" />
+            </font></Label>
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Major GPA           ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Major GPA           ">
             <graphic>
                   <TextField fx:id="majorGPAField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic></Label>
+            </graphic>
+            <font>
+               <Font name="Times New Roman Bold" size="20.0" />
+            </font></Label>
 
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Overall GPA           ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Overall GPA           ">
             <graphic>
                   <TextField fx:id="overallGPAField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic></Label>
+            </graphic>
+            <font>
+               <Font name="Times New Roman Bold" size="20.0" />
+            </font></Label>
          </HBox>
    </children>
 </VBox>
