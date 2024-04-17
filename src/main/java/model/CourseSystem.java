@@ -11,6 +11,7 @@ public class CourseSystem{
     private DegreeList degreeList;
     private User user;
     private Student activeStudent;  // only for advisors
+    private Advisor activeAdvisor;
 
     public CourseSystem() {
         userList = UserList.getInstance();
@@ -419,6 +420,13 @@ public class CourseSystem{
             return (Student) user;
         }
         return activeStudent;
+    }
+
+    public Advisor getAdvisor() {
+        if (user instanceof Advisor) {
+            return (Advisor) user;
+        }
+        return activeAdvisor;
     }
 
     public boolean isStudent() {
