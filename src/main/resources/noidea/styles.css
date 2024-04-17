@@ -25,4 +25,7 @@
 .singin_box {
     -fx-background-color: white; 
 }
+.text_Color {
+    -fx-text-fill: #73000A;
+}
 
