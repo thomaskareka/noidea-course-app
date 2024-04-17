@@ -19,92 +19,137 @@
          </VBox.margin>
       </Label>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="First Name           ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="First Name            ">
             <graphic>
-                  <TextField fx:id="firstNameField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+                  <TextField fx:id="firstNameField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0">
+                  <font>
+                     <Font name="Times New Roman Bold" size="20.0" />
+                  </font></TextField>
             </graphic>
             <font>
-               <Font name="Times New Roman Bold" size="20.0" />
-            </font></Label>
+               <Font name="Times New Roman Bold" size="22.0" />
+            </font>
+            <HBox.margin>
+               <Insets bottom="-5.0" />
+            </HBox.margin></Label>
 
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Last Name              ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Last Name                ">
             <graphic>
-                  <TextField fx:id="lastNameField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+                  <TextField fx:id="lastNameField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0">
+                  <font>
+                     <Font name="Times New Roman Bold" size="20.0" />
+                  </font></TextField>
             </graphic>
             <font>
-               <Font name="Times New Roman Bold" size="20.0" />
+               <Font name="Times New Roman Bold" size="22.0" />
             </font></Label>
          <VBox.margin>
-            <Insets top="25.0" />
+            <Insets bottom="-8.0" top="25.0" />
          </VBox.margin>
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-            <Label contentDisplay="RIGHT" styleClass="text_Color" text="Email                  ">
+            <Label contentDisplay="RIGHT" styleClass="text_Color" text="Email                    ">
             <graphic>
-                  <TextField fx:id="emailField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+                  <TextField fx:id="emailField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0">
+                  <font>
+                     <Font name="Times New Roman Bold" size="20.0" />
+                  </font></TextField>
             </graphic>
             <font>
-               <Font name="Times New Roman Bold" size="20.0" />
+               <Font name="Times New Roman Bold" size="22.0" />
             </font></Label>
          
-               <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Student ID               ">
+               <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Student ID                ">
             <graphic>
-                  <TextField fx:id="studentIdField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+                  <TextField fx:id="studentIdField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0">
+                  <font>
+                     <Font name="Times New Roman Bold" size="20.0" />
+                  </font></TextField>
             </graphic>
             <font>
-               <Font name="Times New Roman Bold" size="20.0" />
+               <Font name="Times New Roman Bold" size="22.0" />
             </font></Label>
+         <VBox.margin>
+            <Insets bottom="-8.0" />
+         </VBox.margin>
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Major                    ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Major                     ">
             <graphic>
-                  <TextField fx:id="majorField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+                  <TextField fx:id="majorField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0">
+                  <font>
+                     <Font name="Times New Roman Bold" size="20.0" />
+                  </font></TextField>
             </graphic>
             <font>
-               <Font name="Times New Roman Bold" size="20.0" />
+               <Font name="Times New Roman Bold" size="22.0" />
             </font></Label>
 
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Minor                       ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Minor                        ">
             <graphic>
-                  <TextField fx:id="minorField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+                  <TextField fx:id="minorField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0">
+                  <font>
+                     <Font name="Times New Roman Bold" size="20.0" />
+                  </font></TextField>
             </graphic>
             <font>
-               <Font name="Times New Roman Bold" size="20.0" />
+               <Font name="Times New Roman Bold" size="22.0" />
             </font></Label>
+         <VBox.margin>
+            <Insets bottom="-8.0" />
+         </VBox.margin>
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Class Level           ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Class Level            ">
             <graphic>
-                  <TextField fx:id="classLevelField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+                  <TextField fx:id="classLevelField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0">
+                  <font>
+                     <Font name="Times New Roman Bold" size="20.0" />
+                  </font></TextField>
             </graphic>
             <font>
-               <Font name="Times New Roman Bold" size="20.0" />
+               <Font name="Times New Roman Bold" size="22.0" />
             </font></Label>
 
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Application Area      ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Application Area       ">
             <graphic>
-                  <TextField fx:id="applicationAreaField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+                  <TextField fx:id="applicationAreaField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0">
+                  <font>
+                     <Font name="Times New Roman Bold" size="20.0" />
+                  </font></TextField>
             </graphic>
             <font>
-               <Font name="Times New Roman Bold" size="20.0" />
+               <Font name="Times New Roman Bold" size="22.0" />
             </font></Label>
+         <VBox.margin>
+            <Insets bottom="-8.0" />
+         </VBox.margin>
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Major GPA           ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Major GPA          ">
             <graphic>
-                  <TextField fx:id="majorGPAField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+                  <TextField fx:id="majorGPAField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0">
+                  <font>
+                     <Font name="Times New Roman Bold" size="20.0" />
+                  </font></TextField>
             </graphic>
             <font>
-               <Font name="Times New Roman Bold" size="20.0" />
+               <Font name="Times New Roman Bold" size="22.0" />
             </font></Label>
 
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Overall GPA           ">
+            <Label contentDisplay="RIGHT" graphicTextGap="0.0" styleClass="text_Color" text="Overall GPA            ">
             <graphic>
-                  <TextField fx:id="overallGPAField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
+                  <TextField fx:id="overallGPAField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0">
+                  <font>
+                     <Font name="Times New Roman Bold" size="20.0" />
+                  </font></TextField>
             </graphic>
             <font>
-               <Font name="Times New Roman Bold" size="20.0" />
+               <Font name="Times New Roman Bold" size="22.0" />
             </font></Label>
+         <VBox.margin>
+            <Insets bottom="-8.0" />
+         </VBox.margin>
          </HBox>
    </children>
 </VBox>
