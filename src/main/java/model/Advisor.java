@@ -21,6 +21,21 @@ public class Advisor extends User {
         this.isAdmin = isAdmin;
     }
 
+    public void setFirstName(String name) {
+        if(name != null && !(name.isEmpty()))
+            this.firstName = name;
+    }
+
+    public void setLastName(String name) {
+        if(name != null && !(name.isEmpty()))
+            this.lastName = name;
+    }
+
+    public void setEmail(String email) {
+        if(email != null && !(email.isEmpty()))
+            this.email = email;
+    }
+
     public Student searchByStudentID(UUID id) {
         for (UUID uuid : students) {
             if(uuid.equals(id)) {
