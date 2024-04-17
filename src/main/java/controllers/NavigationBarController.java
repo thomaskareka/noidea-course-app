@@ -9,12 +9,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Alert.AlertType;
+import model.Student;
 import noidea.App;
-import model.*;
 
 public class NavigationBarController implements Initializable {
     @FXML
@@ -69,7 +69,7 @@ public class NavigationBarController implements Initializable {
     }
 
     private void initStudentMenu() {
-        MenuItem noteItem = makeButton("Notes", "notes");
+        MenuItem noteItem = makeButton("Notes", "studentNotes");
         MenuItem mapItem = makeButton("Major Map", "majorMap");
         MenuItem progressItem = makeButton("Degree Progress", "degreeProgress");
         MenuItem degreeItem = makeButton("Degree List", "degreeList");

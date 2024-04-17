@@ -38,3 +38,9 @@
     -fx-background-color: #73000A;
     -fx-text-fill: white;
 }
+.text-field {
+    -fx-background-color: white;
+    -fx-text-fill: #333;
+    -fx-border-color: #73000A;
+    -fx-border-radius: 5;
+}

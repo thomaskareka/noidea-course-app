@@ -9,7 +9,7 @@ import javafx.scene.control.TextArea;
 import model.Student;
 import noidea.App;
 
-public class StudentNotes implements Initializable{
+public class StudentNotesController implements Initializable{
     @FXML
     private TextArea studentNotesField;
 
