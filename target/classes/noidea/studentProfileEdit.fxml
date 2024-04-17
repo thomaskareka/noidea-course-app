@@ -86,7 +86,7 @@
             </Label>
             <Label alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="1302.0" styleClass="text_Color" text="                            Password                ">
                <graphic>
-                  <TextField fx:id="emailField1">
+                  <TextField fx:id="passwordField">
                      <font>
                         <Font name="Times New Roman Bold" size="20.0" />
                      </font>
@@ -101,7 +101,7 @@
             </Label>
             <Label alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="1213.0" styleClass="text_Color" text="                             Confirm Password                ">
                <graphic>
-                  <TextField fx:id="emailField2">
+                  <TextField fx:id="conPasswordField">
                      <font>
                         <Font name="Times New Roman Bold" size="20.0" />
                      </font>
