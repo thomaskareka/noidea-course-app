@@ -50,12 +50,14 @@ public class AdvisorProfileEditController implements Initializable{
 
         Alert alert = new Alert(AlertType.ERROR);
 
-        if(!password.equals(conPassword)) {
-            alert.setHeaderText("Passwords must match!");
+        if(password.length() < 8) {
+            alert.setHeaderText("Passwords must be 8 characters or longer!");
             alert.show();
             return;
-        } else if(password.length() < 8) {
-            alert.setHeaderText("Passwords must be 8 characters or longer!");
+        }
+        
+        if(!password.equals(conPassword)) {
+            alert.setHeaderText("Passwords must match!");
             alert.show();
             return;
         }

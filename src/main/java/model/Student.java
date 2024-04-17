@@ -70,6 +70,10 @@ public class Student extends User {
             this.email = email;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getTranscript(){
         return degreeProgress.createTranscipt();
     }
