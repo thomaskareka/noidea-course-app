@@ -2,6 +2,7 @@ module noidea {
     requires javafx.controls;
     requires javafx.fxml;
     requires json.simple;
+    requires javafx.graphics;
 
     opens noidea to javafx.fxml;
     exports noidea;
