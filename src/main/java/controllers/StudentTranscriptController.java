@@ -18,8 +18,8 @@ public class StudentTranscriptController implements Initializable  {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Text t = new Text(App.system.createUserTranscript());
-        t.setWrappingWidth(1200);
-        t.setTextAlignment(TextAlignment.CENTER);
+        t.setWrappingWidth(800);
+        t.setTextAlignment(TextAlignment.LEFT);
         courseBox.getChildren().add(t);
     }
 }
