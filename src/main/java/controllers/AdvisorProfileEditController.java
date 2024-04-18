@@ -44,24 +44,23 @@ public class AdvisorProfileEditController implements Initializable{
         String password = passwordField.getText();
         String conPassword = conPasswordField.getText();
 
-        a.setFirstName(firstName);
-        a.setLastName(lastName);
-        a.setEmail(email);
-
         Alert alert = new Alert(AlertType.ERROR);
 
         if(password.length() < 8) {
-            alert.setHeaderText("Passwords must be 8 characters or longer!");
+            alert.setHeaderText("Information NOT saved!\nPasswords must be 8 characters or longer!");
             alert.show();
             return;
         }
         
         if(!password.equals(conPassword)) {
-            alert.setHeaderText("Passwords must match!");
+            alert.setHeaderText("Information NOT saved!\nPasswords must match!");
             alert.show();
             return;
         }
 
+        a.setFirstName(firstName);
+        a.setLastName(lastName);
+        a.setEmail(email);
         a.setPassword(password);
     }
 

@@ -47,25 +47,24 @@ public class StudentProfileEditController implements Initializable{
         String password = passwordField.getText();
         String conPassword = conPasswordField.getText();
 
-        s.setFirstName(firstName);
-        s.setLastName(lastName);
-        s.setEmail(email);
-        s.setStudentID(studentID);
-
         Alert alert = new Alert(AlertType.ERROR);
 
         if(password.length() < 8) {
-            alert.setHeaderText("Passwords must be 8 characters or longer!");
+            alert.setHeaderText("Information NOT saved!\nPasswords must be 8 characters or longer!");
             alert.show();
             return;
         }
         
         if(!password.equals(conPassword)) {
-            alert.setHeaderText("Passwords must match!");
+            alert.setHeaderText("Information NOT saved!\nPasswords must match!");
             alert.show();
             return;
         }
 
+        s.setFirstName(firstName);
+        s.setLastName(lastName);
+        s.setEmail(email);
+        s.setStudentID(studentID);
         s.setPassword(password);
     }
 
