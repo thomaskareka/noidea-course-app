@@ -8,7 +8,7 @@
       <fx:include source="navigationBar.fxml" />
       <ScrollPane prefHeight="675.0" prefWidth="1280.0">
          <content>
-            <VBox fx:id="courseBox" prefHeight="670.0" prefWidth="1250.0" />
+            <VBox fx:id="courseBox" alignment="TOP_CENTER" prefHeight="670.0" prefWidth="1250.0" />
          </content>
       </ScrollPane>
    </children>

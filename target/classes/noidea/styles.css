@@ -30,6 +30,11 @@
 }
 .menu-bar {
     -fx-background-color: #73000A;
+    -fx-accent: #3b0005;
+}
+
+.menu:hover {
+    -fx-background-color: #3b0005;
 }
 .menu-bar .menu .label {
     -fx-text-fill: white;
@@ -37,6 +42,10 @@
 .menu-item {
     -fx-background-color: #73000A;
     -fx-text-fill: white;
+}
+
+.menu-item:hover {
+    -fx-background-color: #3b0005;
 }
 .text-field {
     -fx-background-color: white;
