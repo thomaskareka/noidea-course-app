@@ -3,41 +3,90 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdvisorProfileController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdvisorProfileController">
    <children>
       <fx:include source="navigationBar.fxml" />
-      <VBox prefHeight="154.0" prefWidth="1280.0" />
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-            <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="First Name           " textFill="#73000a">
-            <graphic>
-                  <TextField fx:id="firstNameField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic>
-         </Label>
-
-               <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Last Name              ">
-            <graphic>
-                  <TextField fx:id="lastNameField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic>
-         </Label>
+      <Label alignment="CENTER" prefHeight="30.0" prefWidth="1293.0" styleClass="text_Color" text="PROFILE">
+         <font>
+            <Font name="Times New Roman Bold" size="27.0" />
+         </font>
          <VBox.margin>
-            <Insets top="50.0" />
+            <Insets top="65.0" />
          </VBox.margin>
-         </HBox>
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-            <Label contentDisplay="RIGHT" text="Email                ">
-            <graphic>
-                  <TextField fx:id="emailField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic>
-         </Label>
-         
-                  <Label contentDisplay="RIGHT" graphicTextGap="0.0" text="Password           ">
-            <graphic>
-                  <TextField fx:id="passwordField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="46.0" prefWidth="350.0" />
-            </graphic>
-         </Label>
-         </HBox>
+      </Label>
+      <VBox alignment="CENTER" prefHeight="365.0" prefWidth="1280.0" spacing="10.0">
+         <children>
+               <Label alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" prefHeight="38.0" prefWidth="1298.0" styleClass="text_Color" text="                             First Name               " textFill="#73000a">
+               <graphic>
+                     <TextField fx:id="firstNameField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="35.0" prefWidth="265.0">
+                     <font>
+                        <Font name="Times New Roman" size="20.0" />
+                     </font>
+                  </TextField>
+               </graphic>
+               <font>
+                  <Font name="Times New Roman Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="15.0" top="50.0" />
+               </VBox.margin>
+            </Label>
+   
+                  <Label alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" prefHeight="46.0" prefWidth="1319.0" styleClass="text_Color" text="                              Last Name               ">
+               <graphic>
+                     <TextField fx:id="lastNameField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="35.0" prefWidth="265.0">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="15.0" />
+                     </padding>
+                  </TextField>
+               </graphic>
+               <font>
+                  <Font name="Times New Roman Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </Label>
+               <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="46.0" prefWidth="1309.0" styleClass="text_Color" text="                                     Email               ">
+               <graphic>
+                     <TextField fx:id="emailField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="35.0" prefWidth="265.0">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="15.0" />
+                     </padding>
+                  </TextField>
+               </graphic>
+               <font>
+                  <Font name="Times New Roman Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </Label>
+            
+                     <Label alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" prefHeight="46.0" prefWidth="1392.0" styleClass="text_Color" text="                               Password                ">
+               <graphic>
+                     <TextField fx:id="passwordField" alignment="CENTER" disable="true" maxWidth="-Infinity" prefHeight="35.0" prefWidth="265.0">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </TextField>
+               </graphic>
+               <font>
+                  <Font name="Times New Roman Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </Label>
+         </children></VBox>
    </children>
 </VBox>
