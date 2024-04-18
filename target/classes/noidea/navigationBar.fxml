@@ -14,7 +14,7 @@
             <Menu fx:id="menuAccount" mnemonicParsing="false" text="Account" />
          </menus>
       </MenuBar>
-      <Label contentDisplay="CENTER" layoutX="540.0" prefHeight="50.0" prefWidth="217.0" styleClass="tex" text="COURSE SYSTEM" textFill="#ebe5e5">
+      <Label id="whiteText" fx:id="whiteText" contentDisplay="CENTER" layoutX="516.0" prefHeight="50.0" prefWidth="221.0" styleClass="whiteText" stylesheets="@styles.css" text="NO IDEA COURSE APP" textFill="#ebe5e5">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
