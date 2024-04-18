@@ -144,31 +144,31 @@ public class DegreeRequirement {
                 boolean found = false;
                 for(Course c : inCourses) {
                     if(c.getAttributes().contains(course)) {
-                        out += "+   " + course + "(" + c.getIdentifier() + ")\n" ;
+                        out += "☑   " + course + "(" + c.getIdentifier() + ")\n" ;
                         inCourses.remove(c);
                         found = true;
                         break;
                     }
                 }
                 if(!found) {
-                    out += "-   " + course + "\n";
+                    out += "☒   " + course + "\n";
                 }
             } else if (course.equals("BIMELEC")) {
                 //TODO
-                out += "-- BIM Minor Elective\n";
+                out += "☒ BIM Minor Elective\n";
             } else if (course.equals("MAJORELEC")) {
                 out += calculateFromCategory(major, courseIDs, course);
             } else if (course.equals("CSCEELEC")) {
                 out += calculateFromCategory(major, courseIDs, course);
             } else if (course.equals("LIBELEC")) {
                 //TODO
-                out += "-- Liberal Arts Elective\n";
+                out += "☒ Liberal Arts Elective\n";
             } else if (course.equals("APP")) {
                 out += calculateFromCategory(applicationArea, courseIDs, course);
             } else if(calculateCourse(courseIDs, course)) {
-                    out += "+   " + course + "\n";
+                    out += "☑   " + course + "\n";
                 } else {
-                    out += "-   " + course + "\n";
+                    out += "☒   " + course + "\n";
                 }
             }
         return out;
@@ -190,14 +190,14 @@ public class DegreeRequirement {
         }
 
         if(major.equals("None")) {
-            return "-    APP";
+            return "☒    APP";
         }
 
         for(DegreeRequirement dr : drList) {
             if(dr.getCategory().equals(searchString)) {
                 for(String req : dr.getRequirements()) {
                     if(calculateCourse(courseIDs, req)) {
-                        return String.format("+   %s (%s)\n", searchString, req);
+                        return String.format("☑   %s (%s)\n", searchString, req);
                     }
                 }
                 // for(String id : courseIDs) {
@@ -208,6 +208,6 @@ public class DegreeRequirement {
                 // }
             }
         }
-        return "-   " + searchString + "\n";
+        return "☒   " + searchString + "\n";
     }
 }
