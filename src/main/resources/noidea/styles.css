@@ -44,6 +44,10 @@
     -fx-text-fill: white;
 }
 
+.whiteText {
+    -fx-text-fill: white;
+}
+
 .menu-item:hover {
     -fx-background-color: #3b0005;
 }
